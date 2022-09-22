@@ -7,7 +7,7 @@
 
         <div class="dropdown text-end">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="img/avatar.jpg" alt="mdo" width="48" height="48" class="rounded-circle">
+            <img src="/img/avatar.jpg" alt="" width="48" height="48" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small">
             <li><a class="dropdown-item" href="#"><span data-feather="user"></span> Profile</a></li>

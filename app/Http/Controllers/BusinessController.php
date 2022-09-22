@@ -14,7 +14,9 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.bisnis.main', [
+            'list' => Business::all()
+        ]);
     }
 
     /**
@@ -24,7 +26,9 @@ class BusinessController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.bisnis.create', [
+            'list' => Business::all()
+        ]);
     }
 
     /**
@@ -35,7 +39,14 @@ class BusinessController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'deskripsi' =>'required|max:255',
+            'pemilik' => 'required|max:255'            
+        ]);
+
+        Business::create($validateData);
+
+        return redirect('/dashboard/bisnis')->with('success', 'New item has been added !');
     }
 
     /**
@@ -57,7 +68,10 @@ class BusinessController extends Controller
      */
     public function edit(Business $business)
     {
-        //
+        return view('dashboard.bisnis.edit', [
+            'item' => $business,
+            'list' => Business::all()
+        ]);
     }
 
     /**
@@ -69,7 +83,16 @@ class BusinessController extends Controller
      */
     public function update(Request $request, Business $business)
     {
-        //
+        $rules  = [
+            'deskripsi' => 'required|max:255',
+            'pemilik' => 'required|max:255'
+        ];
+
+        $validateData = $request->validate($rules);
+
+        Business::where('id', $business->id)->update($validateData);
+
+        return  redirect('/dashboard/bisnis')->with('success', 'Item has been updated !');
     }
 
     /**

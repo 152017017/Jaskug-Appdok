@@ -1,7 +1,22 @@
-@extends('layouts.main')
+<!doctype html>
+<html lang="en">
+{{--  --}}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aplikasi Dokumentasi - Jasa Keuangan | {{ $title }}</title>
+    {{-- Bootstrap CSS --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    {{-- Bootstrap Icons --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    {{-- CSS Style --}}
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+{{--  --}}
+  <body>
 
-@section('container')
-    <div class="row justify-content-center">
+    <div class="container mt-4">
+      <div class="row justify-content-center">
         <div class="col-md-4">
 
           @if (session()->has('success'))
@@ -42,11 +57,15 @@
                     </label>
                   </div> --}}
                   <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Sign in</button>
-                  <small class="d-block text-center mt-3">Not registered? <a href="/register">Register now</a></small>
+                  <small class="d-block text-center mt-3"><a href="/">Back to menu</a></small>
                   <p class="mt-2 mb-3 text-muted" style="text-align:right">&copy; 2022</p>
                 </form>
             </main>
         </div>
-    </div>
+    </div>    </div>
 
-@endsection
+    {{-- JavaScript Bundle with Popper --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  </body>
+{{--  --}}
+</html>

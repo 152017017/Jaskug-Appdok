@@ -11,13 +11,13 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  {{ Request::is('dashboard/posts*') ? 'active' : '' }}" href="/dashboard/posts">
+          <a class="nav-link  {{ Request::is('dashboard/task*') ? 'active' : '' }}" href="/dashboard/task">
             <span data-feather="bookmark" class="align-text-bottom"></span>
             Task
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  {{ Request::is('dashboard/posts*') ? 'active' : '' }}" href="/dashboard/posts">
+          <a class="nav-link  {{ Request::is('dashboard/history*') ? 'active' : '' }}" href="/dashboard/history">
             <span data-feather="refresh-cw" class="align-text-bottom"></span>
             History
           </a>
@@ -31,7 +31,7 @@
       </h6>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link  {{ Request::is('dashboard/categories*') ? 'active' : '' }}" href="/dashboard/categories">
+          <a class="nav-link  {{ Request::is('dashboard/bisnis*') ? 'active' : '' }}" href="/dashboard/bisnis">
             <span data-feather="activity" class="align-text-bottom"></span>
             Bisnis
           </a>
@@ -39,7 +39,7 @@
       </ul>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link  {{ Request::is('dashboard/categories*') ? 'active' : '' }}" href="/dashboard/categories">
+          <a class="nav-link  {{ Request::is('dashboard/platform*') ? 'active' : '' }}" href="/dashboard/platform">
             <span data-feather="package" class="align-text-bottom"></span>
             Platform
           </a>
@@ -47,15 +47,15 @@
       </ul>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link  {{ Request::is('dashboard/categories*') ? 'active' : '' }}" href="/dashboard/categories">
+          <a class="nav-link  {{ Request::is('dashboard/gruplayanan*') ? 'active' : '' }}" href="/dashboard/gruplayanan">
             <span data-feather="plus-square" class="align-text-bottom"></span>
-            Group Layanan
+            Grup Layanan
           </a>
         </li>
       </ul>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link  {{ Request::is('dashboard/categories*') ? 'active' : '' }}" href="/dashboard/categories">
+          <a class="nav-link  {{ Request::is('dashboard/layanan*') ? 'active' : '' }}" href="/dashboard/layanan">
             <span data-feather="phone" class="align-text-bottom"></span>
             Layanan
           </a>
@@ -63,7 +63,7 @@
       </ul>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link  {{ Request::is('dashboard/categories*') ? 'active' : '' }}" href="/dashboard/categories">
+          <a class="nav-link  {{ Request::is('dashboard/status*') ? 'active' : '' }}" href="/dashboard/status">
             <span data-feather="bell" class="align-text-bottom"></span>
             Status
           </a>
@@ -71,7 +71,7 @@
       </ul>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link  {{ Request::is('dashboard/categories*') ? 'active' : '' }}" href="/dashboard/categories">
+          <a class="nav-link  {{ Request::is('dashboard/dokumentasi*') ? 'active' : '' }}" href="/dashboard/dokumentasi">
             <span data-feather="archive" class="align-text-bottom"></span>
             Dokumentasi
           </a>
@@ -79,7 +79,7 @@
       </ul>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link  {{ Request::is('dashboard/categories*') ? 'active' : '' }}" href="/dashboard/categories">
+          <a class="nav-link  {{ Request::is('dashboard/user*') ? 'active' : '' }}" href="/dashboard/user">
             <span data-feather="user" class="align-text-bottom"></span>
             User
           </a>

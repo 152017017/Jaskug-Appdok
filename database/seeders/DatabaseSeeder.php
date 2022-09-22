@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\Business;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,6 +27,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'Josua Sirait',
             'email' => 'admin@example.com',
             'password' => bcrypt('password')
+        ]);
+
+        Business::create([
+            'id' => '01',
+            'deskripsi' => 'POSPAY LOKET',
+            'pemilik' => 'Divisi JASA KEUANGAN 1'
         ]);
     }
 }

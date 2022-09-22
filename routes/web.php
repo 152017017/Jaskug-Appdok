@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BusinessController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,5 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/dashboard', function(){
     return view('dashboard.index');
         })->middleware('auth');
+
+Route::resource('/dashboard/bisnis', BusinessController::class)->middleware('auth');
