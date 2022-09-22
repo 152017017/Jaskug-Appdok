@@ -69,8 +69,7 @@ class BusinessController extends Controller
     public function edit(Business $business)
     {
         return view('dashboard.bisnis.edit', [
-            'item' => $business,
-            'list' => Business::all()
+            'item' => $business
         ]);
     }
 
@@ -92,7 +91,7 @@ class BusinessController extends Controller
 
         Business::where('id', $business->id)->update($validateData);
 
-        return  redirect('/dashboard/bisnis')->with('success', 'Item has been updated !');
+        return redirect('/dashboard/bisnis')->with('success', 'Item has been updated !')->withInput();
     }
 
     /**
