@@ -6,6 +6,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Business;
+use App\Models\GroupService;
+use App\Models\Platform;
 
 class DatabaseSeeder extends Seeder
 {
@@ -33,6 +35,16 @@ class DatabaseSeeder extends Seeder
             'id' => '01',
             'deskripsi' => 'POSPAY LOKET',
             'pemilik' => 'Divisi JASA KEUANGAN 1'
+        ]);
+
+        Platform::create([
+            'id' => '01',
+            'deskripsi' => 'Aplikasi Loket'
+        ]);
+
+        GroupService::create([
+            'id' => '01',
+            'deskripsi' => 'asuransi'
         ]);
     }
 }

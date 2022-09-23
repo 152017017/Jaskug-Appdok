@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GroupService extends Model
+class Platform extends Model
 {
     use HasFactory;
-    
-    protected $table = 't_grup_layanan';
+
+    protected $table = 't_platform';
     protected $guarded = [];
     protected $primary_key = 'id';
 }

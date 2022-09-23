@@ -2,7 +2,7 @@
 
 @section('container')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-      <h1 class="h2">Master Data Bisnis</h1>
+      <h1 class="h2">Master Data Grup Layanan</h1>
     </div>
 
     @if (session()->has('success'))
@@ -17,9 +17,9 @@
           <thead>
             <tr>
               <th scope="col">#</th>
+              <th scope="col">ID Grup</th>
               <th scope="col">ID Bisnis</th>
               <th scope="col">Deskripsi</th>
-              <th scope="col">Pemilik</th>
               <th scope="col">Terakhir Update</th>
               <th scope="col">Action</th>
             </tr>
@@ -29,8 +29,8 @@
             <tr>
               <td>{{ $loop->iteration }}</td>
               <td>{{ $item->id }}</td>
+              <td>{{ $item->id_bisnis }}</td>
               <td>{{ $item->deskripsi }}</td>
-              <td>{{ $item->pemilik }}</td>
               <td>{{ $item->updated_at->diffForHumans() }}</td>
               <td>
                 {{-- <a href="#" class="badge bg-success"><span data-feather="eye"></span></a> --}}

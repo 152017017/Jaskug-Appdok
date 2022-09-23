@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\GroupService;
+use App\Models\Platform;
 use Illuminate\Http\Request;
 
-class GroupServiceController extends Controller
+class PlatformController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class GroupServiceController extends Controller
      */
     public function index()
     {
-        return view('dashboard.gruplayanan.main', [
-            'list' => GroupService::all()
+        return view('dashboard.platform.main', [
+            'list' => Platform::all()
         ]);
     }
 
@@ -43,10 +43,10 @@ class GroupServiceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\GroupService  $groupService
+     * @param  \App\Models\Platform  $platform
      * @return \Illuminate\Http\Response
      */
-    public function show(GroupService $groupService)
+    public function show(Platform $platform)
     {
         //
     }
@@ -54,10 +54,10 @@ class GroupServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\GroupService  $groupService
+     * @param  \App\Models\Platform  $platform
      * @return \Illuminate\Http\Response
      */
-    public function edit(GroupService $groupService)
+    public function edit(Platform $platform)
     {
         //
     }
@@ -66,10 +66,10 @@ class GroupServiceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\GroupService  $groupService
+     * @param  \App\Models\Platform  $platform
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GroupService $groupService)
+    public function update(Request $request, Platform $platform)
     {
         //
     }
@@ -77,10 +77,10 @@ class GroupServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\GroupService  $groupService
+     * @param  \App\Models\Platform  $platform
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GroupService $groupService)
+    public function destroy(Platform $platform)
     {
         //
     }

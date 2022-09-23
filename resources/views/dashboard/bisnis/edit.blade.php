@@ -10,7 +10,6 @@
     <form method="post" action="/dashboard/bisnis/{{ $item->id }}" class="mb-5" enctype="multipart/form-data">
         @method('put')
         @csrf
-
         <div class="mb-3">
           <label for="deskripsi" class="form-label">Deskripsi</label>
           <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" required autofocus

@@ -12,4 +12,8 @@ class Business extends Model
     protected $table = 't_bisnis';
     protected $guarded = [];
     protected $primary_key = 'id';
+
+    public function bisnis(){
+        return $this->hasMany(Business::class);
+    }
 }

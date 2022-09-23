@@ -102,6 +102,10 @@ class BusinessController extends Controller
      */
     public function destroy(Business $business)
     {
-        //
+        Business::destroy($business->id);
+
+        return redirect('/dashboard/bisnis')->with('success', 'Item has been deleted !')->withInput();
+
+        @dd();
     }
 }

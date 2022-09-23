@@ -2,7 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\StatusController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\BusinessController;
+use App\Http\Controllers\PlatformController;
+use App\Http\Controllers\GroupServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +21,7 @@ use App\Http\Controllers\BusinessController;
 
 Route::get('/', function () {
     return view('welcome', [
-        'title' => 'Home page'
+        'title' => 'Homepage'
     ]);
 });
 
@@ -31,3 +35,13 @@ Route::get('/dashboard', function(){
         })->middleware('auth');
 
 Route::resource('/dashboard/bisnis', BusinessController::class)->middleware('auth');
+
+Route::resource('/dashboard/platform', PlatformController::class)->middleware('auth');
+
+Route::resource('/dashboard/gruplayanan', GroupServiceController::class)->middleware('auth');
+
+Route::resource('/dashboard/layanan', ServiceController::class)->middleware('auth');
+
+Route::resource('/dashboard/status', StatusController::class)->middleware('auth');
+
+// Route::resource('/dashboard/dokumentasi', PlatformController::class)->middleware('auth');
