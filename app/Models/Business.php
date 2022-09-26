@@ -10,10 +10,26 @@ class Business extends Model
     use HasFactory;
 
     protected $table = 't_bisnis';
-    protected $guarded = [];
+    protected $guarded = ['id'];
     protected $primary_key = 'id';
 
-    public function bisnis(){
-        return $this->hasMany(Business::class);
+    public function group(){
+        return $this->belongsTo(GrupService::class);
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function scopeFilter($query, array $filters){
+
+    $query->when($filters['search'] ?? false, function($query, $search) {
+        return $query->where(function($query) use ($search) {
+             $query->where('deskripsi', 'like', '%' . $search . '%')
+                    ->orWhere('pemilik', 'like', '%' . $search . '%');
+         });
+     });
+
+    }
+
 }

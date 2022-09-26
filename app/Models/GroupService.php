@@ -12,4 +12,8 @@ class GroupService extends Model
     protected $table = 't_grup_layanan';
     protected $guarded = [];
     protected $primary_key = 'id';
+
+    public function business(){
+        return $this->hasMany(Business::class);
+    }
 }

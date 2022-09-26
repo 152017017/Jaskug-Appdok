@@ -57,7 +57,7 @@ class BusinessController extends Controller
      */
     public function show(Business $business)
     {
-        //
+        @dd($business->id);
     }
 
     /**
@@ -71,6 +71,7 @@ class BusinessController extends Controller
         return view('dashboard.bisnis.edit', [
             'item' => $business
         ]);
+
     }
 
     /**
@@ -92,6 +93,8 @@ class BusinessController extends Controller
         Business::where('id', $business->id)->update($validateData);
 
         return redirect('/dashboard/bisnis')->with('success', 'Item has been updated !')->withInput();
+
+        @dd($business);
     }
 
     /**
@@ -106,6 +109,6 @@ class BusinessController extends Controller
 
         return redirect('/dashboard/bisnis')->with('success', 'Item has been deleted !')->withInput();
 
-        @dd();
     }
+
 }

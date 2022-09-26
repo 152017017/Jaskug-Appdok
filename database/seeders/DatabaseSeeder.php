@@ -44,7 +44,8 @@ class DatabaseSeeder extends Seeder
 
         GroupService::create([
             'id' => '01',
-            'deskripsi' => 'asuransi'
+            'deskripsi' => 'Asuransi',
+            'id_bisnis' => '01'
         ]);
     }
 }
