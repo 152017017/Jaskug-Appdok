@@ -65,9 +65,14 @@ class BusinessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Business $business)
+    public function edit(Business $business, $id)
     {
-        return view('dashboard.bisnis.edit', compact('business'));
+        $business = $business->findOrFail($id);
+
+        return view('dashboard.bisnis.edit', [
+            'item' => $business
+        ]);
+
     }
 
     /**
@@ -77,19 +82,19 @@ class BusinessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Business $business)
+    public function update(Request $request, Business $business, $id)
     {
         $rules  = [
             'deskripsi' => 'required|max:255',
             'pemilik' => 'required|max:255'
         ];
 
-        $validateData = $request->validate($rules);
+        $validatedData = $request->validate($rules);
 
-        Business::where('id', $business->id)
-                ->update($validateData);
+        $business = $business->where('id', $id)->update($validatedData);
 
         return redirect('/dashboard/bisnis/')->with('success', 'Item has been updated !');
+
     }
 
     /**
@@ -98,8 +103,11 @@ class BusinessController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Business $business, $id)
     {
-        //
+        $business = $business->destroy($id);
+
+        return redirect('/dashboard/bisnis/')->with('success', 'Item has been deleted !');
+
     }
 }

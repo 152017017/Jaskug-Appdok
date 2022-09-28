@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('t_platform', function (Blueprint $table) {
             $table->id();
             $table->string('deskripsi');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

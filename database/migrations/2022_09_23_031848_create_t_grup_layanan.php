@@ -18,7 +18,6 @@ return new class extends Migration
             $table->unsignedBigInteger('id_bisnis');
             $table->foreign('id_bisnis')->references('id')->on('t_bisnis')->onDelete('cascade');
             $table->string('deskripsi');
-            $table->rememberToken();
             $table->timestamps();
         });
 

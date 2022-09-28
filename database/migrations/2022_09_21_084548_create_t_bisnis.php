@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('deskripsi', 255);
             $table->string('pemilik', 255);
-            $table->rememberToken();
             $table->timestamps();
         });
     }

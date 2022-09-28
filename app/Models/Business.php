@@ -10,7 +10,7 @@ class Business extends Model
     use HasFactory;
 
     protected $table = 't_bisnis';
-    protected $guarded = ['id'];
+    protected $guarded = [];
     protected $primary_key = 'id';
     protected $with = ['author'];
 

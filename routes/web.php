@@ -40,9 +40,9 @@ Route::controller(BusinessController::class)->middleware('auth')->group(function
     Route::get('/dashboard/bisnis', 'index');
     Route::get('/dashboard/bisnis/create', 'create')->name('bisnis.create');
     Route::post('/dashboard/bisnis', 'store')->name('bisnis.store');
-    Route::get('/dashboard/bisnis/{id}/edit', 'edit')->name('bisnis.edit');
-    Route::post('/dashboard/bisnis', 'update')->name('bisnis.update');
-    Route::post('/dashboard/bisnis/{id}/delete', 'destroy')->name('bisnis.delete');
+    Route::get('/dashboard/bisnis/edit/{id}', 'edit')->name('bisnis.edit');
+    Route::post('/dashboard/bisnis/update/{id}', 'update')->name('bisnis.update');
+    Route::post('/dashboard/bisnis/delete/{id}', 'destroy')->name('bisnis.delete');
 });
 
 // Route::prefix('dashboard')->name('dashboard.')->middleware('auth')->group(function(){
@@ -50,6 +50,15 @@ Route::controller(BusinessController::class)->middleware('auth')->group(function
 // });
 
 // Route::resource('/dashboard/bisnis', BusinessController::class)->middleware('auth');
+
+Route::controller(PlatformController::class)->middleware('auth')->group(function () {
+    Route::get('/dashboard/platform', 'index');
+    Route::get('/dashboard/platform/create', 'create')->name('platform.create');
+    Route::post('/dashboard/platform', 'store')->name('platform.store');
+    Route::get('/dashboard/platform/edit/{id}', 'edit')->name('platform.edit');
+    Route::post('/dashboard/platform/update/{id}', 'update')->name('platform.update');
+    Route::post('/dashboard/platform/delete/{id}', 'destroy')->name('platform.delete');
+});
 
 Route::resource('/dashboard/platform', PlatformController::class)->middleware('auth');
 
