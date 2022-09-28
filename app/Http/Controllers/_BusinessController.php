@@ -26,7 +26,9 @@ class BusinessController extends Controller
      */
     public function create()
     {
-        return view('dashboard.bisnis.create');
+        return view('dashboard.bisnis.create', [
+            'list' => Business::all()
+        ]);
     }
 
     /**
@@ -37,13 +39,12 @@ class BusinessController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'deskripsi' => 'required|max:255',
-            'pemilik' => 'required|max:255'
-
+        $validateData = $request->validate([
+            'deskripsi' =>'required|max:255',
+            'pemilik' => 'required|max:255'            
         ]);
 
-        Business::create($validatedData);
+        Business::create($validateData);
 
         return redirect('/dashboard/bisnis')->with('success', 'New item has been added !');
     }
@@ -51,10 +52,10 @@ class BusinessController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Business  $business
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Business $business)
     {
         //
     }
@@ -62,19 +63,22 @@ class BusinessController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Business  $business
      * @return \Illuminate\Http\Response
      */
     public function edit(Business $business)
     {
-        return view('dashboard.bisnis.edit', compact('business'));
+        // return view('dashboard.bisnis.edit', [
+        //     'item' => $business
+        // ]);
+
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Business  $business
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Business $business)
@@ -90,16 +94,21 @@ class BusinessController extends Controller
                 ->update($validateData);
 
         return redirect('/dashboard/bisnis/')->with('success', 'Item has been updated !');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Business  $business
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Business $business)
     {
-        //
+        Business::destroy($business->id);
+
+        return redirect('/dashboard/bisnis')->with('success', 'Item has been deleted !');
+
     }
+
 }

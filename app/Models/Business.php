@@ -12,13 +12,14 @@ class Business extends Model
     protected $table = 't_bisnis';
     protected $guarded = ['id'];
     protected $primary_key = 'id';
+    protected $with = ['author'];
 
     public function group(){
-        return $this->belongsTo(GrupService::class);
+        return $this->belongsTo(GroupService::class);
     }
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function author(){
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function scopeFilter($query, array $filters){

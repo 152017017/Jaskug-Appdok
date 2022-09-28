@@ -7,7 +7,7 @@
 </div>
 
 <div class="col-lg-8">
-    <form method="post" action="/dashboard/bisnis" class="mb-5" enctype="multipart/form-data">
+    <form method="post" action="{{ route('bisnis.store') }}" class="mb-5" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
           <label for="deskripsi" class="form-label">Deskripsi</label>
