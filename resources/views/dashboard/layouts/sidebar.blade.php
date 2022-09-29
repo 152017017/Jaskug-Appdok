@@ -1,4 +1,5 @@
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+  
     <div class="position-sticky pt-3 sidebar-sticky">
       <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
         <span>Menu Utama</span>
@@ -12,14 +13,20 @@
         </li>
         <li class="nav-item">
           <a class="nav-link  {{ Request::is('dashboard/task*') ? 'active' : '' }}" href="/dashboard/task">
-            <span data-feather="bookmark" class="align-text-bottom"></span>
-            Task
+            <span data-feather="book" class="align-text-bottom"></span>
+            Permintaan
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link  {{ Request::is('dashboard/history*') ? 'active' : '' }}" href="/dashboard/history">
             <span data-feather="refresh-cw" class="align-text-bottom"></span>
             History
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  {{ Request::is('dashboard/mail*') ? 'active' : '' }}" href="/dashboard/mail">
+            <span data-feather="message-square" class="align-text-bottom"></span>
+            Surat
           </a>
         </li>
       </ul>
@@ -49,7 +56,7 @@
         <li class="nav-item">
           <a class="nav-link  {{ Request::is('dashboard/gruplayanan*') ? 'active' : '' }}" href="/dashboard/gruplayanan">
             <span data-feather="plus-square" class="align-text-bottom"></span>
-            Grup Layanan
+            Group Layanan
           </a>
         </li>
       </ul>

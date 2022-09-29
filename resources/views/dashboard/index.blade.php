@@ -8,15 +8,18 @@
 
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet">
     <link href="/css/headers.css" rel="stylesheet">
 
 </head>
 <body>
-    
-    @include('dashboard.layouts.navbar')
 
+    <div class="container-fluid row justify-content-md-center">
+        @include('dashboard.layouts.navbar')
+    </div>
     <div class="container-fluid">
         <div>
             @include('dashboard.layouts.sidebar')

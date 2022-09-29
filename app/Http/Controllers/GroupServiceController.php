@@ -26,7 +26,7 @@ class GroupServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.gruplayanan.create');
     }
 
     /**
@@ -37,7 +37,14 @@ class GroupServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'deskripsi' => 'required|max:255'
+
+        ]);
+
+        GroupService::create($validatedData);
+
+        return redirect('/dashboard/gruplayanan')->with('success', 'New item has been added !');
     }
 
     /**
@@ -57,9 +64,13 @@ class GroupServiceController extends Controller
      * @param  \App\Models\GroupService  $groupService
      * @return \Illuminate\Http\Response
      */
-    public function edit(GroupService $groupService)
+    public function edit(GroupService $groupService, $id)
     {
-        //
+        $groupService = $groupService->findOrFail($id);
+
+        return view('dashboard.gruplayanan.edit', [
+            'item' => $groupService
+        ]);
     }
 
     /**
@@ -69,9 +80,17 @@ class GroupServiceController extends Controller
      * @param  \App\Models\GroupService  $groupService
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GroupService $groupService)
+    public function update(Request $request, GroupService $groupService, $id)
     {
-        //
+        $rules  = [
+            'deskripsi' => 'required|max:255'
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        $groupService = $groupService->where('id', $id)->update($validatedData);
+
+        return redirect('/dashboard/gruplayanan/')->with('success', 'Item has been updated !');
     }
 
     /**
@@ -80,8 +99,10 @@ class GroupServiceController extends Controller
      * @param  \App\Models\GroupService  $groupService
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GroupService $groupService)
+    public function destroy(GroupService $groupService, $id)
     {
-        //
+        $groupService = $groupService->destroy($id);
+
+        return redirect('/dashboard/gruplayanan/')->with('success', 'Item has been deleted !');
     }
 }

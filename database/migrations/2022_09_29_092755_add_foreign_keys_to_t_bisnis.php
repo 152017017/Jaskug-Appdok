@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('t_bisnis', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('id_grup')->nullable()->index('fk_groupservice_to_business');
-            $table->string('deskripsi', 255);
-            $table->string('pemilik', 255);
-            $table->timestamps();
+        Schema::table('t_bisnis', function (Blueprint $table) {
+            $table->foreign('id_grup', 'fk_groupservice_to_business')->references('id')->on('t_grup_layanan')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
@@ -29,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('t_bisnis');
+        Schema::table('t_bisnis', function (Blueprint $table) {
+            //
+        });
     }
 };

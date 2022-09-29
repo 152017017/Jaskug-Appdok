@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Platform;
 use Illuminate\Http\Request;
 
-class PlatformController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,7 @@ class PlatformController extends Controller
      */
     public function index()
     {
-        return view('dashboard.platform.main', [
-            'list' => Platform::all()
-        ]);
+        return view('dashboard.index');
     }
 
     /**
@@ -26,7 +23,7 @@ class PlatformController extends Controller
      */
     public function create()
     {
-        return view('dashboard.platform.create');
+        //
     }
 
     /**
@@ -37,14 +34,7 @@ class PlatformController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'deskripsi' => 'required|max:255'
-
-        ]);
-
-        Platform::create($validatedData);
-
-        return redirect('/dashboard/platform')->with('success', 'New item has been added !');
+        //
     }
 
     /**
@@ -64,14 +54,9 @@ class PlatformController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Platform $platform, $id)
+    public function edit($id)
     {
-        $platform = $platform->findOrFail($id);
-
-        return view('dashboard.platform.edit', [
-            'item' => $platform
-        ]);
-
+        //
     }
 
     /**
@@ -81,18 +66,9 @@ class PlatformController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Platform $platform, $id)
+    public function update(Request $request, $id)
     {
-        $rules  = [
-            'deskripsi' => 'required|max:255'
-        ];
-
-        $validatedData = $request->validate($rules);
-
-        $platform = $platform->where('id', $id)->update($validatedData);
-
-        return redirect('/dashboard/platform/')->with('success', 'Item has been updated !');
-
+        //
     }
 
     /**
@@ -101,11 +77,8 @@ class PlatformController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Platform $platform, $id)
+    public function destroy($id)
     {
-        $platform = $platform->destroy($id);
-
-        return redirect('/dashboard/platform/')->with('success', 'Item has been deleted !');
-
+        //
     }
 }

@@ -16,4 +16,9 @@ class GroupService extends Model
     public function business(){
         return $this->hasMany(Business::class);
     }
+
+    public function service(){
+        return $this->hasMany(Service::class);
+    }
+
 }

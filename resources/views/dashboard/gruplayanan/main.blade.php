@@ -12,7 +12,7 @@
     @endif
 
     <div class="justify-content-start table-responsive col-lg-8">
-      <a href="/dashboard/bisnis/create" class="btn btn-primary mb-3">Tambah data</a>
+      <a href="{{ route('gruplayanan.create') }}" class="btn btn-primary mb-3">Tambah data</a>
         <table class="table table-striped table-sm">
           <thead>
             <tr>
@@ -34,8 +34,8 @@
               <td>{{ $item->updated_at->diffForHumans() }}</td>
               <td>
                 {{-- <a href="#" class="badge bg-success"><span data-feather="eye"></span></a> --}}
-                <a href="/dashboard/gruplayanan/{{ $item->id }}/edit" class="badge bg-warning"><span data-feather="edit"></span></a>
-                <form action="/dashboard/gruplayanan/{{ $item->id }}" method="post" class="d-inline">
+                <a href="{{ route('gruplayanan.edit', $item->id) }}" class="badge bg-warning"><span data-feather="edit"></span></a>
+                <form action="{{ route('gruplayanan.delete', $item->id) }}" method="post" class="d-inline">
                 @method('delete')
                 @csrf
                 <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span></button>

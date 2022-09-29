@@ -4,10 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\User;
-use App\Models\Business;
-use App\Models\GroupService;
-use App\Models\Platform;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,28 +20,15 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        
-        User::create([
-            'name' => 'Josua Sirait',
-            'email' => 'admin@example.com',
-            'password' => bcrypt('password')
+
+        $this->call([
+            UserSeeder::class,
+            BusinesSeeder::class,
+            PlatformSeeder::class,
+            GroupServiceSeeder::class,
+            ServiceSeeder::class,
+            StatusSeeder::class,
         ]);
 
-        Business::create([
-            'id' => '01',
-            'deskripsi' => 'POSPAY LOKET',
-            'pemilik' => 'Divisi JASA KEUANGAN 1'
-        ]);
-
-        Platform::create([
-            'id' => '01',
-            'deskripsi' => 'Aplikasi Loket'
-        ]);
-
-        GroupService::create([
-            'id' => '01',
-            'deskripsi' => 'Asuransi',
-            'id_bisnis' => '01'
-        ]);
     }
 }

@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('t_grup_layanan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_bisnis');
+            $table->unsignedBigInteger('id_bisnis')->nullable('true');
             $table->foreign('id_bisnis')->references('id')->on('t_bisnis')->onDelete('cascade');
-            $table->string('deskripsi');
+            $table->string('deskripsi', 255);
             $table->timestamps();
         });
 
