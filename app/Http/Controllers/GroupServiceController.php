@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GroupService;
+use App\Models\Business;
 use Illuminate\Http\Request;
 
 class GroupServiceController extends Controller
@@ -39,7 +40,6 @@ class GroupServiceController extends Controller
     {
         $validatedData = $request->validate([
             'deskripsi' => 'required|max:255'
-
         ]);
 
         GroupService::create($validatedData);

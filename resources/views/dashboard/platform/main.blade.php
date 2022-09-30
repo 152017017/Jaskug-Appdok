@@ -18,7 +18,7 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">ID Platform</th>
-              <th scope="col">Deskripsi</th>
+              <th scope="col">Platform</th>
               <th scope="col">Terakhir Update</th>
               <th scope="col">Action</th>
             </tr>

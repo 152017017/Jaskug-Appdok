@@ -18,8 +18,8 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">ID Grup</th>
-              <th scope="col">ID Bisnis</th>
-              <th scope="col">Deskripsi</th>
+              <th scope="col">Bisnis</th>
+              <th scope="col">Grup Layanan</th>
               <th scope="col">Terakhir Update</th>
               <th scope="col">Action</th>
             </tr>
@@ -29,7 +29,7 @@
             <tr>
               <td>{{ $loop->iteration }}</td>
               <td>{{ $item->id }}</td>
-              <td>{{ $item->bisnis_id }}</td>
+              <td>{{ $item->business->deskripsi }}</td>
               <td>{{ $item->deskripsi }}</td>
               <td>{{ $item->updated_at->diffForHumans() }}</td>
               <td>

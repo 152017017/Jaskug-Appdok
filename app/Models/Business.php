@@ -12,7 +12,11 @@ class Business extends Model
     protected $table = 't_bisnis';
     protected $guarded = [];
     protected $primary_key = 'id';
-    protected $with = ['author'];
+    protected $fillable = [
+        'gruplayanan_id',
+        'deskripsi',
+        'pemilik'
+    ];
 
     // one to one
     public function group(){

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
+use App\Models\GroupService;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -14,7 +15,10 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.service.main', [
+            'groups' => GroupService::all(),
+            'list' => Service::all()
+        ]);
     }
 
     /**
@@ -24,7 +28,9 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.service.create', [
+            'groupservice' => GroupService::all()
+        ]);
     }
 
     /**
