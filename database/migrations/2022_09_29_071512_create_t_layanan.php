@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('t_layanan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_grup')->nullable('true');
-            $table->foreign('id_grup')->references('id')->on('t_grup_layanan')->onDelete('cascade');
+            $table->foreignId('gruplayanan_id')->nullable()->index('fk_grup_to_layanan');
             $table->string('deskripsi', 255);
             $table->timestamps();
         });

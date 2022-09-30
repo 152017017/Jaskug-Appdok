@@ -16,19 +16,29 @@ class StatusSeeder extends Seeder
     {
         $list = [
             [
-                'deskripsi' => 'Tes Operasi'
+                'deskripsi' => 'Tes Operasi',
+                'created_at'        => date('Y-m-d h:i:s'),
+                'updated_at'        => date('Y-m-d h:i:s')
             ],
             [
-                'deskripsi' => 'Live baru'
+                'deskripsi' => 'Live baru',
+                'created_at'        => date('Y-m-d h:i:s'),
+                'updated_at'        => date('Y-m-d h:i:s')
             ],
             [
-                'deskripsi' => 'Live perubahan'
+                'deskripsi' => 'Live perubahan',
+                'created_at'        => date('Y-m-d h:i:s'),
+                'updated_at'        => date('Y-m-d h:i:s')
             ],
             [
-                'deskripsi' => 'Ditutup sementara'
+                'deskripsi' => 'Ditutup sementara',
+                'created_at'        => date('Y-m-d h:i:s'),
+                'updated_at'        => date('Y-m-d h:i:s')
             ],
             [
-                'deskripsi' => 'Hapus'
+                'deskripsi' => 'Hapus',
+                'created_at'        => date('Y-m-d h:i:s'),
+                'updated_at'        => date('Y-m-d h:i:s')
             ],
         ];
 

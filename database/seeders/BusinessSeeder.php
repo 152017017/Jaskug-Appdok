@@ -16,9 +16,10 @@ class BusinessSeeder extends Seeder
     {
         $list = [
             [
-                'id_grup' => 1,
                 'deskripsi' => 'POSPAY LOKET',
                 'pemilik' => 'Divisi JASA KEUANGAN 1',
+                'created_at'        => date('Y-m-d h:i:s'),
+                'updated_at'        => date('Y-m-d h:i:s')
             ],
         ];
 

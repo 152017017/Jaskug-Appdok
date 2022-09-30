@@ -13,12 +13,14 @@ class GroupService extends Model
     protected $guarded = [];
     protected $primary_key = 'id';
 
+    // one to one
+    public function service(){
+        return $this->belongsTo(Service::class);
+    }
+    
+    // one to many
     public function business(){
         return $this->hasMany(Business::class);
     }
-
-    public function service(){
-        return $this->hasMany(Service::class);
-    }
-
+    
 }

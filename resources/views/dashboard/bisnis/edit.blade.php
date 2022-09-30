@@ -10,7 +10,7 @@
     <form method="post" action="{{ route('bisnis.update', $item->id) }}" class="mb-5" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
-          <label for="deskripsi" class="form-label">Deskripsi</label>
+          <label for="deskripsi" class="form-label">Nama Bisnis</label>
           <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" required autofocus
           value="{{ old('deskripsi', $item->deskripsi) }}">
           @error('deskripsi')
@@ -20,7 +20,7 @@
           @enderror
         </div>
         <div class="mb-3">
-          <label for="pemilik" class="form-label">Pemilik</label>
+          <label for="pemilik" class="form-label">Nama Platform</label>
           <input type="text" class="form-control @error('pemilik') is-invalid @enderror" id="pemilik" name="pemilik" required autofocus
           value="{{ old('pemilik', $item->pemilik) }}">
           @error('pemilik')

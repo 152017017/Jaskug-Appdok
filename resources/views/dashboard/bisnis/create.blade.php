@@ -10,7 +10,7 @@
     <form method="post" action="{{ route('bisnis.store') }}" class="mb-5" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
-          <label for="deskripsi" class="form-label">Deskripsi</label>
+          <label for="deskripsi" class="form-label">Nama Bisnis</label>
           <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" required autofocus value="{{ old('deskripsi') }}">
           @error('deskripsi')
           <div class="invalid-feedback">

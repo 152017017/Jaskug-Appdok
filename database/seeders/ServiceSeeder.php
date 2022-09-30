@@ -16,9 +16,10 @@ class ServiceSeeder extends Seeder
     {
         $list = [
             [
-                'id' => 1,
-                'id_grup' => 1,
-                'deskripsi' => 'Pembayaran Premi Lanjutan Asuransi Mikro Rencana Alam'
+                'gruplayanan_id' => 1,
+                'deskripsi' => 'Pembayaran Premi Lanjutan Asuransi Mikro Rencana Alam',
+                'created_at'        => date('Y-m-d h:i:s'),
+                'updated_at'        => date('Y-m-d h:i:s')
             ],
         ];
 

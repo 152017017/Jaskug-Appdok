@@ -14,7 +14,8 @@ class Service extends Model
     protected $primary_key = 'id';
     protected $with = ['author'];
 
+    // one to many
     public function groupservice(){
-        return $this->belongsTo(GroupService::class);
+        return $this->hasMany(GroupService::class);
     }
 }

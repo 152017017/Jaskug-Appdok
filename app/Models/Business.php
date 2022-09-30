@@ -14,6 +14,7 @@ class Business extends Model
     protected $primary_key = 'id';
     protected $with = ['author'];
 
+    // one to one
     public function group(){
         return $this->belongsTo(GroupService::class);
     }
@@ -23,7 +24,6 @@ class Business extends Model
     }
 
     public function scopeFilter($query, array $filters){
-
     $query->when($filters['search'] ?? false, function($query, $search) {
         return $query->where(function($query) use ($search) {
              $query->where('deskripsi', 'like', '%' . $search . '%')

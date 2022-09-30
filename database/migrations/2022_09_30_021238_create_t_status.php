@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('t_grup_layanan', function (Blueprint $table) {
+        Schema::create('t_status', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('bisnis_id')->nullable()->index('fk_bisnis_to_grup');
             $table->string('deskripsi', 255);
             $table->timestamps();
         });
-
     }
 
     /**
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('t_grup_layanan');
+        Schema::dropIfExists('t_status');
     }
 };

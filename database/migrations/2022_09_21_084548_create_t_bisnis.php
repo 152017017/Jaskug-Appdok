@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('t_bisnis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_grup')->nullable()->index('fk_groupservice_to_business');
             $table->string('deskripsi', 255);
             $table->string('pemilik', 255);
             $table->timestamps();
