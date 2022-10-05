@@ -30,9 +30,7 @@
           @enderror
         </div>
 
-        <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Simpan Perubahan">
-          <button class="btn btn-primary" type="submit">Simpan Perubahan</button>
-        </span>
+        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
     </form>
 </div>
     

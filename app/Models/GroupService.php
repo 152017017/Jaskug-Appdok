@@ -11,16 +11,21 @@ class GroupService extends Model
     
     protected $table = 't_grup_layanan';
     protected $guarded = [];
-    protected $primary_key = 'id';
+    protected $primary_key = '';
+    protected $fillable = 
+    [
+        'bisnis_id',
+        'deskripsi'
+    ];
+    protected $with = [];
 
-    // one to one
     public function service(){
-        return $this->belongsTo(Service::class);
-    }
-    
-    // one to many
-    public function business(){
-        return $this->hasMany(Business::class);
+        return $this->hasMany(Service::class);
+    }    
+
+    public function business()
+    {
+        return $this->belongsTo(Business::class, 'bisnis_id');
     }
     
 }

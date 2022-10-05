@@ -12,10 +12,15 @@ class Service extends Model
     protected $table = 't_layanan';
     protected $guarded = [];
     protected $primary_key = 'id';
-    protected $with = ['author'];
+    protected $with = ['groupservice'];
+    protected $fillable = [
+        'gruplayanan_id',
+        'nama',
+        'deskripsi'
+    ];
 
-    // one to many
+    // one to one
     public function groupservice(){
-        return $this->hasMany(GroupService::class);
+        return $this->hasOne(GroupService::class);
     }
 }

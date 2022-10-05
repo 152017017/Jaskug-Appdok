@@ -16,11 +16,11 @@ class ServiceSeeder extends Seeder
     {
         $list = [
             [
-                'gruplayanan_id' => 1,
-                'nama' => 'PDAM Kab. Bangka Selatan',
-                'deskripsi' => 'Pembayaran Premi Lanjutan Asuransi Mikro Rencana Alam',
-                'created_at' => date('Y-m-d h:i:s'),
-                'updated_at' => date('Y-m-d h:i:s')
+                'gruplayanan_id'    => 1,
+                'nama'              => 'PDAM Kab. Bangka Selatan',
+                'deskripsi'         => 'Pembayaran Premi Lanjutan Asuransi Mikro Rencana Alam',
+                'created_at'        => date('Y-m-d h:i:s'),
+                'updated_at'        => date('Y-m-d h:i:s')
             ],
         ];
 

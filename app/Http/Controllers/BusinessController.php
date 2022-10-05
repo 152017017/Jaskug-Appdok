@@ -14,9 +14,8 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        return view('dashboard.bisnis.main', [
-            'list' => Business::all()
-        ]);
+        $list = Business::all();
+        return view('dashboard.bisnis.main', compact('list'));
     }
 
     /**

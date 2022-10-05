@@ -28,14 +28,14 @@
           @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary">Tambah</button>
+        <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Tambah data ">
+          <button class="btn btn-primary" type="submit">Tambah</button>
+        </span>
     </form>
 </div>
     
 <script>
-    
     //
-    
 </script>
 
 @endsection

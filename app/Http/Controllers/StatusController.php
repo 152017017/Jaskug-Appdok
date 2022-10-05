@@ -14,7 +14,9 @@ class StatusController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.status.main', [
+            'list' => Status::all()
+        ]);
     }
 
     /**
