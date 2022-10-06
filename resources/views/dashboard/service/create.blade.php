@@ -7,7 +7,7 @@
 </div>
 
 <div class="col-lg-8">
-    <form method="post" action="{{ route('platform.store') }}" class="mb-5" enctype="multipart/form-data">
+    <form method="post" action="{{ route('layanan.store') }}" class="mb-5" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
           <label for="nama" class="form-label">Nama Layanan</label>
@@ -26,6 +26,10 @@
               {{ $gservice->deskripsi }}</option>
             @endforeach
           </select>
+        </div>
+        <div class="mb-3">
+          <label for="deskripsi" class="form-label">Deskripsi</label>
+          <textarea type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" required autofocus value="{{ old('deskripsi') }}" style="height: 110px;"></textarea>
         </div>
 
         <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Tambah data ">

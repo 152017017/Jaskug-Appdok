@@ -40,7 +40,16 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'gruplayanan_id' => 'required',
+            'nama' => 'required|max:255',
+            'deskripsi' => 'required|max:255'
+
+        ]);
+
+        Service::create($validatedData);
+
+        return redirect('/dashboard/layanan')->with('success', 'New item has been added !');
     }
 
     /**

@@ -78,7 +78,8 @@
       </ul>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link  {{ Request::is('dashboard/dokumentasi*') ? 'active' : '' }}" href="/dashboard/dokumentasi">
+          {{-- <a class="nav-link  {{ Request::is('dashboard/dokumentasi*') ? 'active' : '' }}" href="/dashboard/dokumentasi"> --}}
+          <a class="nav-link  disabled" href="/dashboard/dokumentasi">
             <span data-feather="archive" class="align-text-bottom"></span>
             Dokumentasi
           </a>
@@ -86,7 +87,8 @@
       </ul>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link  {{ Request::is('dashboard/user*') ? 'active' : '' }}" href="/dashboard/user">
+          {{-- <a class="nav-link  {{ Request::is('dashboard/user*') ? 'active' : '' }}" href="/dashboard/user"> --}}
+          <a class="nav-link  disabled" href="/dashboard/user">
             <span data-feather="user" class="align-text-bottom"></span>
             User
           </a>

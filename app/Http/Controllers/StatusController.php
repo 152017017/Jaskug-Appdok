@@ -26,7 +26,7 @@ class StatusController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.status.create');
     }
 
     /**
@@ -37,7 +37,14 @@ class StatusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'deskripsi' => 'required|max:255'
+
+        ]);
+
+        Status::create($validatedData);
+
+        return redirect('/dashboard/status')->with('success', 'New item has been added !');
     }
 
     /**
@@ -57,9 +64,13 @@ class StatusController extends Controller
      * @param  \App\Models\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function edit(Status $status)
+    public function edit(Status $status, $id)
     {
-        //
+        $status = $status->findOrFail($id);
+
+        return view('dashboard.status.edit', [
+            'item' => $status
+        ]);
     }
 
     /**
@@ -69,9 +80,17 @@ class StatusController extends Controller
      * @param  \App\Models\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Status $status)
+    public function update(Request $request, Status $status, $id)
     {
-        //
+        $rules  = [
+            'deskripsi' => 'required|max:255'
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        $status = $status->where('id', $id)->update($validatedData);
+
+        return redirect('/dashboard/status/')->with('success', 'Item has been updated !');
     }
 
     /**
@@ -80,8 +99,10 @@ class StatusController extends Controller
      * @param  \App\Models\Status  $status
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Status $status)
+    public function destroy(Status $status, $id)
     {
-        //
+        $status = $status->destroy($id);
+
+        return redirect('/dashboard/status/')->with('success', 'Item has been deleted !');
     }
 }
