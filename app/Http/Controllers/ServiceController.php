@@ -16,7 +16,6 @@ class ServiceController extends Controller
     public function index()
     {
         return view('dashboard.service.main', [
-            'groups' => GroupService::all(),
             'list' => Service::all()
         ]);
     }
@@ -61,9 +60,13 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit(Service $service, $id)
     {
-        //
+        $service = $service->findOrFail($id);
+
+        return view('dashboard.service.edit', [
+            'item' => $service
+        ]);
     }
 
     /**
@@ -73,9 +76,19 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request, Service $service, $id)
     {
-        //
+        $rules  = [
+            'gruplayanan_id' => 'required',
+            'nama' => 'required|max:255',
+            'deskripsi' => 'required|max:255'
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        $service = $service->where('id', $id)->update($validatedData);
+
+        return redirect('/dashboard/service/')->with('success', 'Item has been updated !');
     }
 
     /**
@@ -84,8 +97,10 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy(Service $service, $id)
     {
-        //
+        $service = $service->destroy($id);
+
+        return redirect('/dashboard/service/')->with('success', 'Item has been deleted !');
     }
 }

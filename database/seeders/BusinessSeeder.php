@@ -21,6 +21,24 @@ class BusinessSeeder extends Seeder
                 'created_at'    => date('Y-m-d h:i:s'),
                 'updated_at'    => date('Y-m-d h:i:s')
             ],
+            [
+                'deskripsi'     => 'POSPAY MOBILE',
+                'pemilik'       => 'Divisi JASA KEUANGAN 2',
+                'created_at'    => date('Y-m-d h:i:s'),
+                'updated_at'    => date('Y-m-d h:i:s')
+            ],
+            [
+                'deskripsi'     => 'POSPAY CANVASING',
+                'pemilik'       => 'Divisi JASA KEUANGAN 3',
+                'created_at'    => date('Y-m-d h:i:s'),
+                'updated_at'    => date('Y-m-d h:i:s')
+            ],
+            [
+                'deskripsi'     => 'POSPAY MKIOS',
+                'pemilik'       => 'Divisi JASA KEUANGAN 4',
+                'created_at'    => date('Y-m-d h:i:s'),
+                'updated_at'    => date('Y-m-d h:i:s')
+            ],
         ];
 
         Business::insert($list);

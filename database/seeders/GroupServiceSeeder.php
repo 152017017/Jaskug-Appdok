@@ -17,25 +17,19 @@ class GroupServiceSeeder extends Seeder
         $list = [
             [
                 'bisnis_id'     => 1,
-                'deskripsi'     => 'Asuransi',
+                'deskripsi'     => 'PDAM',
                 'created_at'    => date('Y-m-d h:i:s'),
                 'updated_at'    => date('Y-m-d h:i:s')
             ],
             [
-                'bisnis_id'     => 1,
+                'bisnis_id'     => 2,
                 'deskripsi'     => 'Bank Channeling',
                 'created_at'    => date('Y-m-d h:i:s'),
                 'updated_at'    => date('Y-m-d h:i:s')
             ],
             [
-                'bisnis_id'     => 1,
-                'deskripsi'     => 'Deposit',
-                'created_at'    => date('Y-m-d h:i:s'),
-                'updated_at'    => date('Y-m-d h:i:s')
-            ],
-            [
-                'bisnis_id'     => 1,
-                'deskripsi'     => 'Gas',
+                'bisnis_id'     => 4,
+                'deskripsi'     => 'Telco',
                 'created_at'    => date('Y-m-d h:i:s'),
                 'updated_at'    => date('Y-m-d h:i:s')
             ],

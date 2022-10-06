@@ -31,7 +31,7 @@
               <td>{{ $loop->iteration }}</td>
               <td>{{ $item->id }}</td>
               <td>{{ $item->nama }}</td>
-              <td>{{ $item->gruplayanan_id }}</td>
+              <td>{{ $item->groupservice->deskripsi }}</td>
               <td>{{ $item->deskripsi }}</td>
               <td>{{ $item->updated_at->diffForHumans() }}</td>
               <td>

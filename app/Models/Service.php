@@ -10,17 +10,10 @@ class Service extends Model
     use HasFactory;
 
     protected $table = 't_layanan';
-    protected $guarded = [];
-    protected $primary_key = 'id';
+    protected $guarded = ['id'];
     protected $with = ['groupservice'];
-    protected $fillable = [
-        'gruplayanan_id',
-        'nama',
-        'deskripsi'
-    ];
 
-    // one to one
     public function groupservice(){
-        return $this->hasOne(GroupService::class);
+        return $this->belongsTo(GroupService::class, 'gruplayanan_id');
     }
 }
