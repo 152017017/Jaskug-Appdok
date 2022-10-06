@@ -6,7 +6,7 @@
     <h1 class="h2">Tambah Permintaan</h1>
 </div>
 
-<div class="col-lg-8">
+<div class="col-lg-4">
     <form method="post" action="{{ route('task.store') }}" class="mb-5" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
@@ -27,22 +27,18 @@
             @endforeach
           </select>
         </div>
-        <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker mb-3" inline="true">
-          <label for="example">Tanggal NDE</label>
-          <input placeholder="Tanggal NDE" type="text" id="example" class="form-control">
-          <i class="fas fa-calendar input-prefix"></i>
+        <div class="mb-3">
+          <label for="category" class="form-label">Tanggal NDE</label>
+          <input type="text" id="datepicker" type="text" class="form-control">
         </div>
-
         <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Tambah data ">
           <button class="btn btn-primary" type="submit">Tambah</button>
         </span>
-    </form>
+      </form>
 </div>
     
 <script>
-    
     //
-    
 </script>
 
 @endsection

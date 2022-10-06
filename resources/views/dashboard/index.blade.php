@@ -37,11 +37,12 @@
         const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
         const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script>
-        // Data Picker Initialization
-    $('.datepicker').datepicker({
-    inline: true
-    });
+    $( function() {
+      $( "#datepicker" ).datepicker();
+    } );
     </script>
 
 </body>
