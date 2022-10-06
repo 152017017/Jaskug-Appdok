@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('t_grup_layanan', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('bisnis_id')->nullable()->index('fk_bisnis_to_group');
-            $table->string('deskripsi', 255);
-            $table->timestamps();
+        Schema::table('t_grup_layanan', function (Blueprint $table) {
+            $table->foreign('bisnis_id', 'fk_bisnis_to_group')->references('id')->on('t_bisnis')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
-
     }
 
     /**
@@ -29,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('t_grup_layanan');
+        Schema::table('t_grup_layanan', function (Blueprint $table) {
+            $table->dropForeign('fk_bisnis_to_group');
+        });
     }
 };

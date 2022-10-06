@@ -39,6 +39,7 @@ class GroupServiceController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'bisnis_id' => 'unrequired',
             'deskripsi' => 'required|max:255'
         ]);
 
