@@ -15,9 +15,9 @@ class GroupServiceController extends Controller
      */
     public function index()
     {
-        $list = GroupService::all();
-        return view('dashboard.gruplayanan.main', compact('list'));
-        // return $list;
+        return view('dashboard.gruplayanan.main', [
+            'list' => GroupService::all()
+        ]);
     }
 
     /**

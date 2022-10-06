@@ -10,21 +10,14 @@ class GroupService extends Model
     use HasFactory;
     
     protected $table = 't_grup_layanan';
-    protected $guarded = [];
-    protected $primary_key = '';
-    protected $fillable = 
-    [
-        'bisnis_id',
-        'deskripsi'
-    ];
-    protected $with = [];
+    protected $guarded = ['id'];
+    protected $with = ['business'];
 
     public function service(){
         return $this->hasMany(Service::class);
-    }    
+    }
 
-    public function business()
-    {
+    public function business(){
         return $this->belongsTo(Business::class, 'bisnis_id');
     }
     

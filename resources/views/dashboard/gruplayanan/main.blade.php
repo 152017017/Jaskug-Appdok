@@ -29,7 +29,7 @@
             <tr>
               <td>{{ $loop->iteration }}</td>
               <td>{{ $item->id }}</td>
-              <td>{{ $item->business }}</td>
+              <td>{{ $item->business->deskripsi ?? '(Tidak ada bisnis)' }}</td>
               <td>{{ $item->deskripsi }}</td>
               <td>{{ $item->updated_at->diffForHumans() }}</td>
               <td>

@@ -10,14 +10,7 @@ class Business extends Model
     use HasFactory;
 
     protected $table = 't_bisnis';
-    protected $guarded = [];
-    protected $primary_key = 'id';
-    protected $with = ['group'];
-    protected $fillable = 
-    [
-        'deskripsi',
-        'pemilik'
-    ];
+    protected $guarded = ['id'];
 
     public function group(){
         return $this->hasOne(GroupService::class);
