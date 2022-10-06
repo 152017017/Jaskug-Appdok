@@ -28,7 +28,7 @@
           @enderror
         </div>
 
-        <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Tambah data ">
+        <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Tambah data">
           <button class="btn btn-primary" type="submit">Tambah</button>
         </span>
     </form>

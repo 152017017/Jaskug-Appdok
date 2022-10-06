@@ -11,30 +11,26 @@
         @csrf
         <div class="mb-3">
           <label for="category" class="form-label">Pilih Grup Layanan</label>
-          <select class="form-select" name="category_id">
-            @foreach ($categories as $category)
-            <option value="#" {{ old('category_id') == $category->id ? ' selected' : ' ' }}>
-              {{ $category->name }}</option>
+          <select class="form-select" name="gruplayanan_id">
+            @foreach ($groupservice as $item)
+            <option value="{{ $item->id }}" {{ old('gruplayanan_id') == $item->id ? ' selected' : ' ' }}>
+              {{ $item->deskripsi }}</option>
             @endforeach
           </select>
         </div>
         <div class="mb-3">
-          <label for="title" class="form-label">Tanggal NDE</label>
-          <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" required autofocus value="{{ old('title') }}">
-          @error('title')
-          <div class="invalid-feedback">
-            {{ $message }}
-          </div>
-          @enderror
+          <label for="category" class="form-label">Pilih Status</label>
+          <select class="form-select" name="gruplayanan_id">
+            @foreach ($status as $item)
+            <option value="{{ $item->id }}" {{ old('gruplayanan_id') == $item->id ? ' selected' : ' ' }}>
+              {{ $item->deskripsi }}</option>
+            @endforeach
+          </select>
         </div>
-        <div class="mb-3">
-          <label for="title" class="form-label">Perihal NDE</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-          @error('title')
-          <div class="invalid-feedback">
-            {{ $message }}
-          </div>
-          @enderror
+        <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker mb-3" inline="true">
+          <label for="example">Tanggal NDE</label>
+          <input placeholder="Tanggal NDE" type="text" id="example" class="form-control">
+          <i class="fas fa-calendar input-prefix"></i>
         </div>
 
         <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Tambah data ">

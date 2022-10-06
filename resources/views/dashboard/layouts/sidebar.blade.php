@@ -7,13 +7,13 @@
       <ul class="nav flex-column">
         <li class="nav-item">
           <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page" href="/dashboard">
-            <span data-feather="home" class="align-text-bottom"></span>
+            <span data-feather="grid" class="align-text-bottom"></span>
             Overview
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link  {{ Request::is('dashboard/task*') ? 'active' : '' }}" href="/dashboard/task">
-            <span data-feather="book" class="align-text-bottom"></span>
+            <span data-feather="bookmark" class="align-text-bottom"></span>
             Permintaan
           </a>
         </li>

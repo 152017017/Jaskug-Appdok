@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\GroupService;
+use App\Models\Status;
+
 
 class TaskController extends Controller
 {
@@ -23,7 +26,10 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view('dashboard.task.create');
+        return view('dashboard.task.create', [
+            'groupservice' => GroupService::all(),
+            'status' => Status::all()
+        ]);
     }
 
     /**

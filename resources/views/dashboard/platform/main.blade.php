@@ -12,7 +12,7 @@
     @endif
 
     <div class="justify-content-start table-responsive col-lg-8">
-      <a href="{{ route('platform.create') }}" class="btn btn-primary mb-3">Tambah data</a>
+      <a href="{{ route('platform.create') }}" class="btn btn-primary mb-3"><span data-feather="plus"></span> Tambah data</a>
         <table class="table table-striped table-sm">
           <thead>
             <tr>
