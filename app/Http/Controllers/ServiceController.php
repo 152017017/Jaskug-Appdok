@@ -88,7 +88,7 @@ class ServiceController extends Controller
 
         $service = $service->where('id', $id)->update($validatedData);
 
-        return redirect('/dashboard/service/')->with('success', 'Item has been updated !');
+        return redirect('/dashboard/layanan/')->with('success', 'Item has been updated !');
     }
 
     /**
@@ -101,6 +101,6 @@ class ServiceController extends Controller
     {
         $service = $service->destroy($id);
 
-        return redirect('/dashboard/service/')->with('success', 'Item has been deleted !');
+        return redirect('/dashboard/layanan/')->with('success', 'Item has been deleted !');
     }
 }
