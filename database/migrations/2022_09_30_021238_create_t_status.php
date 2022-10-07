@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('t_status', function (Blueprint $table) {
             $table->id();
-            $table->string('deskripsi', 255);
+            $table->text('deskripsi');
             $table->timestamps();
         });
     }

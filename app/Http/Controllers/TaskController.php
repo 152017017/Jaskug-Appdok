@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\GroupService;
 use App\Models\Status;
+use App\Models\Dokumentasi;
 
 
 class TaskController extends Controller
@@ -16,7 +17,11 @@ class TaskController extends Controller
      */
     public function index()
     {
-        return view('dashboard.task.main');
+
+        return view('dashboard.task.main', [
+            "title" => "Permintaan",
+            "list" => Dokumentasi::latest()->paginate(3)->withQueryString()
+        ]);
     }
 
     /**

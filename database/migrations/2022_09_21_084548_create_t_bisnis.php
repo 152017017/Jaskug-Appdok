@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('t_bisnis', function (Blueprint $table) {
             $table->id();
-            $table->string('deskripsi', 255);
-            $table->string('pemilik', 255);
+            $table->text('deskripsi');
+            $table->text('pemilik');
             $table->timestamps();
         });
     }

@@ -19,7 +19,7 @@
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th scope="col">#</th>
+              <th scope="col">No.</th>
               <th scope="col">ID Bisnis</th>
               <th scope="col">Nama Bisnis</th>
               <th scope="col">Pemilik</th>
@@ -34,7 +34,7 @@
               <td>{{ $item->id }}</td>
               <td>{{ $item->deskripsi }}</td>
               <td>{{ $item->pemilik }}</td>
-              <td>{{ $item->updated_at->diffForHumans() }}</td>
+              <td>{{ $item->updated_at->format('d M Y') }}</td>
               <td>
                 {{-- <a href="#" class="badge bg-success"><span data-feather="eye"></span></a> --}}
                 <a href="{{ route('bisnis.edit', $item->id) }}" class="badge bg-warning"><span data-feather="edit"></span></a>
