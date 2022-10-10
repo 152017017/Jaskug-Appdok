@@ -11,7 +11,7 @@
     <form method="post" action="{{ route('task.store') }}" class="mb-5" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
-          <label for="category" class="form-label">Pilih Grup Layanan</label>
+          <label for="gruplayanan" class="form-label">Pilih Grup Layanan</label>
           <select class="form-select" name="gruplayanan_id">
             @foreach ($groupservice as $item)
             <option value="{{ $item->id }}" {{ old('gruplayanan_id') == $item->id ? ' selected' : ' ' }}>
@@ -20,27 +20,26 @@
           </select>
         </div>
         <div class="mb-3">
-          <label for="category" class="form-label">Pilih Status</label>
-          <select class="form-select" name="gruplayanan_id">
+          <label for="status" class="form-label">Pilih Status</label>
+          <select class="form-select" name="status_id">
             @foreach ($status as $item)
-            <option value="{{ $item->id }}" {{ old('gruplayanan_id') == $item->id ? ' selected' : ' ' }}>
+            <option value="{{ $item->id }}" {{ old('status_id') == $item->id ? ' selected' : ' ' }}>
               {{ $item->deskripsi }}</option>
             @endforeach
           </select>
         </div>
         <div class="mb-3">
-          <label for="category" class="form-label">Tanggal NDE</label>
-          <input type="text" id="datepicker" type="text" class="form-control">
+          <label for="tanggal" class="form-label">Tanggal NDE</label>
+          <input type="text" class="form-control @error('tanggal') is-invalid @enderror" id="datepicker" name="tanggal" type="text" required value="{{ old('tanggal') }}">
         </div>
         <div class="mb-3">
           <label for="perihal" class="form-label">Perihal NDE</label>
           <textarea type="text" class="form-control @error('perihal') is-invalid @enderror" id="perihal" name="perihal" required value="{{ old('perihal') }}" style="height: 110px;"></textarea>
         </div>
         <div class="mb-3">
-          <label for="image" class="form-label">Upload Lampiran NDE</label>
-          <img class="img-preview img-fluid mb-3 col-sm-5">
-          <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
-          @error('image')
+          <label for="lampiran" class="form-label">Upload Lampiran NDE</label>
+          <input class="form-control @error('lampiran') is-invalid @enderror" type="file" id="lampiran" name="lampiran">
+          @error('lampiran')
           <div class="invalid-feedback">
             {{ $message }}
           </div>
@@ -49,7 +48,7 @@
 </div>
 <div class="col-md-4 mx-auto">
         <div class="mb-3">
-          <label for="category" class="form-label">Pilih Layanan</label>
+          <label for="layanan" class="form-label">Pilih Layanan</label>
           <select class="form-select" name="layanan_id">
             @foreach ($service as $item)
             <option value="{{ $item->id }}" {{ old('layanan_id') == $item->id ? ' selected' : ' ' }}>
@@ -58,7 +57,7 @@
           </select>
         </div>
         <div class="mb-3">
-          <label for="category" class="form-label">Pilih Jenis Platform</label>
+          <label for="platform" class="form-label">Pilih Jenis Platform</label>
           <select class="form-select" name="platform_id">
             @foreach ($platform as $item)
             <option value="{{ $item->id }}" {{ old('platform_id') == $item->id ? ' selected' : ' ' }}>
@@ -79,13 +78,21 @@
           <label for="deskripsi" class="form-label">Uraian NDE</label>
           <textarea type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" required value="{{ old('deskripsi') }}" style="height: 110px;"></textarea>
         </div>
-        
-</div>
-        <span class="d-inline-block mx-4 mb-4">
-          <button class="btn btn-primary" type="submit">Tambah</button>
-        </span>
-      </form>
+        <div class="mb-3">
+          <label for="business" class="form-label">Pemilik</label>
+          <select class="form-select" name="bisnis_id">
+            @foreach ($business as $item)
+            <option value="{{ $item->id }}" {{ old('bisnis_id') == $item->id ? ' selected' : ' ' }}>
+              {{ $item->deskripsi }}</option>
+            @endforeach
+          </select>
+        </div>
 
+</div>
+      <span class="d-inline-block mx-4 mb-4">
+        <button class="btn btn-primary" type="submit">Tambah</button>
+      </span>
+      </form>
 </div>
 
 <script>

@@ -19,7 +19,7 @@
           @enderror
         </div>
         <div class="mb-3">
-          <label for="category" class="form-label">Pilih Grup Layanan</label>
+          <label for="gruplayanan" class="form-label">Pilih Grup Layanan</label>
           <select class="form-select" name="gruplayanan_id">
             @foreach ($groupservice as $gservice)
             <option value="{{ $gservice->id }}" {{ old('gruplayanan_id') == $gservice->id ? ' selected' : ' ' }}>
