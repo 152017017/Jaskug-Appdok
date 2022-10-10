@@ -17,7 +17,7 @@
           <thead>
             <tr>
               <th scope="col">No.</th>
-              <th scope="col">ID Grup</th>
+              <th scope="col">ID Group</th>
               <th scope="col">Bisnis</th>
               <th scope="col">Grup Layanan</th>
               <th scope="col">Terakhir Update</th>

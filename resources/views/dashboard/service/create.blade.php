@@ -31,6 +31,8 @@
           <label for="deskripsi" class="form-label">Deskripsi</label>
           <textarea type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" required autofocus value="{{ old('deskripsi') }}" style="height: 110px;"></textarea>
         </div>
+
+        <button type="button" class="btn btn-outline-secondary"> <a href="/dashboard/layanan" class="text-black-50 text-decoration-none">Kembali</button></a>
         <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Tambah data">
           <button class="btn btn-primary" type="submit">Tambah</button>
         </span>

@@ -29,6 +29,8 @@
           </div>
           @enderror
         </div>
+
+        <button type="button" class="btn btn-outline-secondary"> <a href="/dashboard/bisnis" class="text-black-50 text-decoration-none">Kembali</button></a>
         <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Simpan Perubahan">
           <button class="btn btn-primary" type="submit">Simpan Perubahan</button>
         </span>

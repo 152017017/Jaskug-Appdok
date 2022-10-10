@@ -6,14 +6,14 @@
       
       @foreach ($list as $item)
 
-      <div class="card" style="width: 18rem;">
-        <h6 class="card-header text-bg-warning p-3" style="width: 9rem">{{ $item->status->deskripsi }}</h6>
+      <div class="card pt-2" style="width: 20rem">
+        <h6 class="d-inline card-header text-bg-warning rounded opacity-75 mx-2" style="width: 9rem">{{ $item->status->deskripsi }}</h6>
         <div class="card-body">
           <h4 class="card-title">{{ $item->perihal }}</h4>
           <div class="text-muted mb-4">
           <p class="card-text">{{ $item->deskripsi }}</p>
           </div>
-          <a href="#" class="btn btn-primary">Tindak Lanjuti</a>
+          <a href="#" class="btn btn-primary d-flex justify-content-center">Tindak Lanjuti</a>
         </div>
       </div>
 

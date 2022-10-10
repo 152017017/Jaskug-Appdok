@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\GroupService;
 use App\Models\Status;
 use App\Models\Dokumentasi;
+use App\Models\Service;
+use App\Models\Platform;
 
 
 class TaskController extends Controller
@@ -33,7 +35,9 @@ class TaskController extends Controller
     {
         return view('dashboard.task.create', [
             'groupservice' => GroupService::all(),
-            'status' => Status::all()
+            'status' => Status::all(),
+            'service' => Service::all(),
+            'platform' => Platform::all()
         ]);
     }
 
