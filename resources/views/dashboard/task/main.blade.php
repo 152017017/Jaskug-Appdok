@@ -7,13 +7,26 @@
       @foreach ($list as $item)
 
       <div class="card pt-2" style="width: 20rem">
-        <h6 class="d-inline card-header text-bg-warning rounded opacity-75 mx-2" style="width: 9rem">{{ $item->status->deskripsi }}</h6>
+
+        @if($item->status->id === 1)
+          <h6 class="d-inline card-header text-bg-primary rounded opacity-75 mx-2" style="width: 9rem">{{ $item->status->deskripsi }}</h6>
+        @elseif($item->status->id === 2)
+          <h6 class="d-inline card-header text-bg-secondary rounded opacity-75 mx-2" style="width: 9rem">{{ $item->status->deskripsi }}</h6>
+        @elseif($item->status->id === 3)
+          <h6 class="d-inline card-header text-bg-success rounded opacity-75 mx-2" style="width: 9rem">{{ $item->status->deskripsi }}</h6>
+        @elseif($item->status->id === 4)
+          <h6 class="d-inline card-header text-bg-warning rounded opacity-75 mx-2" style="width: 9rem">{{ $item->status->deskripsi }}</h6>
+        @elseif($item->status->id === 5)
+          <h6 class="d-inline card-header text-bg-danger rounded opacity-75 mx-2" style="width: 9rem">{{ $item->status->deskripsi }}</h6>
+        @else
+          <h6 class="d-inline card-header text-bg-secondary rounded opacity-75 mx-2" style="width: 9rem">{{ $item->status->deskripsi }}</h6>
+        @endif
         <div class="card-body">
           <h4 class="card-title">{{ $item->perihal }}</h4>
           <div class="text-muted mb-4">
           <p class="card-text">{{ $item->deskripsi }}</p>
           </div>
-          <a href="#" class="btn btn-primary d-flex justify-content-center">Tindak Lanjuti</a>
+          <a href="{{ route('task.edit', $item->id) }}" class="btn btn-primary d-flex justify-content-center">Tindak Lanjuti</a>
         </div>
       </div>
 

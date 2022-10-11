@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\GroupService;
-use App\Models\Business;
 use Illuminate\Http\Request;
 
 class GroupServiceController extends Controller

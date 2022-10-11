@@ -60,8 +60,8 @@ class TaskController extends Controller
             'lampiran' => 'required|file|max:1024',
             'tanggal' => 'required',
             'nomor' => 'required|alpha_dash',
-            'perihal' => 'required|alpha',
-            'deskripsi' => 'required|alpha'
+            'perihal' => 'required|max:255',
+            'deskripsi' => 'required|max:255'
             
         ]);
 
@@ -92,9 +92,14 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Dokumentasi $dokumentasi, $id)
     {
-        //
+        $dokumentasi = $dokumentasi->findOrFail($id);
+
+        return view('dashboard.task.edit', [
+            'item' => $dokumentasi,
+            'status' => Status::all()
+        ]);
     }
 
     /**
