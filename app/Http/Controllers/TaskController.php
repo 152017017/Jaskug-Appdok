@@ -9,7 +9,7 @@ use App\Models\Dokumentasi;
 use App\Models\Service;
 use App\Models\Platform;
 use App\Models\Business;
-
+use Illuminate\Support\Facades\Storage;
 
 class TaskController extends Controller
 {
@@ -109,9 +109,25 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Dokumentasi $dokumentasi, Request $request, $id)
     {
-        //
+        $rules  = [
+            'status_id' => 'required',
+            'lampiran' => 'required|file|max:1024'
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        if($request->file('lampiran')){
+            if($request->oldLampiran){
+                Storage::delete($request->oldLampiran);
+            }
+            $validatedData['lampiran'] = $request->file('lampiran')->store('lampiran-nde');
+        }
+
+        $dokumentasi = $dokumentasi->where('id', $id)->update($validatedData);
+
+        return redirect('/dashboard/task/')->with('success', 'Item has been updated !');
     }
 
     /**

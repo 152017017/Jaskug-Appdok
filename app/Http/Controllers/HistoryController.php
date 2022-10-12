@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dokumentasi;
 use Illuminate\Http\Request;
 
 class HistoryController extends Controller
@@ -13,7 +14,9 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        return view('dashboard.history.main', [
+            'list' => Dokumentasi::all()
+        ]);
     }
 
     /**

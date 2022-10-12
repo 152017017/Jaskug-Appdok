@@ -50,6 +50,7 @@ Route::controller(TaskController::class)->middleware('auth')->group(function () 
 
 Route::controller(HistoryController::class)->middleware('auth')->group(function () {
     Route::get('/dashboard/history', 'index');
+    Route::get('/dashboard/history/show/{id}', 'show')->name('history.show');
     Route::get('/dashboard/history/create', 'create')->name('history.create');
     Route::post('/dashboard/history', 'store')->name('history.store');
     Route::get('/dashboard/history/edit/{id}', 'edit')->name('history.edit');

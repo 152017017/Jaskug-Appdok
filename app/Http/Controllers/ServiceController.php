@@ -85,7 +85,7 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service, $id)
+    public function update(Service $service, Request $request, $id)
     {
         $rules  = [
             'gruplayanan_id' => 'required',
