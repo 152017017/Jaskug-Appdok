@@ -1,8 +1,13 @@
 @extends('dashboard.index')
 
 @section('container')
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3">
+      @section('title')
       <h1 class="h2">Master Data Layanan</h1>
+      @endsection
+      {{-- <form class="justify-content" role="search">
+        <input type="text" class="form-control" placeholder="Search.." name="search" value=""><button class="btn btn-primary" type="submit"><span data-feather="search"></span></button>
+      </form> --}}
     </div>
 
     @if (session()->has('success'))

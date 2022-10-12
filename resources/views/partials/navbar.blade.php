@@ -19,15 +19,15 @@
           </a>
           <ul class="dropdown-menu text-small">
             @auth
-            <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Profile</a></li>
-            <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Settings</a></li>
-            <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Profile</a></li>
+              <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
               <form action="/logout" method="post">
-                @csrf
-                <button type="submit" class="dropdown-item">Logout <i class="bi bi-box-arrow-right"></i></button>
+              @csrf
+              <button type="submit" class="dropdown-item">Logout <i class="bi bi-box-arrow-right"></i></button>
               </form>
             @else
-            <li><a class="dropdown-item" href="/login"><i class="bi bi-box-arrow-left"></i> Login</a></li>
+              <li><a class="dropdown-item" href="/login"><i class="bi bi-box-arrow-left"></i> Login</a></li>
             @endauth 
           </ul>
         </div>

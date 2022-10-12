@@ -1,8 +1,10 @@
 @extends('dashboard.index')
 
 @section('container')
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3">
+      @section('title')
       <h1 class="h2">History</h1>
+      @endsection
     </div>
 
     @if (session()->has('success'))
