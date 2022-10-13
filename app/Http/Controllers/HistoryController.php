@@ -46,9 +46,13 @@ class HistoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Dokumentasi $dokumentasi, $id)
     {
-        //
+        $dokumentasi = $dokumentasi->findOrFail($id);
+
+        return view('dashboard.history.show', [
+            'item' => $dokumentasi
+        ]);
     }
 
     /**
@@ -83,5 +87,10 @@ class HistoryController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function updated(Dokumentasi $dokumentasi)
+    {
+        $this->track($dokumentasi);
     }
 }

@@ -3,9 +3,9 @@
 @section('container')
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3">
-  @section('title')
-  <h1 class="h2">Tindak Lanjuti Permintaan</h1>
-  @endsection
+    @section('title')
+    <h1 class="h2">Tindak Lanjuti Permintaan</h1>
+    @endsection
 </div>
 
 <h1 class="h4 mb-4">Info Permintaan</h1>
@@ -66,35 +66,11 @@
   </div>
 </div>
 
-<h1 class="h4 mb-4">Update Permintaan</h1>
+<h1 class="h4 mb-4">History Tindak Lanjut</h1>
 <div class="row mx-auto">
   <form method="post" action="{{ route('task.update', $item->id) }}" enctype="multipart/form-data">
     @csrf
-  <div class="col-md-4">
-    <div class="mb-3" style="width: 30rem">
-      <label for="status" class="form-label">Pilih Status Pengerjaan</label>
-      <select class="form-select" name="status_id">
-        @foreach ($status as $item)
-        <option value="{{ $item->id }}" {{ old('status_id') == $item->id ? ' selected' : ' ' }}>
-          {{ $item->deskripsi }}</option>
-        @endforeach
-      </select>
-    </div>
-    <div class="mb-3" style="width: 30rem">
-    <label for="lampiran" class="form-label">Upload Lampiran NDE</label>
-    <input class="form-control @error('lampiran') is-invalid @enderror" type="file" id="lampiran" name="lampiran">
-    @error('lampiran')
-    <div class="invalid-feedback">
-      {{ $message }}
-    </div>
-    @enderror
-    <div class="mt-3">
-    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Simpan Perubahan">
-      <button class="btn btn-primary" type="submit">Simpan Perubahan</button>
-    </span>
-    </div>
-    </div>
-  </div>
+
   </form>
 </div>
 

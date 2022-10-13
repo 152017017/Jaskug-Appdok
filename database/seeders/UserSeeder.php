@@ -23,6 +23,13 @@ class UserSeeder extends Seeder
                 'created_at'    => date('Y-m-d h:i:s'),
                 'updated_at'    => date('Y-m-d h:i:s')
             ],
+            [
+                'name'          => 'Jurgen Klopp',
+                'email'         => 'klopp@example.com',
+                'password'      => Hash::make('password'),
+                'created_at'    => date('Y-m-d h:i:s'),
+                'updated_at'    => date('Y-m-d h:i:s')
+            ],
         ];
 
         User::insert($list);

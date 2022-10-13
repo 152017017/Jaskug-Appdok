@@ -58,8 +58,8 @@ class TaskController extends Controller
             'status_id' => 'required',
             'platform_id' => 'required',
             'lampiran' => 'required|file|max:1024',
-            'tanggal' => 'required',
-            'nomor' => 'required|alpha_dash',
+            'tanggal' => 'required|date',
+            'nomor' => 'required',
             'perihal' => 'required|max:255',
             'deskripsi' => 'required|max:255'
             

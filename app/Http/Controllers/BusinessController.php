@@ -39,7 +39,7 @@ class BusinessController extends Controller
     {
         $validatedData = $request->validate([
             'deskripsi' => 'required|max:255',
-            'pemilik' => 'required|alpha_dash|max:255'
+            'pemilik' => 'required|max:255'
 
         ]);
 
