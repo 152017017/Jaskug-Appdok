@@ -1,85 +1,94 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-  
-    <div class="position-sticky pt-3 sidebar">
-      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-2 mb-1 text-muted">
-        <span>Menu Utama</span>
-      </h6>
-      <ul class="nav flex-column">
-        <li class="nav-item">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+  <a class="sidebar-brand d-flex align-items-center justify-content-center">
+    <div class="sidebar-brand-icon rotate-n-15">
+      <i class="fa fa-laptop" aria-hidden="true"></i>
+    </div>
+    <div class="sidebar-brand-text mx-3">Appdok</div>
+  </a>
+
+  <!-- Sidebar Toggler (Sidebar) -->
+  <div class="text-center d-none d-md-inline">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+  </div>
+    <div class="sidebar-heading">
+      Menu Utama
+    </div>
+      <ul class="navbar-nav flex-column" id="accordionSidebar">
+        <li class="nav-item {{ Request::is('dashboard') ? 'active' : '' }}">
           <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page" href="/dashboard">
-            <span data-feather="grid" class="align-text-bottom"></span>
+            <i class="fa fa-th-large" aria-hidden="true"></i>
             Overview
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {{ Request::is('dashboard/task*') ? 'active' : '' }}">
           <a class="nav-link  {{ Request::is('dashboard/task*') ? 'active' : '' }}" href="/dashboard/task">
-            <span data-feather="bookmark" class="align-text-bottom"></span>
+            <i class="fa fa-book" aria-hidden="true"></i>
             Permintaan
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {{ Request::is('dashboard/history*') ? 'active' : '' }}">
           <a class="nav-link  {{ Request::is('dashboard/history*') ? 'active' : '' }}" href="/dashboard/history">
-            <span data-feather="refresh-cw" class="align-text-bottom"></span>
+            <i class="fa fa-history" aria-hidden="true"></i>
             History
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item {{ Request::is('dashboard/mail*') ? 'active' : '' }}">
           <a class="nav-link  {{ Request::is('dashboard/mail*') ? 'active' : '' }}" href="/dashboard/mail">
-            <span data-feather="message-square" class="align-text-bottom"></span>
+            <i class="fa fa-commenting" aria-hidden="true"></i>
             Surat
           </a>
         </li>
       </ul>
       {{-- @can('admin') --}}
-      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-        <span>Master Data</span>
-      </h6>
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link  {{ Request::is('dashboard/bisnis*') ? 'active' : '' }}" href="/dashboard/bisnis">
-            <span data-feather="activity" class="align-text-bottom"></span>
+      <div class="sidebar-heading">
+        Master Data
+      </div>
+      <ul class="navbar-nav flex-column" id="accordionSidebar">
+        <li class="nav-item {{ Request::is('dashboard/bisnis*') ? 'active' : '' }}">
+          <a class="nav-link {{ Request::is('dashboard/bisnis*') ? 'active' : '' }}" href="/dashboard/bisnis">
+            <i class="fa fa-line-chart" aria-hidden="true"></i>
             Bisnis
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link  {{ Request::is('dashboard/platform*') ? 'active' : '' }}" href="/dashboard/platform">
-            <span data-feather="package" class="align-text-bottom"></span>
+        <li class="nav-item {{ Request::is('dashboard/platform*') ? 'active' : '' }}">
+          <a class="nav-link {{ Request::is('dashboard/platform*') ? 'active' : '' }}" href="/dashboard/platform">
+            <i class="fa fa-cubes" aria-hidden="true"></i>
             Platform
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link  {{ Request::is('dashboard/gruplayanan*') ? 'active' : '' }}" href="/dashboard/gruplayanan">
-            <span data-feather="plus-square" class="align-text-bottom"></span>
+        <li class="nav-item {{ Request::is('dashboard/gruplayanan*') ? 'active' : '' }}">
+          <a class="nav-link {{ Request::is('dashboard/gruplayanan*') ? 'active' : '' }}" href="/dashboard/gruplayanan">
+            <i class="fa fa-plus-square" aria-hidden="true"></i>
             Group Layanan
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link  {{ Request::is('dashboard/layanan*') ? 'active' : '' }}" href="/dashboard/layanan">
-            <span data-feather="phone" class="align-text-bottom"></span>
+        <li class="nav-item {{ Request::is('dashboard/layanan*') ? 'active' : '' }}">
+          <a class="nav-link {{ Request::is('dashboard/layanan*') ? 'active' : '' }}" href="/dashboard/layanan">
+            <i class="fa fa-phone" aria-hidden="true"></i>
             Layanan
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link  {{ Request::is('dashboard/status*') ? 'active' : '' }}" href="/dashboard/status">
-            <span data-feather="bell" class="align-text-bottom"></span>
+        <li class="nav-item {{ Request::is('dashboard/status*') ? 'active' : '' }}">
+          <a class="nav-link {{ Request::is('dashboard/status*') ? 'active' : '' }}" href="/dashboard/status">
+            <i class="fa fa-bell" aria-hidden="true"></i>
             Status
           </a>
         </li>
         <li class="nav-item">
           {{-- <a class="nav-link  {{ Request::is('dashboard/dokumentasi*') ? 'active' : '' }}" href="/dashboard/dokumentasi"> --}}
           <a class="nav-link  disabled" href="/dashboard/dokumentasi">
-            <span data-feather="archive" class="align-text-bottom"></span>
+            <i class="fa fa-archive" aria-hidden="true"></i>
             Dokumentasi
           </a>
         </li>
         <li class="nav-item">
           {{-- <a class="nav-link  {{ Request::is('dashboard/user*') ? 'active' : '' }}" href="/dashboard/user"> --}}
           <a class="nav-link  disabled" href="/dashboard/user">
-            <span data-feather="user" class="align-text-bottom"></span>
+            <i class="fa fa-user" aria-hidden="true"></i>
             User
           </a>
         </li>
       </ul>
       {{-- @endcan --}}
-    </div>
-  </nav>
+</ul>

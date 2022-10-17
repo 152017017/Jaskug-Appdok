@@ -1,14 +1,9 @@
 @extends('dashboard.index')
 
 @section('container')
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3">
-      @section('title')
-      <h1 class="h2">Master Data Layanan</h1>
-      @endsection
-      {{-- <form class="justify-content" role="search">
-        <input type="text" class="form-control" placeholder="Search.." name="search" value=""><button class="btn btn-primary" type="submit"><span data-feather="search"></span></button>
-      </form> --}}
-    </div>
+    {{-- @section('title') --}}
+    <h1 class="h3 mb-2 text-gray-800">Master Data Layanan</h1>
+    {{-- @endsection --}}
 
     @if (session()->has('success'))
     <div class="alert alert-success col-lg-8" role="alert">
@@ -16,9 +11,11 @@
     </div>
     @endif
 
-    <div class="justify-content-start table-responsive col-lg-8">
-      <a href="{{ route('layanan.create') }}" class="btn btn-primary mb-3"><span data-feather="plus"></span> Tambah data</a>
-        <table class="table table-striped table-sm">
+  <a href="{{ route('layanan.create') }}" class="btn btn-primary mb-3"><i class="fa fa-plus" aria-hidden="true"></i> Tambah data</a>
+    <div class="card shadow mb-4">
+      <div class="card-body">  
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
               <th scope="col">No.</th>
@@ -48,8 +45,9 @@
                 </form>
               </td>
             </tr>
-          @endforeach
+            @endforeach
           </tbody>
         </table>
       </div>
-@endsection
+    </div>
+  @endsection

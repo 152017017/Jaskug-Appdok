@@ -71,6 +71,8 @@
   <form method="post" action="{{ route('task.update', $item->id) }}" enctype="multipart/form-data">
     @csrf
 
+    
+
   </form>
 </div>
 

@@ -12,6 +12,7 @@ class Dokumentasi extends Model
     protected $table = 't_dokumentasi';
     protected $guarded = ['id'];
     protected $with = ['service', 'business', 'groupservice', 'status', 'platform'];
+    protected static $logAttributes = ['lampiran', 'perihal', 'updated_at'];
 
     public function service(){
         return $this->belongsTo(Service::class, 'layanan_id');
