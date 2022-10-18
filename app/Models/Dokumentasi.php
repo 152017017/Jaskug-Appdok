@@ -4,15 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
-class Dokumentasi extends Model  
+
+class Dokumentasi extends Model    
 {
     use HasFactory;
+    use LogsActivity;
 
     protected $table = 't_dokumentasi';
     protected $guarded = ['id'];
     protected $with = ['service', 'business', 'groupservice', 'status', 'platform'];
-    protected static $logAttributes = ['lampiran', 'perihal', 'updated_at'];
 
     public function service(){
         return $this->belongsTo(Service::class, 'layanan_id');
@@ -32,6 +35,12 @@ class Dokumentasi extends Model
 
     public function platform(){
         return $this->belongsTo(Platform::class, 'platform_id');
+    }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['lampiran', 'tanggal', 'nomor', 'perihal', 'deskripsi', 'status_id']);
     }
 
 }

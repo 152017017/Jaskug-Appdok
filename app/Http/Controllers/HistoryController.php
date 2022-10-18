@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dokumentasi;
 use Illuminate\Http\Request;
+use Spatie\Activitylog\Contracts\Activity;
 
 class HistoryController extends Controller
 {
@@ -46,8 +47,10 @@ class HistoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Dokumentasi $dokumentasi, $id)
+    public function show(Dokumentasi $dokumentasi, Activity $activity, Request $request, $id)
     {
+        @dd($activity);
+
         $dokumentasi = $dokumentasi->findOrFail($id);
 
         return view('dashboard.history.show', [
