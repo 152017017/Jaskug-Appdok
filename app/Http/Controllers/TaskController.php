@@ -9,7 +9,9 @@ use App\Models\Dokumentasi;
 use App\Models\Service;
 use App\Models\Platform;
 use App\Models\Business;
+use Spatie\Activitylog\Models\Activity;
 use Illuminate\Support\Facades\Storage;
+
 
 class TaskController extends Controller
 {
@@ -116,20 +118,29 @@ class TaskController extends Controller
             'lampiran' => 'required|file|max:1024'
         ];
 
+        
         $validatedData = $request->validate($rules);
-
+        
+        // $activity->description; //returns 'created'
+        // $activity->subject; //returns the instance of NewsItem that was created
+        // $activity->changes; //returns ['attributes' => ['name' => 'original name', 'text' => 'Lorum']];
+        
         if($request->file('lampiran')){
             if($request->oldLampiran){
                 Storage::delete($request->oldLampiran);
             }
             $validatedData['lampiran'] = $request->file('lampiran')->store('lampiran-nde');
         }
+        
+        $dokumentasi = $dokumentasi->where('id', $id)->firstOrFail()->update($validatedData);
 
-        $dokumentasi = $dokumentasi->where('id', $id)->update($validatedData);
+        // $activity = Activity::all()->last();
+    
+        // @dd($activity);
 
         return redirect('/dashboard/task/')->with('success', 'Item has been updated !');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *

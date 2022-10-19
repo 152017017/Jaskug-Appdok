@@ -7,15 +7,30 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
-
 class Dokumentasi extends Model    
 {
     use HasFactory;
     use LogsActivity;
 
     protected $table = 't_dokumentasi';
-    protected $guarded = ['id'];
+    protected $guarded = [];
     protected $with = ['service', 'business', 'groupservice', 'status', 'platform'];
+    protected $fillable = [
+        'layanan_id',
+        'bisnis_id',
+        'gruplayanan_id',
+        'status_id',
+        'platform_id',
+        'lampiran',
+        'tanggal',
+        'nomor',
+        'perihal',
+        'deskripsi'
+    ];
+    
+    protected static $logAttribute = true;
+    protected static $logFillable = true;
+    protected static $logUnguarded = true;
 
     public function service(){
         return $this->belongsTo(Service::class, 'layanan_id');
@@ -40,7 +55,16 @@ class Dokumentasi extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->logOnly(['lampiran', 'tanggal', 'nomor', 'perihal', 'deskripsi', 'status_id']);
+        ->logOnly(['layanan_id',
+        'bisnis_id',
+        'gruplayanan_id',
+        'status.deskripsi',
+        'platform_id',
+        'lampiran',
+        'tanggal',
+        'nomor',
+        'perihal',
+        'deskripsi']);
     }
 
 }

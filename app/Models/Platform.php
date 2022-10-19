@@ -10,6 +10,5 @@ class Platform extends Model
     use HasFactory;
 
     protected $table = 't_platform';
-    protected $guarded = [];
-    protected $primary_key = 'id';
+    protected $guarded = ['id'];
 }
