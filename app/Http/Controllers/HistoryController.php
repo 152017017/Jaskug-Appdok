@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dokumentasi;
 use Illuminate\Http\Request;
+use App\Models\Dokumentasi;
+use Spatie\Activitylog\Models\Activity;
 
 class HistoryController extends Controller
 {
@@ -50,8 +51,13 @@ class HistoryController extends Controller
     {
         $dokumentasi = $dokumentasi->findOrFail($id);
 
+        $activity = Activity::all()->last();
+
+        // return response()->download('lampiran-nde/');
+ 
         return view('dashboard.history.show', [
-            'item' => $dokumentasi
+            'item' => $dokumentasi,
+            'activityLog' => $activity
         ]);
     }
 

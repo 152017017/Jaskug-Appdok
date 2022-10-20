@@ -9,9 +9,7 @@ use App\Models\Dokumentasi;
 use App\Models\Service;
 use App\Models\Platform;
 use App\Models\Business;
-use Spatie\Activitylog\Models\Activity;
 use Illuminate\Support\Facades\Storage;
-
 
 class TaskController extends Controller
 {
@@ -22,7 +20,6 @@ class TaskController extends Controller
      */
     public function index()
     {
-
         return view('dashboard.task.main', [
             "title" => "Permintaan",
             "list" => Dokumentasi::latest()->paginate(3)->withQueryString()
@@ -117,7 +114,6 @@ class TaskController extends Controller
             'status_id' => 'required',
             'lampiran' => 'required|file|max:1024'
         ];
-
         
         $validatedData = $request->validate($rules);
         

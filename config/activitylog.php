@@ -49,4 +49,7 @@ return [
      * Laravel's database.default will be used instead.
      */
     'database_connection' => env('ACTIVITY_LOGGER_DB_CONNECTION'),
+
+    'field_change' => 'field :field changed from :old_value to :new_value.',
+    
 ];

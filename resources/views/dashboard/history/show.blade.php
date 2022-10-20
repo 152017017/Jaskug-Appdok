@@ -2,11 +2,7 @@
 
 @section('container')
 
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3">
-    @section('title')
-    <h1 class="h2">Tindak Lanjuti Permintaan</h1>
-    @endsection
-</div>
+<h1 class="h3 mb-4 text-gray-800">Tindak Lanjuti Permintaan</h1>
 
 <h1 class="h4 mb-4">Info Permintaan</h1>
 <div class="row">
@@ -42,7 +38,7 @@
         <label for="lampiran" class="form-label">Lampiran</label>
         <input type="text" class="form-control @error('lampiran') is-invalid @enderror"
         value="{{ old('lampiran', $item->lampiran) }}" disabled>
-      </div> 
+      </div>
       <div class="mb-3">
         <label for="tanggal" class="form-label">Tanggal NDE</label>
         <input type="text" class="form-control @error('tanggal') is-invalid @enderror"
@@ -68,12 +64,46 @@
 
 <h1 class="h4 mb-4">History Tindak Lanjut</h1>
 <div class="row mx-auto">
-  <form method="post" action="{{ route('task.update', $item->id) }}" enctype="multipart/form-data">
-    @csrf
 
-    
-  </form>
+  @foreach($activityLog->changes['old'] as $key=>$val)
+
+  {{ $activityLog->changes['old'][$key]. " ". "(".$activityLog->created_at->format('d M Y').")" }}<br>
+      
+  @endforeach
+  
+  <div class="mb-2">
+    :
+  </div>
+
+  @foreach ($activityLog->changes['attributes'] as $key=>$val)
+
+  {{ $activityLog->changes['attributes'][$key]. " " . "(".$activityLog->created_at->format('d M Y').")"}}<br>
+
+  @endforeach
+
 </div>
+
+{{-- @foreach($activityLog->changes['attributes'] as $field => $value)
+    {{ trans('activitylog.field_change', ['field' => $field, 'old_value' => $activityLog->changes['old'][$field], 'new_value' => $activityLog->changes['attributes'][$field]]) }}
+@endforeach --}}
+
+{{-- <table>
+  <thead>
+  <tr>
+    <th>field</th>
+    <th>old</th>
+    <th>new</th>
+  </thead>
+  <tbody>
+    @foreach($activityLog->changes['attributes'] as $field => $value)
+    <tr>
+      <td>{{ $field }}</td>
+      <td>{{ $activityLog->changes['old'][$field] }}</td>
+      <td>{{ $activityLog->changes['attributes'][$field] }}</td>
+    </tr>
+    @endforeach
+  </tbody>
+  </table> --}}
 
 <script>
     //

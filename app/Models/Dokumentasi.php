@@ -55,16 +55,10 @@ class Dokumentasi extends Model
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-        ->logOnly(['layanan_id',
-        'bisnis_id',
-        'gruplayanan_id',
+        ->logOnly([
         'status.deskripsi',
-        'platform_id',
-        'lampiran',
-        'tanggal',
-        'nomor',
-        'perihal',
-        'deskripsi']);
+        'lampiran'])
+        ->logOnlyDirty();
     }
 
 }

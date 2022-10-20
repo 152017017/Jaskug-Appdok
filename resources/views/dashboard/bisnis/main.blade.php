@@ -21,7 +21,7 @@
               <th scope="col">No.</th>
               <th scope="col">ID Bisnis</th>
               <th scope="col">Nama Bisnis</th>
-              <th scope="col">Pemilik</th>
+              <th scope="col">Channel Aplikasi</th>
               <th scope="col">Terakhir Update</th>
               <th scope="col">Action</th>
             </tr>

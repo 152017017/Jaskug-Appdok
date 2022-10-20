@@ -19,7 +19,7 @@
           @enderror
         </div>
         <div class="mb-3">
-          <label for="pemilik" class="form-label">Pemilik</label>
+          <label for="pemilik" class="form-label">Channel Aplikasi</label>
           <input type="text" class="form-control @error('pemilik') is-invalid @enderror" id="pemilik" name="pemilik" required autofocus value="{{ old('pemilik') }}">
           @error('pemilik')
           <div class="invalid-feedback">

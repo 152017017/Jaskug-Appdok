@@ -13,6 +13,15 @@
     <form method="post" action="{{ route('task.store') }}" class="mb-5" enctype="multipart/form-data">
       @csrf
       <div class="mb-3">
+        <label for="business" class="form-label">Channel Aplikasi</label>
+        <select class="form-select" name="bisnis_id">
+          @foreach ($business as $item)
+          <option value="{{ $item->id }}" {{ old('bisnis_id') == $item->id ? ' selected' : ' ' }}>
+            {{ $item->deskripsi }}</option>
+          @endforeach
+        </select>
+      </div>
+      <div class="mb-3">
         <label for="gruplayanan" class="form-label">Pilih Grup Layanan</label>
         <select class="form-select" name="gruplayanan_id">
           @foreach ($groupservice as $item)
@@ -80,15 +89,7 @@
         <label for="deskripsi" class="form-label">Uraian NDE</label>
         <textarea type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" required value="{{ old('deskripsi') }}" style="height: 110px;"></textarea>
       </div>
-      <div class="mb-3">
-        <label for="business" class="form-label">Pemilik</label>
-        <select class="form-select" name="bisnis_id">
-          @foreach ($business as $item)
-          <option value="{{ $item->id }}" {{ old('bisnis_id') == $item->id ? ' selected' : ' ' }}>
-            {{ $item->deskripsi }}</option>
-          @endforeach
-        </select>
-      </div>
+      
   </div>
       <span class="d-inline-block mx-4 mb-4">
         <button class="btn btn-primary" type="submit">Tambah</button>
