@@ -1,27 +1,3 @@
-{{-- <header class="p-2 mb-3 border-bottom">
-    <div class="container">
-
-      <div class="col d-lg-flex flex-nowrap" style="padding-left:12%">
-        @yield('title')
-
-      <div class="col d-lg-flex flex-nowrap align-items-center justify-content-end" style="padding-right:auto">
-        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="/img/avatar.jpg" alt="" width="40" height="40" class="rounded-circle">
-          </a>
-          <ul class="dropdown-menu text-small">
-            <li><a class="dropdown-item" href="#"><span data-feather="user"></span> Profile</a></li>
-            <li><a class="dropdown-item" href="#"><span data-feather="settings"></span> Settings</a></li>
-            <li><hr class="dropdown-divider"></li>
-              <form action="/logout" method="post">
-                @csrf
-                <button type="submit" class="dropdown-item">Logout <span data-feather="log-out"></span></i></button>
-              </form>
-          </ul>
-      </div>
-
-    </div>
-</header> --}}
-
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
   <!-- Sidebar Toggle (Topbar) -->
@@ -30,7 +6,7 @@
   </button>
 
   <!-- Topbar Search -->
-  <form
+  {{-- <form
       class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
       <div class="input-group">
           <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
@@ -41,12 +17,12 @@
               </button>
           </div>
       </div>
-  </form>
+  </form> --}}
 
   <!-- Topbar Navbar -->
   <ul class="navbar-nav ml-auto">
 
-      {{-- <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+      <!-- Nav Item - Search Dropdown (Visible Only XS) -->
       <li class="nav-item dropdown no-arrow d-sm-none">
           <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -74,15 +50,24 @@
       <li class="nav-item dropdown no-arrow mx-1">
           <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-bell fa-fw"></i>
+              <i class="fas fa-envelope fa-fw"></i>
               <!-- Counter - Alerts -->
-              <span class="badge badge-danger badge-counter">3+</span>
+              @if ("{{ count($bisnis) }}" >= 1)
+              <span class="badge badge-danger badge-counter">
+                {{ count($bisnis) }}
+              </span>
+              @elseif ("{{ count($bisnis) }}" == 0)
+              <span class="badge badge-danger badge-counter">
+                0
+              </span>
+              @endif
+
           </a>
           <!-- Dropdown - Alerts -->
           <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
               aria-labelledby="alertsDropdown">
               <h6 class="dropdown-header">
-                  Alerts Center
+                  Notifications Center
               </h6>
               <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="mr-3">
@@ -92,10 +77,10 @@
                   </div>
                   <div>
                       <div class="small text-gray-500">December 12, 2019</div>
-                      <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                      <span class="font-weight-bold">A new task has been added</span>
                   </div>
               </a>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              {{-- <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="mr-3">
                       <div class="icon-circle bg-success">
                           <i class="fas fa-donate text-white"></i>
@@ -105,8 +90,8 @@
                       <div class="small text-gray-500">December 7, 2019</div>
                       $290.29 has been deposited into your account!
                   </div>
-              </a>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              </a> --}}
+              {{-- <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="mr-3">
                       <div class="icon-circle bg-warning">
                           <i class="fas fa-exclamation-triangle text-white"></i>
@@ -116,12 +101,12 @@
                       <div class="small text-gray-500">December 2, 2019</div>
                       Spending Alert: We've noticed unusually high spending for your account.
                   </div>
-              </a>
+              </a> --}}
               <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
           </div>
       </li>
 
-      <!-- Nav Item - Messages -->
+      {{-- <!-- Nav Item - Messages -->
       <li class="nav-item dropdown no-arrow mx-1">
           <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -185,15 +170,15 @@
               </a>
               <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
           </div>
-      </li>
+      </li> --}}
 
-      <div class="topbar-divider d-none d-sm-block"></div> --}}
+      <div class="topbar-divider d-none d-sm-block"></div>
 
       <!-- Nav Item - User Information -->
       <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="mr-2 d-none d-lg-inline text-gray-600 small">User</span>
+              <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
               <img class="img-profile rounded-circle" src="/img/undraw_profile.svg">
           </a>
           <!-- Dropdown - User Information -->
@@ -218,9 +203,7 @@
             </a>
         </div>
       </li>
-
   </ul>
-
 </nav>
 
 <!-- Logout Modal-->

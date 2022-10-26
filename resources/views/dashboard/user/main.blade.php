@@ -2,7 +2,7 @@
 
 @section('container')
     {{-- @section('title') --}}
-    <h1 class="h3 mb-2 text-gray-800">Master Data Group Layanan</h1>
+    <h1 class="h3 mb-2 text-gray-800">User</h1>
     {{-- @endsection --}}
 
     @if (session()->has('success'))
@@ -11,7 +11,7 @@
     </div>
     @endif
 
-  <a href="{{ route('gruplayanan.create') }}" class="btn btn-primary mb-3"><i class="fa fa-plus" aria-hidden="true"></i> Tambah data</a>
+  <a href="{{ route('user.create') }}" class="btn btn-primary mb-3"><i class="fa fa-plus" aria-hidden="true"></i> Tambah data</a>
     <div class="card shadow mb-4">
       <div class="card-body">  
       <div class="table-responsive">
@@ -19,10 +19,11 @@
           <thead>
             <tr>
               <th scope="col">No.</th>
-              <th scope="col">ID Group</th>
-              <th scope="col">Channel Aplikasi</th>
-              <th scope="col">Grup Layanan</th>
+              <th scope="col">Nama</th>
+              <th scope="col">Email</th>
               <th scope="col">Terakhir Update</th>
+              <th scope="col">Role</th>
+              <th scope="col">Status</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -30,14 +31,15 @@
           @foreach ($list as $item)    
             <tr>
               <td>{{ $loop->iteration }}</td>
-              <td>{{ $item->id }}</td>
-              <td>{{ $item->business->deskripsi ?? '(Tidak ada bisnis)' }}</td>
-              <td>{{ $item->deskripsi }}</td>
+              <td>{{ $item->name }}</td>
+              <td>{{ $item->email }}</td>
               <td>{{ $item->updated_at->format('d M Y') }}</td>
+              <td>Role</td>
+              <td>Status</td>
               <td>
                 {{-- <a href="#" class="badge bg-success"><span data-feather="eye"></span></a> --}}
-                <a href="{{ route('gruplayanan.edit', $item->id) }}" class="badge bg-warning"><span data-feather="edit"></span></a>
-                <form action="{{ route('gruplayanan.delete', $item->id) }}" method="post" class="d-inline">
+                <a href="{{ route('user.edit', $item->id) }}" class="badge bg-warning"><span data-feather="edit"></span></a>
+                <form action="{{ route('user.delete', $item->id) }}" method="post" class="d-inline">
                 @csrf
                 <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span></button>
                 </form>

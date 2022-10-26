@@ -13,7 +13,7 @@
     <form method="post" action="{{ route('task.store') }}" class="mb-5" enctype="multipart/form-data">
       @csrf
       <div class="mb-3">
-        <label for="business" class="form-label">Pemilik</label>
+        <label for="business" class="form-label">Channel Aplikasi</label>
         <select class="form-select" name="bisnis_id">
           @foreach ($business as $item)
           <option value="{{ $item->id }}" {{ old('bisnis_id') == $item->id ? ' selected' : ' ' }}>
@@ -35,24 +35,13 @@
         <select class="form-select" name="status_id">
           @foreach ($status as $item)
           <option value="{{ $item->id }}" {{ old('status_id') == $item->id ? ' selected' : ' ' }}>
-            {{ $item->deskripsi }}
-          </option>
+            {{ $item->deskripsi }}</option>
           @endforeach
         </select>
       </div>
       <div class="mb-3">
         <label for="tanggal" class="form-label">Tanggal NDE</label>
-        <input type="text" name="datepicker">
-        <script>
-          $(function() {
-          $('input[name="datepicker"]').daterangepicker({
-            singleDatePicker: true,
-            showDropdowns: true,
-            minYear: 1901,
-            maxYear: parseInt(moment().format('YYYY'),10)
-          });
-        });
-        </script>
+        <input type="text" class="form-control @error('tanggal') is-invalid @enderror" id="datepicker" name="tanggal" type="text" required value="{{ old('tanggal') }}">
       </div>
       <div class="mb-3">
         <label for="perihal" class="form-label">Perihal NDE</label>
@@ -109,14 +98,7 @@
 </div>
 
 <script>
-  $(function() {
-  $('input[name="datepicker"]').daterangepicker({
-    singleDatePicker: true,
-    showDropdowns: true,
-    minYear: 1901,
-    maxYear: parseInt(moment().format('YYYY'),10)
-  });
-});
+    //
 </script>
 
 @endsection

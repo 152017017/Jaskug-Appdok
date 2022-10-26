@@ -27,7 +27,7 @@
               <button type="submit" class="dropdown-item">Logout <i class="bi bi-box-arrow-right"></i></button>
               </form>
             @else
-              <li><a class="dropdown-item" href="/login"><i class="bi bi-box-arrow-left"></i> Login</a></li>
+              <li><a class="dropdown-item" href="/"><i class="bi bi-box-arrow-left"></i> Login</a></li>
             @endauth 
           </ul>
         </div>

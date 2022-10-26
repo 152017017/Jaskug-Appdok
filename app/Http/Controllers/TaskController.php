@@ -9,6 +9,8 @@ use App\Models\Dokumentasi;
 use App\Models\Service;
 use App\Models\Platform;
 use App\Models\Business;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Storage;
 
 class TaskController extends Controller
@@ -20,9 +22,17 @@ class TaskController extends Controller
      */
     public function index()
     {
+        // Permission::create(['name' => 'add business']);
+        // $role = Role::findById(1);
+        // $permission = Permission::findById(1);
+        // $role->givePermissionTo($permission);
+        
         return view('dashboard.task.main', [
             "title" => "Permintaan",
-            "list" => Dokumentasi::latest()->paginate(3)->withQueryString()
+            "list"  => Dokumentasi::all(),
+            "status"        => Status::all(),
+            "groupservice"  => GroupService::all(),
+            "service"       => Service::all()
         ]);
     }
 
@@ -34,11 +44,11 @@ class TaskController extends Controller
     public function create()
     {
         return view('dashboard.task.create', [
-            'groupservice' => GroupService::all(),
-            'status' => Status::all(),
-            'service' => Service::all(),
-            'platform' => Platform::all(),
-            'business' => Business::all()
+            "groupservice"  => GroupService::all(),
+            "status"        => Status::all(),
+            "service"   => Service::all(),
+            "platform"  => Platform::all(),
+            "business"  => Business::all()
         ]);
     }
 

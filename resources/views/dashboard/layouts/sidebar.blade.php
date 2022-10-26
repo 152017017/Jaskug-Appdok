@@ -33,14 +33,14 @@
             History
           </a>
         </li>
-        <li class="nav-item {{ Request::is('dashboard/mail*') ? 'active' : '' }}">
-          <a class="nav-link  {{ Request::is('dashboard/mail*') ? 'active' : '' }}" href="/dashboard/mail">
+        {{-- <li class="nav-item {{ Request::is('dashboard/mail*') ? 'active' : '' }}">
+          <a class="nav-link  {{ Request::is('dashboard/mail*') ? 'active' : '' }} disabled" href="/dashboard/mail">
             <i class="fa fa-commenting" aria-hidden="true"></i>
             Surat
           </a>
-        </li>
+        </li> --}}
       </ul>
-      {{-- @can('admin') --}}
+      {{-- @can(['operator', 'admin']) --}}
       <div class="sidebar-heading">
         Master Data
       </div>
@@ -75,16 +75,14 @@
             Status
           </a>
         </li>
-        <li class="nav-item">
-          {{-- <a class="nav-link  {{ Request::is('dashboard/dokumentasi*') ? 'active' : '' }}" href="/dashboard/dokumentasi"> --}}
-          <a class="nav-link  disabled" href="/dashboard/dokumentasi">
+        {{-- <li class="nav-item {{ Request::is('dashboard/dokumentasi*') ? 'active' : '' }}">
+          <a class="nav-link {{ Request::is('dashboard/dokumentasi*') ? 'active' : '' }} disabled" href="/dashboard/dokumentasi">
             <i class="fa fa-archive" aria-hidden="true"></i>
             Dokumentasi
           </a>
-        </li>
-        <li class="nav-item">
-          {{-- <a class="nav-link  {{ Request::is('dashboard/user*') ? 'active' : '' }}" href="/dashboard/user"> --}}
-          <a class="nav-link  disabled" href="/dashboard/user">
+        </li> --}}
+        <li class="nav-item {{ Request::is('dashboard/user*') ? 'active' : '' }}">
+          <a class="nav-link {{ Request::is('dashboard/user*') ? 'active' : '' }}" href="/dashboard/user">
             <i class="fa fa-user" aria-hidden="true"></i>
             User
           </a>

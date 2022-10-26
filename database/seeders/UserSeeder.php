@@ -17,15 +17,22 @@ class UserSeeder extends Seeder
     {
         $list = [
             [
-                'name'          => 'Josua Sirait',
+                'name'          => 'Admin',
                 'email'         => 'admin@example.com',
                 'password'      => Hash::make('password'),
                 'created_at'    => date('Y-m-d h:i:s'),
                 'updated_at'    => date('Y-m-d h:i:s')
             ],
             [
-                'name'          => 'Jurgen Klopp',
+                'name'          => 'Jurgen Klopp',  //operator-jaskug
                 'email'         => 'klopp@example.com',
+                'password'      => Hash::make('password'),
+                'created_at'    => date('Y-m-d h:i:s'),
+                'updated_at'    => date('Y-m-d h:i:s')
+            ],
+            [
+                'name'          => 'Sadio Mane',    //user-bisnis
+                'email'         => 'sadio@example.com',
                 'password'      => Hash::make('password'),
                 'created_at'    => date('Y-m-d h:i:s'),
                 'updated_at'    => date('Y-m-d h:i:s')
