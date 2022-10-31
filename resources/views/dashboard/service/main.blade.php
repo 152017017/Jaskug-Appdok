@@ -19,7 +19,7 @@
           <thead>
             <tr>
               <th scope="col">No.</th>
-              <th scope="col">ID Layanan</th>
+              {{-- <th scope="col">ID Layanan</th> --}}
               <th scope="col">Layanan</th>
               <th scope="col">Grup Layanan</th>
               <th scope="col">Deskripsi</th>
@@ -31,7 +31,7 @@
           @foreach ($list as $item)    
             <tr>
               <td>{{ $loop->iteration }}</td>
-              <td>{{ $item->id }}</td>
+              {{-- <td>{{ $item->id }}</td> --}}
               <td>{{ $item->nama }}</td>
               <td>{{ $item->groupservice->deskripsi }}</td>
               <td>{{ $item->deskripsi }}</td>

@@ -2,65 +2,54 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
+        // $roles = Role::get();
+        // $users = User::has('roles')->get();
+        // dd($users);
+
         return view('dashboard.user.main', [
-            'list' => User::all()
+            "list" => User::all(),
+            // compact('roles', 'users')
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function create()
+    {
+        $roles = Role::get();
+        $user = User::get();
+
+        return view('permissions.user.create', compact('roles', 'user'));
+    }
+
     public function store(Request $request)
     {
-        //
+        $user = User::where('id', ($request->id_user))->first();
+        $user->assignRole($request->roles);
+
+        return redirect()->route('user.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $roles = Role::get();
+        $users = User::get();
+
+        return view('permissions.user.edit', compact('user', 'roles', 'users'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
-    }
+        $user = User::findorfail($request->id);
+        $user->syncRoles($request->roles);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect()->route('user.index');
     }
 }

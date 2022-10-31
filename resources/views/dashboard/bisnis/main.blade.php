@@ -19,7 +19,7 @@
           <thead>
             <tr>
               <th scope="col">No.</th>
-              <th scope="col">ID Bisnis</th>
+              {{-- <th scope="col">ID Bisnis</th> --}}
               <th scope="col">Nama Bisnis</th>
               <th scope="col">Channel Aplikasi</th>
               <th scope="col">Terakhir Update</th>
@@ -30,12 +30,20 @@
           @foreach ($list as $item)    
             <tr>
               <td>{{ $loop->iteration }}</td>
-              <td>{{ $item->id }}</td>
+              {{-- <td>{{ $item->id }}</td> --}}
               <td>{{ $item->deskripsi }}</td>
               <td>{{ $item->pemilik }}</td>
               <td>{{ $item->updated_at->format('d M Y') }}</td>
               <td>
                 {{-- <a href="#" class="badge bg-success"><span data-feather="eye"></span></a> --}}
+                {{-- <?php
+                
+                    $encrypt =[
+                      'id' => $item->id,
+                    ];
+                    $encrypt = Crypt::encrypt($encrypt);
+
+                ?> --}}
                 <a href="{{ route('bisnis.edit', $item->id) }}" class="badge bg-warning"><span data-feather="edit"></span></a>
                 <form action="{{ route('bisnis.delete', $item->id) }}" method="post" class="d-inline">
                 @csrf

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Business;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class BusinessController extends Controller
 {
@@ -67,6 +68,8 @@ class BusinessController extends Controller
      */
     public function edit(Business $business, $id)
     {
+        // $id = Crypt::decrypt($encrypt);
+
         $business = $business->findOrFail($id);
 
         return view('dashboard.bisnis.edit', [

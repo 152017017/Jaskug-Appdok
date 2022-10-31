@@ -15,6 +15,7 @@ class Dokumentasi extends Model
     protected $table = 't_dokumentasi';
     protected $guarded = [];
     protected $with = ['service', 'business', 'groupservice', 'status', 'platform'];
+    protected $dates = ['tanggal'];
     protected $fillable = [
         'layanan_id',
         'bisnis_id',
@@ -27,7 +28,6 @@ class Dokumentasi extends Model
         'perihal',
         'deskripsi'
     ];
-    
     protected static $logAttribute = true;
     protected static $logFillable = true;
     protected static $logUnguarded = true;

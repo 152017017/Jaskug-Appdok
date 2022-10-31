@@ -19,7 +19,7 @@
           <thead>
             <tr>
               <th scope="col">No.</th>
-              <th scope="col">ID Platform</th>
+              {{-- <th scope="col">ID Platform</th> --}}
               <th scope="col">Platform</th>
               <th scope="col">Terakhir Update</th>
               <th scope="col">Action</th>
@@ -29,7 +29,7 @@
           @foreach ($list as $item)    
             <tr>
               <td>{{ $loop->iteration }}</td>
-              <td>{{ $item->id }}</td>
+              {{-- <td>{{ $item->id }}</td> --}}
               <td>{{ $item->deskripsi }}</td>
               <td>{{ $item->updated_at->format('d M Y') }}</td>
               <td>

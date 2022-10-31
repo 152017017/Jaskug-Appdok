@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\Tasks;
 use Illuminate\Http\Request;
 use App\Models\GroupService;
 use App\Models\Status;
@@ -66,7 +67,7 @@ class TaskController extends Controller
             'gruplayanan_id' => 'required',
             'status_id' => 'required',
             'platform_id' => 'required',
-            'lampiran' => 'required|file|max:1024',
+            'lampiran' => 'required|file|mimes:pdf,jpg,jpeg|max:1024',
             'tanggal' => 'required|date',
             'nomor' => 'required',
             'perihal' => 'required|max:255',

@@ -19,7 +19,7 @@
           <thead>
             <tr>
               <th scope="col">No.</th>
-              <th scope="col">ID Group</th>
+              {{-- <th scope="col">ID Group</th> --}}
               <th scope="col">Channel Aplikasi</th>
               <th scope="col">Grup Layanan</th>
               <th scope="col">Terakhir Update</th>
@@ -30,7 +30,7 @@
           @foreach ($list as $item)    
             <tr>
               <td>{{ $loop->iteration }}</td>
-              <td>{{ $item->id }}</td>
+              {{-- <td>{{ $item->id }}</td> --}}
               <td>{{ $item->business->deskripsi ?? '(Tidak ada bisnis)' }}</td>
               <td>{{ $item->deskripsi }}</td>
               <td>{{ $item->updated_at->format('d M Y') }}</td>

@@ -49,7 +49,7 @@
               @endif
               <td>
                 <a href="{{ route('history.show', $item->id) }}" class="badge bg-primary" style="flex-wrap"><span data-feather="eye"></span></a>
-                <a href="{{ route('history.edit', $item->id) }}" class="badge bg-warning" style="flex-wrap"><span data-feather="edit"></span></a>
+                {{-- <a href="{{ route('history.edit', $item->id) }}" class="badge bg-warning" style="flex-wrap"><span data-feather="edit"></span></a> --}}
               </td>
             </tr>
             @endforeach

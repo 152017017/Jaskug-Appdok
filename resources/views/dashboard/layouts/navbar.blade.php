@@ -52,11 +52,14 @@
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-envelope fa-fw"></i>
               <!-- Counter - Alerts -->
-              @if ("{{ count($bisnis) }}" >= 1)
+              @if ("{{ count($dokumentasi
+              ) }}" >= 1)
               <span class="badge badge-danger badge-counter">
-                {{ count($bisnis) }}
+                {{ count($dokumentasi
+                ) }}
               </span>
-              @elseif ("{{ count($bisnis) }}" == 0)
+              @elseif ("{{ count($dokumentasi
+              ) }}" == 0)
               <span class="badge badge-danger badge-counter">
                 0
               </span>
@@ -228,3 +231,7 @@
     </div>
 </div>
 </div>
+ 
+<script>
+    
+</script>

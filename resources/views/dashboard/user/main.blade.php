@@ -34,18 +34,17 @@
               <td>{{ $item->name }}</td>
               <td>{{ $item->email }}</td>
               <td>{{ $item->updated_at->format('d M Y') }}</td>
-              <td>Role</td>
-              <td>Status</td>
+              {{-- <td>{{ implode(', ', $user->getRoleNames()->toArray()) }}</td> --}}
               <td>
                 {{-- <a href="#" class="badge bg-success"><span data-feather="eye"></span></a> --}}
-                <a href="{{ route('user.edit', $item->id) }}" class="badge bg-warning"><span data-feather="edit"></span></a>
-                <form action="{{ route('user.delete', $item->id) }}" method="post" class="d-inline">
+                {{-- <a href="{{ route('user.edit', $user->id) }}" class="badge bg-warning"><span data-feather="edit"></span></a>
+                <form action="{{ route('user.delete', $user->id) }}" method="post" class="d-inline">
                 @csrf
-                <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span></button>
+                <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span></button> --}}
                 </form>
               </td>
             </tr>
-            @endforeach
+          @endforeach
           </tbody>
         </table>
       </div>

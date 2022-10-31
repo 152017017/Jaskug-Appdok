@@ -42,17 +42,8 @@
       </div>
       <div class="mb-3">
         <label for="tanggal" class="form-label">Tanggal NDE</label>
-        <input type="text" name="datepicker">
-        <script>
-          $(function() {
-          $('input[name="datepicker"]').daterangepicker({
-            singleDatePicker: true,
-            showDropdowns: true,
-            minYear: 1901,
-            maxYear: parseInt(moment().format('YYYY'),10)
-          });
-        });
-        </script>
+        <input class="date form-control" type="text" name="tanggal" required>
+        {{-- <input type="text" class="form-control @error('tanggal') is-invalid @enderror" id="datepicker" name="tanggal" type="text" required value="{{ old('tanggal') }}"> --}}
       </div>
       <div class="mb-3">
         <label for="perihal" class="form-label">Perihal NDE</label>
@@ -108,15 +99,10 @@
       </form>
 </div>
 
-<script>
-  $(function() {
-  $('input[name="datepicker"]').daterangepicker({
-    singleDatePicker: true,
-    showDropdowns: true,
-    minYear: 1901,
-    maxYear: parseInt(moment().format('YYYY'),10)
-  });
-});
-</script>
+<script type="text/javascript">
+  $('.date').datepicker({  
+     format: 'dd-mm-yyyy'
+   });  
+</script> 
 
 @endsection

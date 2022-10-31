@@ -5,6 +5,9 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 
 class UserSeeder extends Seeder
 {
@@ -21,7 +24,7 @@ class UserSeeder extends Seeder
                 'email'         => 'admin@example.com',
                 'password'      => Hash::make('password'),
                 'created_at'    => date('Y-m-d h:i:s'),
-                'updated_at'    => date('Y-m-d h:i:s')
+                'updated_at'    => date('Y-m-d h:i:s'),
             ],
             [
                 'name'          => 'Jurgen Klopp',  //operator-jaskug

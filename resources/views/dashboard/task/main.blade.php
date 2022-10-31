@@ -39,7 +39,7 @@
               <td>{{ $item->groupservice->deskripsi }}</td>
               <td>{{ $item->perihal }}</td>
               <td>{{ $item->nomor }}</td>
-              <td>{{ $item->tanggal }}</td>
+              <td>{{ $item->tanggal->format('d M Y') }}</td>
               @if($item->status->id === 1)
                 <td><label class="bg-primary rounded text-black opacity-75 d-inline-flex p-1">{{ $item->status->deskripsi }}</label></td>
                   @elseif($item->status->id === 2)
@@ -72,6 +72,30 @@
           </div>
           <div class="modal-body">
             <div class="row">
+              <div class="col-3">  
+                Group Layanan
+                <div class="mb-3" style="">
+                  <select class="form-control" id="mylist">
+                    @foreach ($groupservice as $item)
+                    <option value="{{ $item->id }}">
+                      {{ $item->deskripsi }}
+                    </option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+              <div class="col-3">
+                Layanan
+                <div class="mb-3" style="">
+                  <select class="form-control" id="mylist">
+                    @foreach ($service as $item)
+                    <option value="{{ $item->id }}">
+                      {{ $item->deskripsi }}
+                    </option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
               <div class="col-3">
               Status
                   <div class="mb-3" style="">
@@ -84,30 +108,6 @@
                     </select>
                   </div>
               </div>
-              <div class="col-3">  
-              Group Layanan
-                  <div class="mb-3" style="">
-                    <select class="form-control" id="mylist">
-                      @foreach ($groupservice as $item)
-                      <option value="{{ $item->id }}">
-                        {{ $item->deskripsi }}
-                      </option>
-                      @endforeach
-                    </select>
-                  </div>
-                </div>
-              <div class="col-3">
-              Status
-                  <div class="mb-3" style="">
-                    <select class="form-control" id="mylist">
-                      @foreach ($service as $item)
-                      <option value="{{ $item->id }}">
-                        {{ $item->deskripsi }}
-                      </option>
-                      @endforeach
-                    </select>
-                  </div>
-            </div>
           </div>
           <div class="modal-footer">
               <button class="btn btn-danger" type="button" data-dismiss="modal" onclick="refresh()">Reset</button>
