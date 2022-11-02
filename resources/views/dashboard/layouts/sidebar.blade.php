@@ -40,7 +40,7 @@
           </a>
         </li> --}}
       </ul>
-      {{-- @can(['operator', 'admin']) --}}
+      @role('admin|operator')
       <div class="sidebar-heading">
         Master Data
       </div>
@@ -81,12 +81,14 @@
             Dokumentasi
           </a>
         </li> --}}
+        @role('admin')
         <li class="nav-item {{ Request::is('dashboard/user*') ? 'active' : '' }}">
           <a class="nav-link {{ Request::is('dashboard/user*') ? 'active' : '' }}" href="/dashboard/user">
             <i class="fa fa-user" aria-hidden="true"></i>
             User
           </a>
         </li>
+        @endrole
       </ul>
-      {{-- @endcan --}}
+      @endrole
 </ul>

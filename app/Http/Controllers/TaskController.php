@@ -10,8 +10,6 @@ use App\Models\Dokumentasi;
 use App\Models\Service;
 use App\Models\Platform;
 use App\Models\Business;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Storage;
 
 class TaskController extends Controller
@@ -69,10 +67,10 @@ class TaskController extends Controller
             'platform_id' => 'required',
             'lampiran' => 'required|file|mimes:pdf,jpg,jpeg|max:1024',
             'tanggal' => 'required|date',
+            'tanggal_eksekusi' => 'date',
             'nomor' => 'required',
             'perihal' => 'required|max:255',
             'deskripsi' => 'required|max:255'
-            
         ]);
 
         if($request->file('lampiran')){
@@ -122,28 +120,12 @@ class TaskController extends Controller
     public function update(Dokumentasi $dokumentasi, Request $request, $id)
     {
         $rules  = [
-            'status_id' => 'required',
-            'lampiran' => 'required|file|max:1024'
+            'tanggal_eksekusi' => 'required|date',
         ];
-        
-        $validatedData = $request->validate($rules);
-        
-        // $activity->description; //returns 'created'
-        // $activity->subject; //returns the instance of NewsItem that was created
-        // $activity->changes; //returns ['attributes' => ['name' => 'original name', 'text' => 'Lorum']];
-        
-        if($request->file('lampiran')){
-            if($request->oldLampiran){
-                Storage::delete($request->oldLampiran);
-            }
-            $validatedData['lampiran'] = $request->file('lampiran')->store('lampiran-nde');
-        }
-        
-        $dokumentasi = $dokumentasi->where('id', $id)->firstOrFail()->update($validatedData);
 
-        // $activity = Activity::all()->last();
-    
-        // @dd($activity);
+        $validatedData = $request->validate($rules);
+
+        $dokumentasi = $dokumentasi->where('id', $id)->update($validatedData);
 
         return redirect('/dashboard/task/')->with('success', 'Item has been updated !');
     }

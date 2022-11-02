@@ -96,7 +96,7 @@
       <span class="d-inline-block mx-4 mb-4">
         <button class="btn btn-primary" type="submit">Tambah</button>
       </span>
-      </form>
+    </form>
 </div>
 
 <script type="text/javascript">

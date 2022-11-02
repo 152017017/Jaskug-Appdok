@@ -10,30 +10,38 @@ class UserController extends Controller
 {
     public function index()
     {
-        // $roles = Role::get();
-        // $users = User::has('roles')->get();
+        $roles = Role::get();
+        $users = User::has('roles')->get();
         // dd($users);
 
-        return view('dashboard.user.main', [
-            "list" => User::all(),
-            // compact('roles', 'users')
-        ]);
+        return view('dashboard.user.main', compact('roles', 'users'));
     }
 
     public function create()
     {
-        $roles = Role::get();
-        $user = User::get();
-
-        return view('permissions.user.create', compact('roles', 'user'));
+        return view('dashboard.user.create', [
+            "roles" => Role::all()
+        ]);
     }
 
     public function store(Request $request)
     {
-        $user = User::where('id', ($request->id_user))->first();
-        $user->assignRole($request->roles);
+        // @dd($request);
 
-        return redirect()->route('user.index');
+        // $validatedData = $request->validate([
+        //     "nama" => 'required|max:255|alpha',
+        //     "email" => 'required|email|unique:users',
+        //     "password" => 'required|min:5|max:255',
+        // ]);
+        // $validatedData['password'] = bcrypt($validatedData['password']);
+        
+        // User::create($validatedData);
+
+        $user = User::create($request->all());
+        $roles = $request->input('roles') ? $request->input('roles') : [];
+        $user->assignRole($roles);
+
+        return redirect('/dashboard/user')->with('success', 'New user has been added !');
     }
 
     public function edit($id)

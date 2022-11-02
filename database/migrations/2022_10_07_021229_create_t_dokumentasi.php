@@ -21,7 +21,8 @@ return new class extends Migration
             $table->foreignId('status_id')->index('fk_status_to_dokumentasi');
             $table->foreignId('platform_id')->index('fk_platform_to_dokumentasi');
             $table->string('lampiran')->nullable();
-            $table->date('tanggal');  // date
+            $table->date('tanggal');  
+            $table->date('tanggal_eksekusi')->nullable();  
             $table->string('nomor')->unique();
             $table->text('perihal');
             $table->text('deskripsi');

@@ -41,7 +41,6 @@ class BusinessController extends Controller
         $validatedData = $request->validate([
             'deskripsi' => 'required|max:255',
             'pemilik' => 'required|max:255'
-
         ]);
 
         Business::create($validatedData);

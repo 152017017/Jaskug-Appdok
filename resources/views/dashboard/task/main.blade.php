@@ -11,8 +11,10 @@
     </div>
     @endif
 
+  @role('admin|user-bisnis') 
   <a href="{{ route('task.create') }}" class="btn btn-primary mb-3"><i class="fa fa-plus" aria-hidden="true"></i> Tambah Permintaan</a>
-    
+  @endrole
+
     <div class="card shadow mb-4">
       <div class="card-body">
         <a class="btn btn-secondary mb-4" data-toggle="modal" data-target="#filterModal"><i class="fa fa-filter" aria-hidden="true"></i>
@@ -29,6 +31,10 @@
               <th scope="col">Nomor NDE</th>
               <th scope="col">Tanggal NDE</th>
               <th scope="col">Status</th>
+              <th scope="col">Tindak Lanjut</th>
+              @role('operator')
+              <th scope="col">Action</th>
+              @endrole
             </tr>
           </thead>
           <tbody>
@@ -53,6 +59,16 @@
                   @else
                 <td><label class="bg-success rounded text-black opacity-75 d-inline-flex p-2">{{ $item->status->deskripsi }}</label></td>
               @endif
+              @if (empty($item->tanggal_eksekusi))
+                <td> -- </td>
+              @else 
+                <td> {{"Dieksekusi pada " .$item->tanggal_eksekusi->format('d M Y') }} </td>              
+              @endif
+              @role('operator')
+              <td>
+                <a href="{{ route('task.edit', $item->id) }}" class="btn btn-warning d-flex justify-content-center"><span data-feather="edit"></span></a>
+              </td>
+              @endrole
             </tr>
           @endforeach
           </tbody>
@@ -114,7 +130,7 @@
               <button class="btn btn-primary" type="submit" data-dismiss="modal" onclick="filter()">Filter</button>
           </div>
       </div>
-  </div>
+</div>
 
   <script>
     function filter() {

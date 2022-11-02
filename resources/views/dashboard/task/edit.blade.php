@@ -13,31 +13,31 @@
   <div class="col-md-4 mx-4">
       <div class="mb-2">
         <label for="status" class="form-label">Status</label>
-        <input type="text" class="form-control @error('status') is-invalid @enderror"
+        <input type="text" style="width: auto" class="form-control @error('status') is-invalid @enderror"
         value="{{ old('status', $item->status->deskripsi) }}" disabled>
       </div>
       <div class="mb-2">
         <label for="group" class="form-label">Group Layanan</label>
-        <input type="text" class="form-control @error('groupservice') is-invalid @enderror"
+        <input type="text" style="width: auto" class="form-control @error('groupservice') is-invalid @enderror"
         value="{{ old('groupservice', $item->groupservice->deskripsi) }}" disabled>
       </div>
       <div class="mb-2">
         <label for="layanan" class="form-label">Layanan</label>
-        <input type="text" class="form-control @error('service') is-invalid @enderror"
+        <input type="text" style="width: auto" class="form-control @error('service') is-invalid @enderror"
         value="{{ old('service', $item->service->deskripsi) }}" disabled>
       </div>
       <div class="mb-2">
         <label for="platform" class="form-label">Platform</label>
-        <input type="text" class="form-control @error('platform') is-invalid @enderror"
+        <input type="text" style="width: auto" class="form-control @error('platform') is-invalid @enderror"
         value="{{ old('platform', $item->platform->deskripsi) }}" disabled>
       </div>
       <div class="mb-2">
         <label for="pemilik" class="form-label">Pemilik</label>
-        <input type="text" class="form-control @error('business') is-invalid @enderror"
+        <input type="text" style="width: auto" class="form-control @error('business') is-invalid @enderror"
         value="{{ old('business', $item->business->deskripsi) }}" disabled>
       </div> 
   </div> 
-  <div class="col-md-4 mx-auto">
+  <div class="col-md-4 mx-4">
       <div class="mb-3">
         <label for="lampiran" class="form-label">Lampiran</label>
         <input type="text" class="form-control @error('lampiran') is-invalid @enderror"
@@ -46,7 +46,7 @@
       <div class="mb-3">
         <label for="tanggal" class="form-label">Tanggal NDE</label>
         <input type="text" class="form-control @error('tanggal') is-invalid @enderror"
-        value="{{ old('tanggal', $item->tanggal) }}" disabled>
+        value="{{ old('tanggal', $item->tanggal->format('d M Y')) }}" disabled>
       </div>
       <div class="mb-3">
         <label for="nomor" class="form-label">Nomor NDE</label>
@@ -60,14 +60,16 @@
       </div>
       <div class="mb-3">
         <label for="deskripsi" class="form-label">Uraian NDE</label>
-        <input type="text" class="form-control @error('deskripsi') is-invalid @enderror"
-        value="{{ old('deskripsi', $item->deskripsi) }}" disabled>
+        <textarea type="text" style="height: 110px;" class="form-control @error('deskripsi') is-invalid @enderror"
+        disabled>{{ old('deskripsi', $item->deskripsi) }}
+        </textarea>
       </div>
   </div>
 </div>
 
 <h1 class="h4 mb-4">Update Permintaan</h1>
 <div class="row mx-auto">
+  @role('user-bisnis')
   <form method="post" action="{{ route('task.update', $item->id) }}" enctype="multipart/form-data">
     @csrf
   <div class="col-md-4">
@@ -96,10 +98,32 @@
     </div>
   </div>
   </form>
+  @endrole
+  @role('operator')
+  <form method="post" action="{{ route('task.update', $item->id) }}" enctype="multipart/form-data">
+    @csrf
+    <div class="mt-2 mb-2">
+      <div class="d-inline-block">
+        <label for="tanggal_eksekusi" class="form-label">Tanggal eksekusi</label>
+        <input class="date form-control" type="text" id="tanggal_eksekusi" name="tanggal_eksekusi" required>
+        @error('tanggal_eksekusi')
+          <div class="invalid-feedback">
+            {{ $message }}
+          </div>
+        @enderror
+      </div>
+      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Simpan Perubahan">
+        <button class="btn btn-primary" type="submit">Tindak Lanjuti</button>
+      </span>
+    </div>
+  </form>
+  @endrole
 </div>
 
-<script>
-    //
-</script>
+<script type="text/javascript">
+  $('.date').datepicker({  
+     format: 'yyyy-mm-dd'
+   });  
+</script> 
 
 @endsection

@@ -27,15 +27,15 @@ class UserSeeder extends Seeder
                 'updated_at'    => date('Y-m-d h:i:s'),
             ],
             [
-                'name'          => 'Jurgen Klopp',  //operator-jaskug
-                'email'         => 'klopp@example.com',
+                'name'          => 'Pak Angga',  //operator-jaskug
+                'email'         => 'angga@example.com',
                 'password'      => Hash::make('password'),
                 'created_at'    => date('Y-m-d h:i:s'),
                 'updated_at'    => date('Y-m-d h:i:s')
             ],
             [
-                'name'          => 'Sadio Mane',    //user-bisnis
-                'email'         => 'sadio@example.com',
+                'name'          => 'User Bisnis',    //user-bisnis
+                'email'         => 'ubisnis@example.com',
                 'password'      => Hash::make('password'),
                 'created_at'    => date('Y-m-d h:i:s'),
                 'updated_at'    => date('Y-m-d h:i:s')

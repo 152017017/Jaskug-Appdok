@@ -15,7 +15,7 @@ class Dokumentasi extends Model
     protected $table = 't_dokumentasi';
     protected $guarded = [];
     protected $with = ['service', 'business', 'groupservice', 'status', 'platform'];
-    protected $dates = ['tanggal'];
+    protected $dates = ['tanggal', 'tanggal_eksekusi'];
     protected $fillable = [
         'layanan_id',
         'bisnis_id',
@@ -24,6 +24,7 @@ class Dokumentasi extends Model
         'platform_id',
         'lampiran',
         'tanggal',
+        'tanggal_eksekusi',
         'nomor',
         'perihal',
         'deskripsi'

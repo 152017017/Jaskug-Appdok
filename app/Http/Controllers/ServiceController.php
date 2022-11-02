@@ -44,7 +44,6 @@ class ServiceController extends Controller
             'gruplayanan_id' => 'required',
             'nama' => 'required|max:255',
             'deskripsi' => 'required|max:255'
-
         ]);
 
         Service::create($validatedData);

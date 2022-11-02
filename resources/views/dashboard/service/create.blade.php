@@ -23,7 +23,8 @@
           <select class="form-select" name="gruplayanan_id">
             @foreach ($groupservice as $gservice)
             <option value="{{ $gservice->id }}" {{ old('gruplayanan_id') == $gservice->id ? ' selected' : ' ' }}>
-              {{ $gservice->deskripsi }}</option>
+              {{ $gservice->deskripsi }}
+            </option>
             @endforeach
           </select>
         </div>

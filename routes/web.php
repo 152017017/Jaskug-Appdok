@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Crypt;
 // use App\Http\Controllers\MailController;
+// use App\Http\Controllers\DokumentasiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\TaskController;
@@ -10,10 +11,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ServiceController;
-// use App\Http\Controllers\DokumentasiController;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\PlatformController;
-use App\Http\Controllers\DokumentasiController;
 use App\Http\Controllers\GroupServiceController;
 
 /*
@@ -124,7 +123,7 @@ Route::controller(StatusController::class)->prefix('dashboard/status')->middlewa
 //     Route::post('/dashboard/dokumentasi/delete/{id}', 'destroy')->name('dokumentasi.delete');
 // });
 
-Route::controller(UserController::class)->prefix('dashboard/user')->middleware('role:admin|operator')->group(function () {
+Route::controller(UserController::class)->prefix('dashboard/user')->middleware('role:admin')->group(function () {
     Route::get('/', 'index');
     Route::get('/create', 'create')->name('user.create');
     Route::post('/', 'store')->name('user.store');
@@ -135,38 +134,38 @@ Route::controller(UserController::class)->prefix('dashboard/user')->middleware('
 
 // Roles and Permissions
 
-Route::prefix('roles-and-permissions')->namespace('Permissions')->middleware('role:admin')->group(function () {
-    Route::prefix('roles')->group(function () {
-        Route::get('/', 'RolesController@index')->name('roles.index');
-        Route::get('/create', 'RolesController@create')->name('roles.create');
-        Route::post('/store', 'RolesController@store')->name('roles.store');
-        Route::get('/edit/{id}', 'RolesController@edit')->name('roles.edit');
-        Route::put('/update', 'RolesController@update')->name('roles.update');
-        Route::get('/delete/{id}', 'RolesController@delete')->name('roles.delete');
-    });
+// Route::prefix('roles-and-permissions')->namespace('Permissions')->middleware('role:admin')->group(function () {
+//     Route::prefix('roles')->group(function () {
+//         Route::get('/', 'RolesController@index')->name('roles.index');
+//         Route::get('/create', 'RolesController@create')->name('roles.create');
+//         Route::post('/store', 'RolesController@store')->name('roles.store');
+//         Route::get('/edit/{id}', 'RolesController@edit')->name('roles.edit');
+//         Route::put('/update', 'RolesController@update')->name('roles.update');
+//         Route::get('/delete/{id}', 'RolesController@delete')->name('roles.delete');
+//     });
 
-    Route::prefix('permissions')->group(function () {
-        Route::get('/', 'PermissionsController@index')->name('permissions.index');
-        Route::get('/create', 'PermissionsController@create')->name('permissions.create');
-        Route::post('/store', 'PermissionsController@store')->name('permissions.store');
-        Route::get('/edit/{id}', 'PermissionsController@edit')->name('permissions.edit');
-        Route::put('/update', 'PermissionsController@update')->name('permissions.update');
-        Route::get('/delete/{id}', 'PermissionsController@delete')->name('permissions.delete');
-    });
+//     Route::prefix('permissions')->group(function () {
+//         Route::get('/', 'PermissionsController@index')->name('permissions.index');
+//         Route::get('/create', 'PermissionsController@create')->name('permissions.create');
+//         Route::post('/store', 'PermissionsController@store')->name('permissions.store');
+//         Route::get('/edit/{id}', 'PermissionsController@edit')->name('permissions.edit');
+//         Route::put('/update', 'PermissionsController@update')->name('permissions.update');
+//         Route::get('/delete/{id}', 'PermissionsController@delete')->name('permissions.delete');
+//     });
 
-    Route::prefix('assign-permissions')->group(function () {
-        Route::get('/', 'AssignController@index')->name('assign.index');
-        Route::get('/create', 'AssignController@create')->name('assign.create');
-        Route::post('/store', 'AssignController@store')->name('assign.store');
-        Route::get('/edit/{id}', 'AssignController@edit')->name('assign.edit');
-        Route::put('/update', 'AssignController@update')->name('assign.update');
-    });
+//     Route::prefix('assign-permissions')->group(function () {
+//         Route::get('/', 'AssignController@index')->name('assign.index');
+//         Route::get('/create', 'AssignController@create')->name('assign.create');
+//         Route::post('/store', 'AssignController@store')->name('assign.store');
+//         Route::get('/edit/{id}', 'AssignController@edit')->name('assign.edit');
+//         Route::put('/update', 'AssignController@update')->name('assign.update');
+//     });
 
-    Route::prefix('user-permissions')->group(function () {
-        Route::get('/', 'UserController@index')->name('user.index');
-        Route::get('/create', 'UserController@create')->name('user.create');
-        Route::post('/store', 'UserController@store')->name('user.store');
-        Route::get('/edit/{id}', 'UserController@edit')->name('user.edit');
-        Route::put('/update', 'UserController@update')->name('user.update');
-    });
-});
+//     Route::prefix('user-permissions')->group(function () {
+//         Route::get('/', 'UserController@index')->name('user.index');
+//         Route::get('/create', 'UserController@create')->name('user.create');
+//         Route::post('/store', 'UserController@store')->name('user.store');
+//         Route::get('/edit/{id}', 'UserController@edit')->name('user.edit');
+//         Route::put('/update', 'UserController@update')->name('user.update');
+//     });
+// });
