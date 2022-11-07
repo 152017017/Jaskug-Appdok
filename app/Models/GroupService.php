@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class GroupService extends Model
 {
@@ -20,5 +21,5 @@ class GroupService extends Model
     public function business(){
         return $this->belongsTo(Business::class, 'bisnis_id');
     }
-    
+
 }

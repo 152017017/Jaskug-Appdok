@@ -16,7 +16,7 @@ class BusinessController extends Controller
     public function index()
     {
         return view('dashboard.bisnis.main', [
-            'list' => Business::all()
+            "business" => Business::all()
         ]);
     }
 
@@ -39,8 +39,8 @@ class BusinessController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'deskripsi' => 'required|max:255',
-            'pemilik' => 'required|max:255'
+            "deskripsi" => 'required|min:1|max:255',
+            "pemilik"   => 'required|min:1|max:255'
         ]);
 
         Business::create($validatedData);
@@ -72,7 +72,7 @@ class BusinessController extends Controller
         $business = $business->findOrFail($id);
 
         return view('dashboard.bisnis.edit', [
-            'item' => $business
+            "business" => $business
         ]);
 
     }
@@ -87,8 +87,8 @@ class BusinessController extends Controller
     public function update(Request $request, Business $business, $id)
     {
         $rules  = [
-            'deskripsi' => 'required|max:255',
-            'pemilik' => 'required|max:255'
+            "deskripsi" => 'required|min:1|max:255',
+            "pemilik"   => 'required|min:1|max:255'
         ];
 
         $validatedData = $request->validate($rules);

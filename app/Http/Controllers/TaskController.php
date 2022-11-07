@@ -11,6 +11,7 @@ use App\Models\Service;
 use App\Models\Platform;
 use App\Models\Business;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
@@ -21,14 +22,9 @@ class TaskController extends Controller
      */
     public function index()
     {
-        // Permission::create(['name' => 'add business']);
-        // $role = Role::findById(1);
-        // $permission = Permission::findById(1);
-        // $role->givePermissionTo($permission);
-        
         return view('dashboard.task.main', [
-            "title" => "Permintaan",
-            "list"  => Dokumentasi::all(),
+            "title"         => "Permintaan",
+            "dokumentasi"   => Dokumentasi::all(),
             "status"        => Status::all(),
             "groupservice"  => GroupService::all(),
             "service"       => Service::all()
@@ -43,11 +39,11 @@ class TaskController extends Controller
     public function create()
     {
         return view('dashboard.task.create', [
-            "groupservice"  => GroupService::all(),
             "status"        => Status::all(),
-            "service"   => Service::all(),
-            "platform"  => Platform::all(),
-            "business"  => Business::all()
+            "groupservice"  => GroupService::all(),
+            "service"       => Service::all(),
+            "platform"      => Platform::all(),
+            "business"      => Business::all()
         ]);
     }
 
@@ -60,17 +56,17 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'layanan_id' => 'required',
-            'bisnis_id' => 'required',
-            'gruplayanan_id' => 'required',
-            'status_id' => 'required',
-            'platform_id' => 'required',
-            'lampiran' => 'required|file|mimes:pdf,jpg,jpeg|max:1024',
-            'tanggal' => 'required|date',
-            'tanggal_eksekusi' => 'date',
-            'nomor' => 'required',
-            'perihal' => 'required|max:255',
-            'deskripsi' => 'required|max:255'
+            "layanan_id"        => 'required',
+            "bisnis_id"         => 'required',
+            "gruplayanan_id"    => 'required',
+            "status_id"         => 'required',
+            "platform_id"       => 'required',
+            "lampiran"          => 'required|file|mimes:pdf,jpg,jpeg|max:1024',
+            "tanggal"           => 'required|date',
+            // "tanggal_eksekusi"  => 'date',
+            "nomor"             => 'required',
+            "perihal"           => 'required|max:255',
+            "deskripsi"         => 'required|max:255'
         ]);
 
         if($request->file('lampiran')){
@@ -105,8 +101,8 @@ class TaskController extends Controller
         $dokumentasi = $dokumentasi->findOrFail($id);
 
         return view('dashboard.task.edit', [
-            'item' => $dokumentasi,
-            'status' => Status::all()
+            "dokumentasi"   => $dokumentasi,
+            "status"        => Status::all()
         ]);
     }
 
@@ -120,7 +116,7 @@ class TaskController extends Controller
     public function update(Dokumentasi $dokumentasi, Request $request, $id)
     {
         $rules  = [
-            'tanggal_eksekusi' => 'required|date',
+            "tanggal_eksekusi" => 'required|date',
         ];
 
         $validatedData = $request->validate($rules);

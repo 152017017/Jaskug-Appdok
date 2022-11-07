@@ -37,6 +37,10 @@ class RolesSeeder extends Seeder
         $role = Role::create(['name' => 'user-bisnis']);
         $role->givePermissionTo(['create task', 'edit task']);
 
+        // Roles User QA
+        $role = Role::create(['name' => 'user-qa']);
+        $role->givePermissionTo(['edit task']);
+
         // Assigning Roles and Permission
         $admin = User::find(1);
         $admin->assignRole('admin');
@@ -46,6 +50,9 @@ class RolesSeeder extends Seeder
 
         $user_bisnis = User::find(3);
         $user_bisnis->assignRole('user-bisnis');
+
+        $user_qa = User::find(4);
+        $user_qa->assignRole('user-qa');
         
     }
 }

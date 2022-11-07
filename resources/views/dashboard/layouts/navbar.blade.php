@@ -48,65 +48,45 @@
 
       <!-- Nav Item - Alerts -->
       <li class="nav-item dropdown no-arrow mx-1">
-          <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-envelope fa-fw"></i>
-              <!-- Counter - Alerts -->
-              @if ("{{ count($dokumentasi
-              ) }}" >= 1)
-              <span class="badge badge-danger badge-counter">
-                {{ count($dokumentasi
-                ) }}
-              </span>
-              @elseif ("{{ count($dokumentasi
-              ) }}" == 0)
-              <span class="badge badge-danger badge-counter">
-                0
-              </span>
-              @endif
-
-          </a>
-          <!-- Dropdown - Alerts -->
-          <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-              aria-labelledby="alertsDropdown">
-              <h6 class="dropdown-header">
-                  Notifications Center
-              </h6>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                      <div class="icon-circle bg-primary">
-                          <i class="fas fa-file-alt text-white"></i>
-                      </div>
-                  </div>
-                  <div>
-                      <div class="small text-gray-500">December 12, 2019</div>
-                      <span class="font-weight-bold">A new task has been added</span>
-                  </div>
-              </a>
-              {{-- <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                      <div class="icon-circle bg-success">
-                          <i class="fas fa-donate text-white"></i>
-                      </div>
-                  </div>
-                  <div>
-                      <div class="small text-gray-500">December 7, 2019</div>
-                      $290.29 has been deposited into your account!
-                  </div>
-              </a> --}}
-              {{-- <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                      <div class="icon-circle bg-warning">
-                          <i class="fas fa-exclamation-triangle text-white"></i>
-                      </div>
-                  </div>
-                  <div>
-                      <div class="small text-gray-500">December 2, 2019</div>
-                      Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-              </a> --}}
-              <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-          </div>
+          @role('operator')
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-envelope fa-fw"></i>
+                <!-- Counter - Alerts -->
+                @if ("{{ count($dokumentasi) }}" >= 1)
+                    <span class="badge badge-danger badge-counter" id="badgeNotif">
+                        {{ count($dokumentasi) }}
+                    </span>
+                @elseif ("{{ count($dokumentasi) }}" == 0)
+                    <span class="badge badge-danger badge-counter" id="badgeNotif">
+                    </span>
+                @endif
+            </a>
+        
+            <!-- Dropdown - Alerts -->
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" 
+            aria-labelledby="alertsDropdown" >
+                <h6 class="dropdown-header">
+                    Notifications Center
+                </h6>
+                <div id="myNotifications">
+                @foreach ($dokumentasi as $item)
+                <a class="dropdown-item d-flex align-items-center" href="{{ route('task.edit', $item->id) }}">
+                    <div class="mr-3">
+                        <div class="icon-circle bg-primary">
+                            <i class="fas fa-file-alt text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="small text-gray-500">{{ $item->created_at->format('d M Y') }}</div>
+                        <span class="font-weight-bold">A new task has been added</span>
+                    </div>
+                </a>
+                @endforeach
+                </div>
+                <a class="dropdown-item text-center small text-gray-500" onclick="myTask()">Show / hide notifications</a>
+            </div>
+          @endrole
       </li>
 
       {{-- <!-- Nav Item - Messages -->
@@ -233,5 +213,14 @@
 </div>
  
 <script>
-    
+    function myTask() {
+        var x = document.getElementById("myNotifications");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+        
+    }
+
 </script>

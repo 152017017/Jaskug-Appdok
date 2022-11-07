@@ -11,7 +11,7 @@
         @csrf
         <div class="mb-3">
           <label for="deskripsi" class="form-label">Nama Group Layanan</label>
-          <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" required autofocus
+          <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" required
           value="{{ old('deskripsi', $item->deskripsi) }}">
           @error('deskripsi')
           <div class="invalid-feedback">
@@ -19,7 +19,8 @@
           </div>
           @enderror
         </div>
-        <button type="button" class="btn btn-outline-secondary"> <a href="/dashboard/gruplayanan" class="text-black-50 text-decoration-none">Kembali</button></a>
+        
+        <a class="btn btn-outline-secondary text-black-50 text-decoration-none" href="/dashboard/gruplayanan">Kembali</a>
         <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Simpan Perubahan">
           <button class="btn btn-primary" type="submit">Simpan Perubahan</button>
         </span>

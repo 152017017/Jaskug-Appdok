@@ -57,7 +57,7 @@
                     </label>
                   </div> --}}
                   <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Sign in</button>
-                  <small class="d-block text-center mt-3"><a href="/">Back to menu</a></small>
+                  {{-- <small class="d-block text-center mt-3"><a href="/">Back to menu</a></small> --}}
                   <p class="mt-2 mb-3 text-muted" style="text-align:right">&copy; AppDok 2022</p>
                 </form>
             </main>

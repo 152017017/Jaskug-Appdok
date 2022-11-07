@@ -16,7 +16,7 @@ class ServiceController extends Controller
     public function index()
     {
         return view('dashboard.service.main', [
-            'list' => Service::all()
+            "service" => Service::all()
         ]);
     }
 
@@ -28,7 +28,7 @@ class ServiceController extends Controller
     public function create()
     {
         return view('dashboard.service.create', [
-            'groupservice' => GroupService::all()
+            "groupservice" => GroupService::all()
         ]);
     }
 
@@ -41,9 +41,9 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'gruplayanan_id' => 'required',
-            'nama' => 'required|max:255',
-            'deskripsi' => 'required|max:255'
+            "gruplayanan_id"    => 'required',
+            "nama"              => 'required|max:255',
+            "deskripsi"         => 'required|max:255'
         ]);
 
         Service::create($validatedData);
@@ -73,7 +73,7 @@ class ServiceController extends Controller
         $service = $service->findOrFail($id);
 
         return view('dashboard.service.edit', [
-            'item' => $service
+            "service" => $service
         ]);
     }
 
@@ -87,9 +87,9 @@ class ServiceController extends Controller
     public function update(Service $service, Request $request, $id)
     {
         $rules  = [
-            'gruplayanan_id' => 'required',
-            'nama' => 'required|max:255',
-            'deskripsi' => 'required|max:255'
+            "gruplayanan_id"    => 'required',
+            "nama"              => 'required|max:255',
+            "deskripsi"         => 'required|max:255'
         ];
 
         $validatedData = $request->validate($rules);

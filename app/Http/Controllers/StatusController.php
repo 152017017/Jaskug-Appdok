@@ -15,7 +15,7 @@ class StatusController extends Controller
     public function index()
     {
         return view('dashboard.status.main', [
-            'list' => Status::all()
+            "status" => Status::all()
         ]);
     }
 
@@ -38,8 +38,7 @@ class StatusController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'deskripsi' => 'required|max:255'
-
+            "deskripsi" => 'required|max:255'
         ]);
 
         Status::create($validatedData);
@@ -69,7 +68,7 @@ class StatusController extends Controller
         $status = $status->findOrFail($id);
 
         return view('dashboard.status.edit', [
-            'item' => $status
+            "status" => $status
         ]);
     }
 
@@ -83,7 +82,7 @@ class StatusController extends Controller
     public function update(Request $request, Status $status, $id)
     {
         $rules  = [
-            'deskripsi' => 'required|max:255'
+            "deskripsi" => 'required|max:255'
         ];
 
         $validatedData = $request->validate($rules);

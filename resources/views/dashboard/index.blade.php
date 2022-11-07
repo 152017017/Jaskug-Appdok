@@ -40,7 +40,7 @@
             
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                @include('dashboard.layouts.navbar', ['dokumentasi' => Dokumentasi::all()])
+                @include('dashboard.layouts.navbar', ['dokumentasi' => Dokumentasi::latest()->paginate(3)])
 
                 <div class="container-fluid">
                     @yield('container')

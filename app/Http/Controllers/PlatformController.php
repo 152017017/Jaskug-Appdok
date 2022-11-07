@@ -15,7 +15,7 @@ class PlatformController extends Controller
     public function index()
     {
         return view('dashboard.platform.main', [
-            'list' => Platform::all()
+            "platform" => Platform::all()
         ]);
     }
 

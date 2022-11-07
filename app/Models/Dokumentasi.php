@@ -57,8 +57,8 @@ class Dokumentasi extends Model
     {
         return LogOptions::defaults()
         ->logOnly([
-        'status.deskripsi',
-        'lampiran'])
+            'status.deskripsi',
+            'lampiran'])
         ->logOnlyDirty();
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GroupService;
+use App\Models\Business;
 use Illuminate\Http\Request;
 
 class GroupServiceController extends Controller
@@ -15,7 +16,7 @@ class GroupServiceController extends Controller
     public function index()
     {
         return view('dashboard.gruplayanan.main', [
-            'list' => GroupService::all()
+            "groupservice" => GroupService::all()
         ]);
     }
 
@@ -38,8 +39,8 @@ class GroupServiceController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'bisnis_id' => 'unrequired',
-            'deskripsi' => 'required|max:255'
+            "bisnis_id" => 'unrequired',
+            "deskripsi" => 'required|max:255'
         ]);
 
         GroupService::create($validatedData);
@@ -69,7 +70,8 @@ class GroupServiceController extends Controller
         $groupService = $groupService->findOrFail($id);
 
         return view('dashboard.gruplayanan.edit', [
-            'item' => $groupService
+            "groupservice"  => $groupService,
+            "business"      => Business::all()
         ]);
     }
 
@@ -83,7 +85,8 @@ class GroupServiceController extends Controller
     public function update(Request $request, GroupService $groupService, $id)
     {
         $rules  = [
-            'deskripsi' => 'required|max:255'
+            'deskripsi' => 'required|max:255',
+            'bisnis_id' => 'required'
         ];
 
         $validatedData = $request->validate($rules);

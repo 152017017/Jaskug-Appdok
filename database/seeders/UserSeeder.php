@@ -20,22 +20,29 @@ class UserSeeder extends Seeder
     {
         $list = [
             [
-                'name'          => 'Admin',
+                'name'          => 'Admin',             //admin
                 'email'         => 'admin@example.com',
                 'password'      => Hash::make('password'),
                 'created_at'    => date('Y-m-d h:i:s'),
                 'updated_at'    => date('Y-m-d h:i:s'),
             ],
             [
-                'name'          => 'Pak Angga',  //operator-jaskug
+                'name'          => 'Operator-Jaskug',   //operator-jaskug
                 'email'         => 'angga@example.com',
                 'password'      => Hash::make('password'),
                 'created_at'    => date('Y-m-d h:i:s'),
                 'updated_at'    => date('Y-m-d h:i:s')
             ],
             [
-                'name'          => 'User Bisnis',    //user-bisnis
-                'email'         => 'ubisnis@example.com',
+                'name'          => 'User-Bisnis',       //user-bisnis
+                'email'         => 'bisnis@example.com',
+                'password'      => Hash::make('password'),
+                'created_at'    => date('Y-m-d h:i:s'),
+                'updated_at'    => date('Y-m-d h:i:s')
+            ],
+            [
+                'name'          => 'User-QA',           //user-qa
+                'email'         => 'userqa@example.com',
                 'password'      => Hash::make('password'),
                 'created_at'    => date('Y-m-d h:i:s'),
                 'updated_at'    => date('Y-m-d h:i:s')

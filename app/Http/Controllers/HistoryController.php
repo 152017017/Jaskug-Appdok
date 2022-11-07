@@ -16,7 +16,7 @@ class HistoryController extends Controller
     public function index()
     {
         return view('dashboard.history.main', [
-            "list" => Dokumentasi::all()
+            "dokumentasi" => Dokumentasi::all()
         ]);
     }
 
@@ -56,8 +56,8 @@ class HistoryController extends Controller
         // return response()->download('lampiran-nde/');
  
         return view('dashboard.history.show', [
-            "item" => $dokumentasi,
-            "activityLog" => $activity
+            "dokumentasi"   => $dokumentasi,
+            "activityLog"   => $activity
         ]);
     }
 

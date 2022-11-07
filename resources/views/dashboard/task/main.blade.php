@@ -1,15 +1,15 @@
 @extends('dashboard.index')
 
 @section('container')
-    {{-- @section('title') --}}
-    <h1 class="h3 mb-2 text-gray-800">Permintaan Berjalan</h1>
-    {{-- @endsection --}}
+  {{-- @section('title') --}}
+  <h1 class="h3 mb-2 text-gray-800">Permintaan Berjalan</h1>
+  {{-- @endsection --}}
 
-    @if (session()->has('success'))
-    <div class="alert alert-success col-lg-8" role="alert">
-      {{ session('success') }}
-    </div>
-    @endif
+  @if (session()->has('success'))
+  <div class="alert alert-success col-lg-8" role="alert">
+    {{ session('success') }}
+  </div>
+  @endif
 
   @role('admin|user-bisnis') 
   <a href="{{ route('task.create') }}" class="btn btn-primary mb-3"><i class="fa fa-plus" aria-hidden="true"></i> Tambah Permintaan</a>
@@ -30,48 +30,50 @@
               <th scope="col">Perihal NDE</th>
               <th scope="col">Nomor NDE</th>
               <th scope="col">Tanggal NDE</th>
-              <th scope="col">Status</th>
+              <th scope="col">Nama Kegiatan</th>
               <th scope="col">Tindak Lanjut</th>
               @role('operator')
               <th scope="col">Action</th>
               @endrole
             </tr>
           </thead>
+
           <tbody>
-          @foreach ($list as $item)    
+          @foreach ($dokumentasi as $item => $dokumentasi)    
             <tr>
               <td>{{ $loop->iteration }}</td>
-              <td>{{ $item->service->deskripsi }}</td>
-              <td>{{ $item->groupservice->deskripsi }}</td>
-              <td>{{ $item->perihal }}</td>
-              <td>{{ $item->nomor }}</td>
-              <td>{{ $item->tanggal->format('d M Y') }}</td>
-              @if($item->status->id === 1)
-                <td><label class="bg-primary rounded text-black opacity-75 d-inline-flex p-1">{{ $item->status->deskripsi }}</label></td>
-                  @elseif($item->status->id === 2)
-                <td><label class="bg-secondary rounded text-black opacity-75 d-inline-flex p-2">{{ $item->status->deskripsi }}</label></td>
-                  @elseif($item->status->id === 3)
-                <td><label class="bg-info rounded text-black opacity-75 d-inline-flex p-2">{{ $item->status->deskripsi }}</label></td>
-                  @elseif($item->status->id === 4)
-                <td><label class="bg-warning rounded text-black opacity-75 d-inline-flex p-2">{{ $item->status->deskripsi }}</label></td>
-                  @elseif($item->status->id === 5)
-                <td><label class="bg-danger rounded text-black opacity-75 d-inline-flex p-2">{{ $item->status->deskripsi }}</label></td>
+              <td>{{ $dokumentasi->service->deskripsi }}</td>
+              <td>{{ $dokumentasi->groupservice->deskripsi }}</td>
+              <td>{{ $dokumentasi->perihal }}</td>
+              <td>{{ $dokumentasi->nomor }}</td>
+              <td>{{ $dokumentasi->tanggal->format('d M Y') }}</td>
+              @if($dokumentasi->status->id === 1)
+                <td><label class="bg-primary rounded text-black opacity-75 d-inline-flex p-1">{{ $dokumentasi->status->deskripsi }}</label></td>
+                  @elseif($dokumentasi->status->id === 2)
+                <td><label class="bg-secondary rounded text-black opacity-75 d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
+                  @elseif($dokumentasi->status->id === 3)
+                <td><label class="bg-info rounded text-black opacity-75 d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
+                  @elseif($dokumentasi->status->id === 4)
+                <td><label class="bg-warning rounded text-black opacity-75 d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
+                  @elseif($dokumentasi->status->id === 5)
+                <td><label class="bg-danger rounded text-black opacity-75 d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
                   @else
-                <td><label class="bg-success rounded text-black opacity-75 d-inline-flex p-2">{{ $item->status->deskripsi }}</label></td>
+                <td><label class="bg-success rounded text-black opacity-75 d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
               @endif
-              @if (empty($item->tanggal_eksekusi))
+              @if (empty($dokumentasi->tanggal_eksekusi))
                 <td> -- </td>
               @else 
-                <td> {{"Dieksekusi pada " .$item->tanggal_eksekusi->format('d M Y') }} </td>              
+                <td> {{"Lingkungan " .$dokumentasi->status->deskripsi . " dieksekusi pada " .$dokumentasi->tanggal_eksekusi->format('d M Y') }} </td>              
               @endif
               @role('operator')
               <td>
-                <a href="{{ route('task.edit', $item->id) }}" class="btn btn-warning d-flex justify-content-center"><span data-feather="edit"></span></a>
+                <a href="{{ route('task.edit', $dokumentasi->id) }}" class="btn btn-warning d-flex justify-content-center"><span data-feather="edit"></span></a>
               </td>
               @endrole
             </tr>
           @endforeach
           </tbody>
+          
         </table>
       </div>
     </div>
@@ -92,9 +94,9 @@
                 Group Layanan
                 <div class="mb-3" style="">
                   <select class="form-control" id="mylist">
-                    @foreach ($groupservice as $item)
-                    <option value="{{ $item->id }}">
-                      {{ $item->deskripsi }}
+                    @foreach ($groupservice as $item => $groupservice)
+                    <option value="{{ $groupservice->id }}">
+                      {{ $groupservice->deskripsi }}
                     </option>
                     @endforeach
                   </select>
@@ -104,9 +106,9 @@
                 Layanan
                 <div class="mb-3" style="">
                   <select class="form-control" id="mylist">
-                    @foreach ($service as $item)
-                    <option value="{{ $item->id }}">
-                      {{ $item->deskripsi }}
+                    @foreach ($service as $item => $service)
+                    <option value="{{ $service->id }}">
+                      {{ $service->deskripsi }}
                     </option>
                     @endforeach
                   </select>
@@ -116,9 +118,9 @@
               Status
                   <div class="mb-3" style="">
                     <select class="form-control" id="mylist">
-                      @foreach ($status as $item)
-                      <option value="{{ $item->id }}">
-                        {{ $item->deskripsi }}
+                      @foreach ($status as $item => $status)
+                      <option value="{{ $status->id }}">
+                        {{ $status->deskripsi }}
                       </option>
                       @endforeach
                     </select>
@@ -126,8 +128,8 @@
               </div>
           </div>
           <div class="modal-footer">
-              <button class="btn btn-danger" type="button" data-dismiss="modal" onclick="refresh()">Reset</button>
-              <button class="btn btn-primary" type="submit" data-dismiss="modal" onclick="filter()">Filter</button>
+            <button class="btn btn-danger" type="button" data-dismiss="modal" onclick="refresh()">Reset</button>
+            <button class="btn btn-primary" type="submit" data-dismiss="modal" onclick="filter()">Filter</button>
           </div>
       </div>
 </div>
@@ -135,20 +137,20 @@
   <script>
     function filter() {
       var input, filter, table, tr, td, i;
-      input = document.getElementById("mylist");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("dataTable");
-      tr = table.getElementsByTagName("tr");
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
+        input = document.getElementById("mylist");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("dataTable");
+        tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }       
           }
-        }       
-      }
     }
 
     function refresh(){

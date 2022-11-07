@@ -12,7 +12,6 @@ class UserController extends Controller
     {
         $roles = Role::get();
         $users = User::has('roles')->get();
-        // dd($users);
 
         return view('dashboard.user.main', compact('roles', 'users'));
     }
