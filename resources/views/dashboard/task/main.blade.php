@@ -31,9 +31,13 @@
               <th scope="col">Nomor NDE</th>
               <th scope="col">Tanggal NDE</th>
               <th scope="col">Nama Kegiatan</th>
-              <th scope="col">Tindak Lanjut</th>
+              <th scope="col">Status Tindak Lanjut (Operator)</th>
+              <th scope="col">Status Tindak Lanjut (QA)</th>
               @role('operator')
-              <th scope="col">Action</th>
+                <th scope="col">Action</th>
+              @endrole
+              @role('user-qa')
+                <th scope="col">Action</th>
               @endrole
             </tr>
           </thead>
@@ -60,12 +64,24 @@
                   @else
                 <td><label class="bg-success rounded text-black opacity-75 d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
               @endif
-              @if (empty($dokumentasi->tanggal_eksekusi))
+              {{-- Operator --}}
+              @if (empty($dokumentasi->tanggal_eksekusi_op))
                 <td> -- </td>
               @else 
-                <td> {{"Lingkungan " .$dokumentasi->status->deskripsi . " dieksekusi pada " .$dokumentasi->tanggal_eksekusi->format('d M Y') }} </td>              
+                <td> {{"Lingkungan (" .$dokumentasi->status->deskripsi. ") dieksekusi pada (" .$dokumentasi->tanggal_eksekusi_op->format('d M Y'). ")" }} </td>              
+              @endif
+              {{-- Quality Assurance / QA --}}
+              @if (empty($dokumentasi->tanggal_eksekusi_qa))
+                <td> -- </td>
+              @else 
+                <td> {{"Lingkungan (" .$dokumentasi->status->deskripsi. ") dieksekusi pada (" .$dokumentasi->tanggal_eksekusi_qa->format('d M Y'). ")"  }} </td>              
               @endif
               @role('operator')
+              <td>
+                <a href="{{ route('task.edit', $dokumentasi->id) }}" class="btn btn-warning d-flex justify-content-center"><span data-feather="edit"></span></a>
+              </td>
+              @endrole
+              @role('user-qa')
               <td>
                 <a href="{{ route('task.edit', $dokumentasi->id) }}" class="btn btn-warning d-flex justify-content-center"><span data-feather="edit"></span></a>
               </td>

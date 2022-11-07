@@ -28,8 +28,14 @@ class GroupServiceSeeder extends Seeder
                 'updated_at'    => date('Y-m-d h:i:s')
             ],
             [
-                'bisnis_id'     => 4,
+                'bisnis_id'     => 3,
                 'deskripsi'     => 'Telco',
+                'created_at'    => date('Y-m-d h:i:s'),
+                'updated_at'    => date('Y-m-d h:i:s')
+            ],
+            [
+                'bisnis_id'     => 4,
+                'deskripsi'     => 'PLN',
                 'created_at'    => date('Y-m-d h:i:s'),
                 'updated_at'    => date('Y-m-d h:i:s')
             ],

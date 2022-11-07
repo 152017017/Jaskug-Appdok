@@ -7,7 +7,7 @@
 </div>
 
 <div class="col-lg-8">
-  <form method="post" action="{{ route('status.update', $item->id) }}" class="mb-5" enctype="multipart/form-data">
+  <form method="post" action="{{ route('status.update', $status->id) }}" class="mb-5" enctype="multipart/form-data">
     @csrf
       <div class="mb-3">
         <label for="deskripsi" class="form-label">Nama Status</label>

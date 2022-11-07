@@ -40,7 +40,7 @@ Route::get('/dashboard', function(){
     return view('dashboard.index');
 })->middleware('auth');
 
-Route::controller(TaskController::class)->prefix('dashboard/task')->middleware(['role:admin|operator|user-bisnis'])->group(function () {
+Route::controller(TaskController::class)->prefix('dashboard/task')->middleware(['role:admin|operator|user-bisnis|user-qa'])->group(function () {
     Route::get('/', 'index');
     Route::get('/create', 'create')->name('task.create');
     Route::post('/', 'store')->name('task.store');
@@ -49,7 +49,7 @@ Route::controller(TaskController::class)->prefix('dashboard/task')->middleware([
     Route::post('/delete/{id}', 'destroy')->name('task.delete');
 });
 
-Route::controller(HistoryController::class)->prefix('dashboard/history')->middleware(['role:admin|operator|user-bisnis'])->group(function () {
+Route::controller(HistoryController::class)->prefix('dashboard/history')->middleware(['role:admin|operator|user-bisnis|user-qa'])->group(function () {
     Route::get('/', 'index');
     Route::get('/show/{id}', 'show')->name('history.show');
     Route::get('/create', 'create')->name('history.create');
@@ -132,7 +132,11 @@ Route::controller(UserController::class)->prefix('dashboard/user')->middleware('
 });
 
 // Cascading Dropdown
-// Route::get('dashboard/task/create', [\App\Http\Controllers\TaskController::class, 'GroupServiceSelect'])->name('groupservice.select');
+// Route::get('/groupservice/{id}/service', 'TaskController@getService');
+Route::get('getService/{id}', function ($id) {
+    $service = App\Models\Service::where('gruplayanan_id', $id)->get();
+    return response()->json($service);
+});
 
 // Roles and Permissions
 // Route::prefix('roles-and-permissions')->namespace('Permissions')->middleware('role:admin')->group(function () {

@@ -24,18 +24,17 @@
       </div>
       <div class="mb-3">
         <label for="gruplayanan" class="form-label">Pilih Grup Layanan</label>
-          <select class="form-select" name="gruplayanan_id" id="select_group_service" autofocus required>
+          <select class="form-select" name="gruplayanan_id" id="gruplayanan_id" autofocus required>
             @foreach ($groupservice as $item => $groupservice)
-              <option value="{{ $groupservice->id }}" {{ old('gruplayanan_id') == $groupservice->id ? ' selected' : ' ' }}>
-                {{ $groupservice->deskripsi }}</option>
-              @endforeach
+              <option value="{{ $groupservice->id }}">{{ $groupservice->deskripsi }}</option>
+            @endforeach
           </select>
       </div>
       <div class="mb-3">
         <label for="status" class="form-label">Pilih Status</label>
           <select class="form-select" name="status_id" autofocus required>
             @foreach ($status as $item => $status)
-              <option value="{{ $status->id }}" {{ old('status_id') == $status->id ? ' selected' : ' ' }}>
+              <option value="{{ $status->id }}">
                 {{ $status->deskripsi }}
               </option>
             @endforeach
@@ -63,19 +62,17 @@
   <div class="col-md-4 mx-auto">
       <div class="mb-3">
         <label for="layanan" class="form-label">Pilih Layanan</label>
-          <select class="form-select" name="layanan_id" id="select_service" autofocus required>
-            @foreach ($service as $item => $service)
-              <option value="{{ $service->id }}" {{ old('layanan_id') == $service->id ? ' selected' : ' ' }}>
-                {{ $service->deskripsi }}
-              </option>
-            @endforeach
+          <select class="form-select" name="layanan_id" id="layanan_id" autofocus required>
+            {{-- @foreach ($service as $item => $service)
+              <option value="{{ $service->id }}">{{ $service->nama }}</option>
+            @endforeach --}}
           </select>
       </div>
       <div class="mb-3">
         <label for="platform" class="form-label">Pilih Jenis Platform</label>
           <select class="form-select" name="platform_id" autofocus required>
             @foreach ($platform as $item => $platform)
-              <option value="{{ $platform->id }}" {{ old('platform_id') == $platform->id ? ' selected' : ' ' }}>
+              <option value="{{ $platform->id }}">
                 {{ $platform->deskripsi }}
               </option>
             @endforeach
@@ -83,7 +80,7 @@
       </div>
       <div class="mb-3">
         <label for="nomor" class="form-label">Nomor NDE</label>
-          <input type="text" class="form-control @error('nomor') is-invalid @enderror" id="nomor" name="nomor" value="{{ old('nomor') }}" required>
+          <input type="text" class="form-control @error('nomor') is-invalid @enderror" id="nomor" name="nomor" required>
             @error('nomor')
               <div class="invalid-feedback">
                 {{ $message }}
@@ -108,5 +105,51 @@
      maxDate: new Date
    });  
 </script>
+
+{{-- <script>
+  $(function() {
+      $('select[name=gruplayanan_id]').change(function() {
+          var url = '{{ url('groupservice') }}' + $(this).val() + '/service/';
+          $.get(url, function(data) {
+              var select = $('form select[name=layanan_id]');
+              select.empty();
+              $.each(data,function(key, value) {
+                  select.append('<option value=' + value.id + '>' + value.nama + '</option>');
+              });
+          });
+      });
+  });
+</script> --}}
+
+<script>
+  $(document).ready(function() {
+  $('#gruplayanan_id').on('change', function() {
+     var groupserviceID = $(this).val();
+     if(groupserviceID) {
+         $.ajax({
+             url: '/getService/'+groupserviceID,
+             type: "GET",
+             data : {"_token":"{{ csrf_token() }}"},
+             dataType: "json",
+             success:function(data)
+             {
+               if(data){
+                  $('#layanan_id').empty();
+                  $('#layanan_id').append('<option hidden>--Pilih Layanan--</option>'); 
+                  $.each(data, function(key, layanan_id){
+                      $('select[name="layanan_id"]').append('<option value="'+ key +'">' + layanan_id.nama+ '</option>');
+                  });
+              }else{
+                  $('#layanan_id').empty();
+              }
+           }
+         });
+     }else{
+       $('#layanan_id').empty();
+     }
+  });
+  });
+</script>
+
 
 @endsection

@@ -102,13 +102,33 @@
   @endrole
   
   @role('operator')
-  <form method="post" action="{{ route('task.update', $item->id) }}" enctype="multipart/form-data">
+  <form method="post" action="{{ route('task.update', $dokumentasi->id) }}" enctype="multipart/form-data">
     @csrf
     <div class="mt-2 mb-2">
       <div class="d-inline-block">
-        <label for="tanggal_eksekusi" class="form-label">Tanggal eksekusi</label>
-          <input class="date form-control" type="text" id="tanggal_eksekusi" name="tanggal_eksekusi" required>
-            @error('tanggal_eksekusi')
+        <label for="tanggal_eksekusi_op" class="form-label">Tanggal eksekusi</label>
+          <input class="date form-control" type="text" id="tanggal_eksekusi_op" name="tanggal_eksekusi_op" required>
+            @error('tanggal_eksekusi_op')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+            @enderror
+      </div>
+      
+      <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Simpan Perubahan">
+        <button class="btn btn-primary" type="submit">Tindak Lanjuti</button>
+      </span>
+    </div>
+  </form>
+  @endrole
+  @role('user-qa')
+  <form method="post" action="{{ route('task.update', $dokumentasi->id) }}" enctype="multipart/form-data">
+    @csrf
+    <div class="mt-2 mb-2">
+      <div class="d-inline-block">
+        <label for="tanggal_eksekusi_qa" class="form-label">Tanggal eksekusi</label>
+          <input class="date form-control" type="text" id="tanggal_eksekusi_qa" name="tanggal_eksekusi_qa" required>
+            @error('tanggal_eksekusi_qa')
               <div class="invalid-feedback">
                 {{ $message }}
               </div>

@@ -17,22 +17,43 @@ class ServiceSeeder extends Seeder
         $list = [
             [
                 'gruplayanan_id'    => 1,
-                'nama'              => 'PDAM Kab. Bangka Selatan',
-                'deskripsi'         => 'Pembayaran PDAM',
-                'created_at'        => date('Y-m-d h:i:s'),
-                'updated_at'        => date('Y-m-d h:i:s')
-            ],
-            [
-                'gruplayanan_id'    => 2,
-                'nama'              => 'Cash in Giropos',
-                'deskripsi'         => 'Pembayaran Giro Cash',
+                'nama'              => 'Pembayaran PDAM BS',
+                'deskripsi'         => 'Pembayaran PDAM Kab. Bangka Selatan',
                 'created_at'        => date('Y-m-d h:i:s'),
                 'updated_at'        => date('Y-m-d h:i:s')
             ],
             [
                 'gruplayanan_id'    => 1,
-                'nama'              => 'PDAM Kota Salatiga',
-                'deskripsi'         => 'Pembayaran PDAM',
+                'nama'              => 'Pembayaran PDAM BU',
+                'deskripsi'         => 'Pembayaran PDAM Kab. Bangka Utara',
+                'created_at'        => date('Y-m-d h:i:s'),
+                'updated_at'        => date('Y-m-d h:i:s')
+            ],
+            [
+                'gruplayanan_id'    => 2,
+                'nama'              => 'Pembayaran Bank',
+                'deskripsi'         => 'Pembayaran Bank Channeling',
+                'created_at'        => date('Y-m-d h:i:s'),
+                'updated_at'        => date('Y-m-d h:i:s')
+            ],
+            [
+                'gruplayanan_id'    => 3,
+                'nama'              => 'Pembayaran Pulsa',
+                'deskripsi'         => 'Pembayaran Pulsa Telco',
+                'created_at'        => date('Y-m-d h:i:s'),
+                'updated_at'        => date('Y-m-d h:i:s')
+            ],
+            [
+                'gruplayanan_id'    => 4,
+                'nama'              => 'Pembayaran Tagihan Listrik',
+                'deskripsi'         => 'Pembayaran Tagihan Listrik',
+                'created_at'        => date('Y-m-d h:i:s'),
+                'updated_at'        => date('Y-m-d h:i:s')
+            ],
+            [
+                'gruplayanan_id'    => 4,
+                'nama'              => 'Pembayaran Token Listrik',
+                'deskripsi'         => 'Pembayaran Token Listrik',
                 'created_at'        => date('Y-m-d h:i:s'),
                 'updated_at'        => date('Y-m-d h:i:s')
             ],

@@ -63,7 +63,8 @@ class TaskController extends Controller
             "platform_id"       => 'required',
             "lampiran"          => 'required|file|mimes:pdf,jpg,jpeg|max:1024',
             "tanggal"           => 'required|date',
-            // "tanggal_eksekusi"  => 'date',
+            // "tanggal_eksekusi_op"  => 'date',
+            // "tanggal_eksekusi_qa"  => 'date',
             "nomor"             => 'required',
             "perihal"           => 'required|max:255',
             "deskripsi"         => 'required|max:255'
@@ -116,7 +117,8 @@ class TaskController extends Controller
     public function update(Dokumentasi $dokumentasi, Request $request, $id)
     {
         $rules  = [
-            "tanggal_eksekusi" => 'required|date',
+            "tanggal_eksekusi_op" => 'date',
+            "tanggal_eksekusi_qa" => 'date',
         ];
 
         $validatedData = $request->validate($rules);
@@ -136,5 +138,10 @@ class TaskController extends Controller
     {
         //
     }
+
+    // public function getService(GroupService $groupservice)
+    // {
+    //     return $groupservice->service()->select('id', 'nama')->get();
+    // }
 
 }
