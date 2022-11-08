@@ -31,7 +31,7 @@
               <th scope="col">Nomor NDE</th>
               <th scope="col">Tanggal NDE</th>
               <th scope="col">Nama Kegiatan</th>
-              <th scope="col">Status Tindak Lanjut (Operator)</th>
+              <th scope="col">Status Tindak Lanjut (Operasi)</th>
               <th scope="col">Status Tindak Lanjut (QA)</th>
               @role('operator')
                 <th scope="col">Action</th>

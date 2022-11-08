@@ -100,10 +100,10 @@
 </div>
 
 <script type="text/javascript">
-  $('.date').datepicker({  
-     dateformat: 'dd-mm-yyyy',
-     maxDate: '0'
-   });  
+  $('.date').datepicker({
+    dateFormat: 'yy-mm-dd',
+    maxDate: '0'
+  });  
 </script>
 
 <script>

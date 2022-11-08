@@ -16,9 +16,7 @@ class ServiceController extends Controller
     public function index()
     {
         return view('dashboard.service.main', [
-            "service" => Service::all(),
-            "groupservice" => GroupService::all()
-
+            "service" => Service::all()
         ]);
     }
 
