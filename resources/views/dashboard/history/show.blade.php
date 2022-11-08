@@ -30,7 +30,7 @@
       <div class="mb-2">
         <label for="pemilik" class="form-label">Pemilik</label>
           <input type="text" class="form-control @error('business') is-invalid @enderror"
-          value="{{ $dokumentasi->business->deskripsi) }}" disabled>
+          value="{{ $dokumentasi->business->deskripsi }}" disabled>
       </div> 
   </div> 
   <div class="col-md-4 mx-auto">
@@ -67,16 +67,26 @@
 
   @if (empty($activityLog->changes['old'] ))
 
+    {{-- @foreach($activityLog->changes['attributes'] as $key => $value)
+      {{ $activityLog->changes['attributes'][$key] . " (" .$activityLog->created_at->format('d M Y'). ")"  }}
+    @endforeach --}}
+
     @foreach($activityLog->changes['attributes'] as $key => $value)
-      {{ $activityLog->changes['attributes'][$key] . "( " .$activityLog->created_at->format('d M Y'). " )"  }}
+      {{ "Field $key : " .$activityLog->changes['attributes'][$key] }}
     @endforeach
+
+    <br>
+    [Dibuat pada {{ $activityLog->created_at->format('d M Y') }}]
 
   @else
   
     @foreach($activityLog->changes['old'] as $key => $val)
-      {{ $activityLog->changes['old'][$key]. " " . "(" .$activityLog->created_at->format('d M Y'). ")" }}<br>        
+      {{ $activityLog->changes['old'][$key] }}        
     @endforeach
   
+    <br>
+    Diupdate pada tanggal : ({{ $activityLog->created_at->format('d M Y') }})
+
   @endif
   
   
