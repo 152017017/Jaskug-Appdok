@@ -78,12 +78,12 @@
               @endif
               @role('operator')
               <td>
-                <a href="{{ route('task.edit', $dokumentasi->id) }}" class="btn btn-warning d-flex justify-content-center"><span data-feather="edit"></span></a>
+                <a href="{{ route('task.edit', Crypt::encrypt($dokumentasi->id)) }}" class="btn btn-warning d-flex justify-content-center"><span data-feather="edit"></span></a>
               </td>
               @endrole
               @role('user-qa')
               <td>
-                <a href="{{ route('task.edit', $dokumentasi->id) }}" class="btn btn-warning d-flex justify-content-center"><span data-feather="edit"></span></a>
+                <a href="{{ route('task.edit', Crypt::encrypt($dokumentasi->id)) }}" class="btn btn-warning d-flex justify-content-center"><span data-feather="edit"></span></a>
               </td>
               @endrole
             </tr>

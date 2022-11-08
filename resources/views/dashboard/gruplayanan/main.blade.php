@@ -36,9 +36,9 @@
                 <td>
                   {{-- <a href="#" class="badge bg-success"><span data-feather="eye"></span></a> --}}
                   {{-- Edit Button --}}
-                  <a href="{{ route('gruplayanan.edit', $groupservice->id) }}" class="badge bg-warning"><span data-feather="edit"></span></a>
+                  <a href="{{ route('gruplayanan.edit', Crypt::encrypt($groupservice->id)) }}" class="badge bg-warning"><span data-feather="edit"></span></a>
                   {{-- Delete Button --}}
-                  <form action="{{ route('gruplayanan.delete', $groupservice->id) }}" method="post" class="d-inline">
+                  <form action="{{ route('gruplayanan.delete', Crypt::encrypt($groupservice->id)) }}" method="post" class="d-inline">
                     @csrf
                       <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span></button>
                   </form>

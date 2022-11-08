@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Service;
 use App\Models\GroupService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class ServiceController extends Controller
 {
@@ -72,7 +73,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $service, $id)
     {
-        $service = $service->findOrFail($id);
+        $service = $service->findOrFail(Crypt::decrypt($id));
 
         return view('dashboard.service.edit', [
             "service" => $service

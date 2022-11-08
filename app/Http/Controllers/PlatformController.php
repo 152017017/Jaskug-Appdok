@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Platform;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class PlatformController extends Controller
 {
@@ -66,7 +67,7 @@ class PlatformController extends Controller
      */
     public function edit(Platform $platform, $id)
     {
-        $platform = $platform->findOrFail($id);
+        $platform = $platform->findOrFail(Crypt::decrypt($id));
 
         return view('dashboard.platform.edit', [
             'item' => $platform

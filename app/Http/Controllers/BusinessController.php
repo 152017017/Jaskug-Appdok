@@ -67,9 +67,7 @@ class BusinessController extends Controller
      */
     public function edit(Business $business, $id)
     {
-        // $id = Crypt::decrypt($encrypt);
-
-        $business = $business->findOrFail($id);
+        $business = $business->findOrFail(Crypt::decrypt($id));
 
         return view('dashboard.bisnis.edit', [
             "business" => $business

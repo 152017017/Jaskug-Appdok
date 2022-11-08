@@ -108,9 +108,9 @@ Route::controller(StatusController::class)->prefix('dashboard/status')->middlewa
     Route::get('/', 'index');
     Route::get('/create', 'create')->name('status.create');
     Route::post('/', 'store')->name('status.store');
-    Route::get('/edit/{id}', 'edit')->name('status.edit');
-    Route::post('/update/{id}', 'update')->name('status.update');
-    Route::post('/delete/{id}', 'destroy')->name('status.delete');
+    Route::get('/edit/{encrypt}', 'edit')->name('status.edit');
+    Route::post('/update/{encrypt}', 'update')->name('status.update');
+    Route::post('/delete/{encrypt}', 'destroy')->name('status.delete');
 });
 
 // Route::controller(DokumentasiController::class)->middleware('role:admin|operator')->group(function () {

@@ -10,6 +10,7 @@ use App\Models\Dokumentasi;
 use App\Models\Service;
 use App\Models\Platform;
 use App\Models\Business;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
@@ -99,7 +100,7 @@ class TaskController extends Controller
      */
     public function edit(Dokumentasi $dokumentasi, $id)
     {
-        $dokumentasi = $dokumentasi->findOrFail($id);
+        $dokumentasi = $dokumentasi->findOrFail(Crypt::decrypt($id));
 
         return view('dashboard.task.edit', [
             "dokumentasi"   => $dokumentasi,

@@ -35,18 +35,11 @@
                 <td>{{ $business->updated_at->format('d M Y') }}</td>
                 <td>
                   {{-- <a href="#" class="badge bg-success"><span data-feather="eye"></span></a> --}}
-                  {{-- <?php
                   
-                      $encrypt =[
-                        'id' => $business->id,
-                      ];
-                      $encrypt = Crypt::encrypt($encrypt);
-
-                  ?> --}}
                   {{-- Edit Button --}}
-                  <a href="{{ route('bisnis.edit', $business->id) }}" class="badge bg-warning"><span data-feather="edit"></span></a>
+                  <a href="{{ route('bisnis.edit', Crypt::encrypt($business->id)) }}" class="badge bg-warning"><span data-feather="edit"></span></a>
                   {{-- Delete Button --}}
-                  <form action="{{ route('bisnis.delete', $business->id) }}" method="post" class="d-inline">
+                  <form action="{{ route('bisnis.delete', Crypt::encrypt($business->id)) }}" method="post" class="d-inline">
                     @csrf
                     <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span></i>
                     </button>

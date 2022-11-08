@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Status;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class StatusController extends Controller
 {
@@ -15,7 +16,7 @@ class StatusController extends Controller
     public function index()
     {
         return view('dashboard.status.main', [
-            "status" => Status::all()
+            "status"    => Status::all()
         ]);
     }
 
@@ -65,7 +66,7 @@ class StatusController extends Controller
      */
     public function edit(Status $status, $id)
     {
-        $status = $status->findOrFail($id);
+        $status = $status->findOrFail(Crypt::decrypt($id));
 
         return view('dashboard.status.edit', [
             "status" => $status

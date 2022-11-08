@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\GroupService;
 use App\Models\Business;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class GroupServiceController extends Controller
 {
@@ -67,7 +68,7 @@ class GroupServiceController extends Controller
      */
     public function edit(GroupService $groupService, $id)
     {
-        $groupService = $groupService->findOrFail($id);
+        $groupService = $groupService->findOrFail(Crypt::decrypt($id));
 
         return view('dashboard.gruplayanan.edit', [
             "groupservice"  => $groupService,
