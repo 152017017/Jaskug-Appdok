@@ -41,8 +41,8 @@
           </select>
       </div>
       <div class="mb-3">
-        <label for="tanggal" class="form-label">Tanggal NDE</label>
-          <input class="date form-control" type="text" name="tanggal" readonly required>
+        <label for="tanggal" class="form">Tanggal NDE </label>
+          <input class="date form-control" type="text" name="tanggal" id="" placeholder="Masukkan tanggal.." readonly required>
       </div>
       <div class="mb-3">
         <label for="perihal" class="form-label">Perihal NDE</label>
@@ -101,25 +101,10 @@
 
 <script type="text/javascript">
   $('.date').datepicker({  
-     format: 'dd-mm-yyyy',
-     maxDate: new Date
+     dateformat: 'dd-mm-yyyy',
+     maxDate: '0'
    });  
 </script>
-
-{{-- <script>
-  $(function() {
-      $('select[name=gruplayanan_id]').change(function() {
-          var url = '{{ url('groupservice') }}' + $(this).val() + '/service/';
-          $.get(url, function(data) {
-              var select = $('form select[name=layanan_id]');
-              select.empty();
-              $.each(data,function(key, value) {
-                  select.append('<option value=' + value.id + '>' + value.nama + '</option>');
-              });
-          });
-      });
-  });
-</script> --}}
 
 <script>
   $(document).ready(function() {
