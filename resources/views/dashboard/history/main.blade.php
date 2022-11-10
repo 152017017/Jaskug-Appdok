@@ -49,7 +49,7 @@
               <td><label class="bg-success rounded text-black opacity-75 d-inline-flex p-1">{{ $dokumentasi->status->deskripsi }}</label></td>
             @endif
               <td>
-                <a href="{{ route('history.show', $dokumentasi->id) }}" class="badge bg-primary" style="flex-wrap"><span data-feather="eye"></span></a>
+                <a href="{{ route('history.show', Crypt::encrypt($dokumentasi->id)) }}" class="badge bg-primary" style="flex-wrap"><span data-feather="eye"></span></a>
                 {{-- <a href="{{ route('history.edit', $item->id) }}" class="badge bg-warning" style="flex-wrap"><span data-feather="edit"></span></a> --}}
               </td>
             </tr>

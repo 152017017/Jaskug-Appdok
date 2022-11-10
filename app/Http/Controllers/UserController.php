@@ -49,7 +49,7 @@ class UserController extends Controller
         $roles = Role::get();
         $users = User::get();
 
-        return view('permissions.user.edit', compact('user', 'roles', 'users'));
+        return view('dashboard.user.edit', compact('user', 'roles', 'users'));
     }
 
     public function update(Request $request)
@@ -57,6 +57,6 @@ class UserController extends Controller
         $user = User::findorfail($request->id);
         $user->syncRoles($request->roles);
 
-        return redirect()->route('user.index');
+        return redirect('/dashboard/user/')->with('success', 'Item has been updated !');
     }
 }

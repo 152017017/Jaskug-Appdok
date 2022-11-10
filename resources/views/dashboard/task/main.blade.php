@@ -111,9 +111,9 @@
                 <div class="mb-3" style="">
                   <select class="form-control" id="mylist">
                     @foreach ($groupservice as $item => $groupservice)
-                    <option value="{{ $groupservice->id }}">
-                      {{ $groupservice->deskripsi }}
-                    </option>
+                      <option value="{{ $groupservice->id }}">
+                        {{ $groupservice->deskripsi }}
+                      </option>
                     @endforeach
                   </select>
                 </div>
@@ -123,9 +123,9 @@
                 <div class="mb-3" style="">
                   <select class="form-control" id="mylist">
                     @foreach ($service as $item => $service)
-                    <option value="{{ $service->id }}">
-                      {{ $service->deskripsi }}
-                    </option>
+                      <option value="{{ $service->id }}">
+                        {{ $service->deskripsi }}
+                      </option>
                     @endforeach
                   </select>
                 </div>
@@ -135,9 +135,9 @@
                   <div class="mb-3" style="">
                     <select class="form-control" id="mylist">
                       @foreach ($status as $item => $status)
-                      <option value="{{ $status->id }}">
-                        {{ $status->deskripsi }}
-                      </option>
+                        <option value="{{ $status->id }}">
+                          {{ $status->deskripsi }}
+                        </option>
                       @endforeach
                     </select>
                   </div>
@@ -167,7 +167,7 @@
               }
             }       
           }
-    }
+    };
 
     function refresh(){
       location.reload()

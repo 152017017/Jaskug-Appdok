@@ -105,7 +105,7 @@ class GroupServiceController extends Controller
      */
     public function destroy(GroupService $groupService, $id)
     {
-        $groupService = $groupService->destroy($id);
+        $groupService = $groupService->destroy(Crypt::decrypt($id));
 
         return redirect('/dashboard/gruplayanan/')->with('success', 'Item has been deleted !');
     }

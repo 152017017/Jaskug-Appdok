@@ -101,7 +101,7 @@ class StatusController extends Controller
      */
     public function destroy(Status $status, $id)
     {
-        $status = $status->destroy($id);
+        $status = $status->destroy(Crypt::decrypt($id));
 
         return redirect('/dashboard/status/')->with('success', 'Item has been deleted !');
     }

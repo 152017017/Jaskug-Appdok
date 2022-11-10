@@ -21,12 +21,12 @@
         <link href="/css/all.min.css" rel="stylesheet" type="text/css">
 
         <!-- Custom styles for this template -->
-        <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+        <link href="/css/sb-admin-2.min.css" rel="stylesheet" type="text/css">
 
-    <link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
 
     {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"> --}}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet" type="text/css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 
@@ -38,18 +38,21 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" onload=display_ct();>
 
     <div id="wrapper">
         @include('dashboard.layouts.sidebar')
             
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
+                
                 @include('dashboard.layouts.navbar', ['dokumentasi' => Dokumentasi::latest()->paginate(3)])
 
                 <div class="container-fluid">
                     @yield('container')
+
                 </div>
+                <span id='ct' class="d-flex flex-row-reverse px-3"></span>
             </div>
         </div>
 
@@ -86,6 +89,19 @@
 
     <!-- Page level custom scripts -->
     <script src="/js/datatables-demo.js" type="text/javascript"></script>
+
+    <script type="text/javascript"> 
+        function display_c(){
+            var refresh=1000; // Refresh rate in milli seconds
+            mytime=setTimeout('display_ct()',refresh)
+            }
+            
+            function display_ct() {
+            var x = new Date()
+            document.getElementById('ct').innerHTML = x;
+            display_c();
+        }
+    </script>
 
 </body>
 

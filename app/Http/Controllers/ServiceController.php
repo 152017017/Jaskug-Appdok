@@ -110,7 +110,7 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service, $id)
     {
-        $service = $service->destroy($id);
+        $service = $service->destroy(Crypt::decrypt($id));
 
         return redirect('/dashboard/layanan/')->with('success', 'Item has been deleted !');
     }

@@ -104,7 +104,7 @@ class PlatformController extends Controller
      */
     public function destroy(Platform $platform, $id)
     {
-        $platform = $platform->destroy($id);
+        $platform = $platform->destroy(Crypt::decrypt($id));
 
         return redirect('/dashboard/platform/')->with('success', 'Item has been deleted !');
 

@@ -132,45 +132,11 @@ Route::controller(UserController::class)->prefix('dashboard/user')->middleware('
 });
 
 // Cascading Dropdown
-// Route::get('/groupservice/{id}/service', 'TaskController@getService');
 Route::get('getService/{id}', function ($id) {
     $service = App\Models\Service::where('gruplayanan_id', $id)->get();
     return response()->json($service);
 });
 
-// Roles and Permissions
-// Route::prefix('roles-and-permissions')->namespace('Permissions')->middleware('role:admin')->group(function () {
-//     Route::prefix('roles')->group(function () {
-//         Route::get('/', 'RolesController@index')->name('roles.index');
-//         Route::get('/create', 'RolesController@create')->name('roles.create');
-//         Route::post('/store', 'RolesController@store')->name('roles.store');
-//         Route::get('/edit/{id}', 'RolesController@edit')->name('roles.edit');
-//         Route::put('/update', 'RolesController@update')->name('roles.update');
-//         Route::get('/delete/{id}', 'RolesController@delete')->name('roles.delete');
-//     });
+// Download Files
+Route::get('/download/{file_name}', 'HistoryController@download');
 
-//     Route::prefix('permissions')->group(function () {
-//         Route::get('/', 'PermissionsController@index')->name('permissions.index');
-//         Route::get('/create', 'PermissionsController@create')->name('permissions.create');
-//         Route::post('/store', 'PermissionsController@store')->name('permissions.store');
-//         Route::get('/edit/{id}', 'PermissionsController@edit')->name('permissions.edit');
-//         Route::put('/update', 'PermissionsController@update')->name('permissions.update');
-//         Route::get('/delete/{id}', 'PermissionsController@delete')->name('permissions.delete');
-//     });
-
-//     Route::prefix('assign-permissions')->group(function () {
-//         Route::get('/', 'AssignController@index')->name('assign.index');
-//         Route::get('/create', 'AssignController@create')->name('assign.create');
-//         Route::post('/store', 'AssignController@store')->name('assign.store');
-//         Route::get('/edit/{id}', 'AssignController@edit')->name('assign.edit');
-//         Route::put('/update', 'AssignController@update')->name('assign.update');
-//     });
-
-//     Route::prefix('user-permissions')->group(function () {
-//         Route::get('/', 'UserController@index')->name('user.index');
-//         Route::get('/create', 'UserController@create')->name('user.create');
-//         Route::post('/store', 'UserController@store')->name('user.store');
-//         Route::get('/edit/{id}', 'UserController@edit')->name('user.edit');
-//         Route::put('/update', 'UserController@update')->name('user.update');
-//     });
-// });

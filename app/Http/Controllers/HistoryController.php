@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Dokumentasi;
 use Spatie\Activitylog\Models\Activity;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
+use File;
+
 
 class HistoryController extends Controller
 {
@@ -49,12 +54,10 @@ class HistoryController extends Controller
      */
     public function show(Dokumentasi $dokumentasi, Request $request, $id)
     {
-        $dokumentasi = $dokumentasi->findOrFail($id);
+        $dokumentasi = $dokumentasi->findOrFail(Crypt::decrypt($id));
 
         $activity = Activity::all()->last();
 
-        // return response()->download('lampiran-nde/');
- 
         return view('dashboard.history.show', [
             "dokumentasi"   => $dokumentasi,
             "activityLog"   => $activity
@@ -93,6 +96,15 @@ class HistoryController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function download($file_name)
+    {
+        @dd($file_name);
+
+        $file_path = storage_path('files/'.$file_name);
+
+        return response()->download($file_path);
     }
 
     public function updated(Dokumentasi $dokumentasi)

@@ -107,7 +107,7 @@
     <div class="mt-2 mb-2">
       <div class="d-inline-block">
         <label for="tanggal_eksekusi_op" class="form-label">Tanggal eksekusi</label>
-          <input class="date form-control" type="text" id="tanggal_eksekusi_op" name="tanggal_eksekusi_op" readonly required>
+          <input class="date form-control" type="text" id="tanggal_eksekusi_op" name="tanggal_eksekusi_op" placeholder="Masukkan tanggal.." readonly required>
             @error('tanggal_eksekusi_op')
               <div class="invalid-feedback">
                 {{ $message }}
@@ -127,7 +127,7 @@
     <div class="mt-2 mb-2">
       <div class="d-inline-block">
         <label for="tanggal_eksekusi_qa" class="form-label">Tanggal eksekusi</label>
-          <input class="date form-control" type="text" id="tanggal_eksekusi_qa" name="tanggal_eksekusi_qa" readonly required>
+          <input class="date form-control" type="text" id="tanggal_eksekusi_qa" name="tanggal_eksekusi_qa" placeholder="Masukkan tanggal.." readonly required>
             @error('tanggal_eksekusi_qa')
               <div class="invalid-feedback">
                 {{ $message }}

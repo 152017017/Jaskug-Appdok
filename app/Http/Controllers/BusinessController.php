@@ -105,7 +105,7 @@ class BusinessController extends Controller
      */
     public function destroy(Business $business, $id)
     {
-        $business = $business->destroy($id);
+        $business = $business->destroy(Crypt::decrypt($id));
 
         return redirect('/dashboard/bisnis/')->with('success', 'Item has been deleted !');
 
