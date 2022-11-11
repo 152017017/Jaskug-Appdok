@@ -11,4 +11,7 @@ class Status extends Model
 
     protected $table = 't_status';
     protected $guarded = ['id'];
+    // protected $fillable = [
+    //     'deskripsi'
+    // ];
 }

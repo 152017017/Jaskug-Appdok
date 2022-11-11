@@ -64,11 +64,11 @@
             </div>
             
             <div class="modal-body">
-              <div class="col-lg-8">
+              <div class="col-md-8">
                 <form method="post" action="{{ route('layanan.store') }}" class="mb-5" enctype="multipart/form-data">
                   @csrf
                     <div class="mb-3">
-                      <label for="gruplayanan" class="form-label">Pilih Grup Layanan</label>
+                      <label for="gruplayanan" class="form-label">Pilih Group Layanan</label>
                         <select class="form-select" name="gruplayanan_id" autofocus>
                           @foreach ($groupservice as $gservice)
                             <option value="{{ $gservice->id }}" {{ old('gruplayanan_id') == $gservice->id ? ' selected' : ' ' }}>

@@ -121,8 +121,8 @@
                if(data){
                   $('#layanan_id').empty();
                   $('#layanan_id').append('<option hidden>--Pilih Layanan--</option>'); 
-                  $.each(data, function(key, layanan_id){
-                      $('select[name="layanan_id"]').append('<option value="'+ key +'">' + layanan_id.nama+ '</option>');
+                  $.each(data, function(layanan_id, layanan_id){
+                      $('select[name="layanan_id"]').append('<option value="'+ layanan_id.id +'">' + layanan_id.nama+ '</option>');
                   });
               }else{
                   $('#layanan_id').empty();

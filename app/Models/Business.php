@@ -11,6 +11,10 @@ class Business extends Model
 
     protected $table = 't_bisnis';
     protected $guarded = ['id'];
+    // protected $fillable = [
+    //     'deskripsi',
+    //     'pemilik'
+    // ];
 
     public function group(){
         return $this->hasOne(GroupService::class);

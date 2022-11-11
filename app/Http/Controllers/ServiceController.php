@@ -76,7 +76,8 @@ class ServiceController extends Controller
         $service = $service->findOrFail(Crypt::decrypt($id));
 
         return view('dashboard.service.edit', [
-            "service" => $service
+            "service"       => $service,
+            "groupservice"  => GroupService::all()
         ]);
     }
 
@@ -90,9 +91,9 @@ class ServiceController extends Controller
     public function update(Service $service, Request $request, $id)
     {
         $rules  = [
-            "gruplayanan_id"    => 'required',
             "nama"              => 'required|max:255',
-            "deskripsi"         => 'required|max:255'
+            "deskripsi"         => 'required|max:255',
+            "gruplayanan_id"    => 'required'
         ];
 
         $validatedData = $request->validate($rules);

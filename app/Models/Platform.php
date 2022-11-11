@@ -11,4 +11,7 @@ class Platform extends Model
 
     protected $table = 't_platform';
     protected $guarded = ['id'];
+    // protected $fillable = [
+    //     'deskripsi'
+    // ];
 }

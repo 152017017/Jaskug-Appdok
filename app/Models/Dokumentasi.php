@@ -13,7 +13,7 @@ class Dokumentasi extends Model
     use LogsActivity;
 
     protected $table = 't_dokumentasi';
-    protected $guarded = [];
+    protected $guarded = ['id'];
     protected $with = ['service', 'business', 'groupservice', 'status', 'platform'];
     protected $dates = ['tanggal', 'tanggal_eksekusi_op', 'tanggal_eksekusi_qa'];
     protected $fillable = [

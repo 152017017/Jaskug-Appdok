@@ -11,6 +11,11 @@ class Service extends Model
 
     protected $table = 't_layanan';
     protected $guarded = ['id'];
+    // protected $fillable = [
+    //     'gruplayanan_id',
+    //     'nama',
+    //     'deskripsi'
+    // ];
     protected $with = ['groupservice'];
 
     public function groupservice(){

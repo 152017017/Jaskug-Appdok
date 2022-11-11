@@ -40,11 +40,11 @@ class TaskController extends Controller
     public function create()
     {
         return view('dashboard.task.create', [
-            "status"        => Status::all(),
+            "business"      => Business::all(),
             "groupservice"  => GroupService::all(),
+            "status"        => Status::all(),
             "service"       => Service::all(),
-            "platform"      => Platform::all(),
-            "business"      => Business::all()
+            "platform"      => Platform::all()
         ]);
     }
 
@@ -56,6 +56,8 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
+        // @dd($request);
+
         $validatedData = $request->validate([
             "layanan_id"        => 'required',
             "bisnis_id"         => 'required',

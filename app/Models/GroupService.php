@@ -12,6 +12,10 @@ class GroupService extends Model
     
     protected $table = 't_grup_layanan';
     protected $guarded = ['id'];
+    // protected $fillable = [
+    //     'bisnis_id',
+    //     'deskripsi'
+    // ];
     protected $with = ['business'];
 
     public function service(){

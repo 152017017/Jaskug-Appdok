@@ -108,5 +108,35 @@ class GroupServiceController extends Controller
         $groupService = $groupService->destroy(Crypt::decrypt($id));
 
         return redirect('/dashboard/gruplayanan/')->with('success', 'Item has been deleted !');
+        
+        
+        ////
+        // $groupService = GroupService::find(Crypt::decrypt($id));
+
+        // try {
+        //     $groupService->delete();
+        // }
+        // catch (\Illuminate\Database\QueryException $e) {
+        //     if ($e->getCode() == 23000)
+        //     {
+        //         //SQLSTATE[23000]: Integrity constraint violation
+        //         abort('Resource cannot be deleted due to existence of related resources.');
+        //     }
+        // }
+
+        // return redirect('/dashboard/gruplayanan/')->with('success', 'Item has been deleted !');
+        
+        ////
+        // $groupService = GroupService::find($id);
+
+        // if ($groupService->service()->exists())
+        // {
+        //     abort('Resource cannot be deleted due to existence of related resources.');
+        // }
+
+        // $groupService->delete();
+
+        // return redirect('/dashboard/gruplayanan/')->with('success', 'Item has been deleted !');
+
     }
 }

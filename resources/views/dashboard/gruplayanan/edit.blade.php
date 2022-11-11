@@ -10,11 +10,12 @@
   <form method="post" action="{{ route('gruplayanan.update', $groupservice->id) }}" class="mb-5" enctype="multipart/form-data">
     @csrf
       <div class="mb-3">
-        <label for="business" class="form-label">Nama Aplikasi</label>
+        <label for="bisnis_id" class="form-label">Pilih Aplikasi</label>
           <select class="form-select" name="bisnis_id" autofocus>
             @foreach ($business as $item => $business)
               <option value="{{ $business->id }}" {{ old('bisnis_id', $groupservice->bisnis_id) == $business->id ? ' selected' : ' ' }}>
-                {{ $business->deskripsi }}</option>
+                {{ $business->deskripsi }}
+              </option>
             @endforeach
           </select>
       </div>
