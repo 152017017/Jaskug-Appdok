@@ -22,7 +22,7 @@
                 <th scope="col">No.</th>
                 <th scope="col">Layanan</th>
                 <th scope="col">Deskripsi</th>
-                <th scope="col">Grup Layanan</th>
+                <th scope="col">Group Layanan</th>
                 <th scope="col">Terakhir Update</th>
                 <th scope="col">Action</th>
               </tr>

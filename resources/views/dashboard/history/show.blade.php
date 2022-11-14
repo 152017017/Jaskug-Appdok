@@ -66,7 +66,7 @@
   </div>
 </div>
 
-<h1 class="h4 mb-4">History Tindak Lanjut</h1>
+<h1 class="h4 mb-4">Log History Tindak Lanjut</h1>
 <div class="row mx-auto">
 
   @if (empty($activityLog->changes['old'] ))

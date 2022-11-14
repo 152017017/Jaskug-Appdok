@@ -41,15 +41,21 @@
           </select>
       </div>
       <div class="mb-3">
-        <label for="tanggal" class="form">Tanggal NDE </label>
-          <input class="date form-control" type="text" name="tanggal" id="" placeholder="Masukkan tanggal.." readonly required>
+        <label for="tanggal" class="form">2. Tanggal NDE </label>
+          <input 
+          id="dt"
+          type="date"
+          name="tanggal"
+          class="date form-control"
+          onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
+          required>
       </div>
       <div class="mb-3">
-        <label for="perihal" class="form-label">Perihal NDE</label>
+        <label for="perihal" class="form-label">3. Perihal NDE</label>
           <textarea type="text" class="form-control @error('perihal') is-invalid @enderror" id="perihal" name="perihal" value="{{ old('perihal') }}" style="height: 110px;" required></textarea>
       </div>
       <div class="mb-3">
-        <label for="lampiran" class="form-label">Upload Lampiran NDE</label>
+        <label for="lampiran" class="form-label">5. Upload Lampiran NDE</label>
           <input class="form-control @error('lampiran') is-invalid @enderror" type="file" id="lampiran" name="lampiran">
             @error('lampiran')
               <div class="invalid-feedback">
@@ -79,7 +85,7 @@
           </select>
       </div>
       <div class="mb-3">
-        <label for="nomor" class="form-label">Nomor NDE</label>
+        <label for="nomor" class="form-label">1. Nomor NDE</label>
           <input type="text" class="form-control @error('nomor') is-invalid @enderror" id="nomor" name="nomor" required>
             @error('nomor')
               <div class="invalid-feedback">
@@ -88,7 +94,7 @@
             @enderror
       </div>
       <div class="mb-3">
-        <label for="deskripsi" class="form-label">Uraian NDE</label>
+        <label for="deskripsi" class="form-label">4. Uraian Singkat NDE</label>
           <textarea type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" value="{{ old('deskripsi') }}" style="height: 110px;" required></textarea>
       </div>
       
@@ -100,10 +106,35 @@
 </div>
 
 <script type="text/javascript">
-  $('.date').datepicker({
-    dateFormat: 'yy-mm-dd',
-    maxDate: '0'
-  });  
+  // $('.date').datetimepicker({
+  //   dateFormat: 'yy-mm-dd',
+  //   timeFormat: 'hh:mm tt',
+  //   controlType: 'select',
+  //   maxDate: '0',
+  //   oneLine: true
+  // });  
+</script>
+
+<script type="text/javascript">
+  // $('#date').datetimepicker({
+  //     dateFormat: 'yy-mm-dd',
+  //     showMillisec:false,
+  //     showMicrosec:false,
+  //     showTimezone:false,
+  //     maxDate: '0'
+  //   }  
+  // );
+</script>
+
+<script type="text/javascript">
+  // $('#date').datetimepicker({
+  //   datePickerId.max = new Date().toISOString().split("T")[0];
+  //   }  
+  // );
+
+  document.getElementById('dt').max = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split("T")[0];
+
+
 </script>
 
 <script>

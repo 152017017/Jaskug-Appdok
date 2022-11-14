@@ -38,11 +38,12 @@
       </div> 
   </div> 
   <div class="col-md-4 mx-4">
-      <div class="mb-3">
-        <label for="lampiran" class="form-label">Lampiran</label>
+      <label for="lampiran" class="form-label">Lampiran</label>
+      <div class="input-group mb-3">
           <input type="text" class="form-control @error('lampiran') is-invalid @enderror"
           value="{{ $dokumentasi->lampiran }}" readonly>
-      </div> 
+          <span class="input-group-text"><a href="/storage/{{ $dokumentasi->lampiran }}" target="_blank"><i class="fa fa-info-circle" aria-hidden="true"></i></a></span>
+      </div>
       <div class="mb-3">
         <label for="tanggal" class="form-label">Tanggal NDE</label>
           <input type="text" class="form-control @error('tanggal') is-invalid @enderror"
@@ -107,7 +108,7 @@
     <div class="mt-2 mb-2">
       <div class="d-inline-block">
         <label for="tanggal_eksekusi_op" class="form-label">Tanggal eksekusi</label>
-          <input class="date form-control" type="text" id="tanggal_eksekusi_op" name="tanggal_eksekusi_op" placeholder="Masukkan tanggal.." readonly required>
+          <input class="date form-control" type="datetime-local" id="dt" name="tanggal_eksekusi_op" required>
             @error('tanggal_eksekusi_op')
               <div class="invalid-feedback">
                 {{ $message }}
@@ -127,7 +128,7 @@
     <div class="mt-2 mb-2">
       <div class="d-inline-block">
         <label for="tanggal_eksekusi_qa" class="form-label">Tanggal eksekusi</label>
-          <input class="date form-control" type="text" id="tanggal_eksekusi_qa" name="tanggal_eksekusi_qa" placeholder="Masukkan tanggal.." readonly required>
+          <input class="date form-control" type="datetime-local" id="dt" name="tanggal_eksekusi_qa" required>
             @error('tanggal_eksekusi_qa')
               <div class="invalid-feedback">
                 {{ $message }}
@@ -143,12 +144,81 @@
   @endrole
 </div>
 
-<script type="text/javascript">
-  $('.date').datepicker({  
+{{-- <script type="text/javascript">
+  $('.date').datetimepicker({  
      dateFormat: 'yy-mm-dd',
      maxDate: '0'
 
    });  
-</script> 
+</script>  --}}
+
+{{-- <script type="text/javascript">
+  $('.date').datetimepicker({
+      dateFormat: 'yy-mm-dd',
+      showMillisec:false,
+      showMicrosec:false,
+      showTimezone:false,
+      minTime:'08:00',
+      maxTime:'17:00',
+      formatTime:'i-H'
+      // enabledHours: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+      maxDate: '0'
+    }  
+  );
+</script> --}}
+
+<script type="text/javascript">
+
+// let dateInput = document.getElementById("dt");
+// dateInput.min = "2022-11-14T08:00";
+// dateInput.max = "2022-11-14T17:00";
+
+  // var today = new Date();
+  // var dd = today.getDate();
+  // var mm = today.getMonth() + 1;
+  // var yyyy = today.getFullYear();
+  // //
+  // var hh = today.getHours();
+  // var m = today.getMinutes();
+
+  // if (dd < 10) {
+  //   dd = '0' + dd;
+  // }
+
+  // if (mm < 10) {
+  //   mm = '0' + mm;
+  // }
+      
+  // today = yyyy + "-" + mm + "-" + dd + "T" + hh + ":" + m;
+  // document.getElementById("dt").setAttribute("max", today);
+
+
+  var today = new Date();
+  var today2 = new Date();
+  var dd = today.getDate(); //Current day
+  var mm = today.getMonth() + 1; //January is 0!
+  var yyyy = today.getFullYear(); //(Year is 2022)
+  var hh = today.getHours(); //Current hour
+  var m = today.getMinutes(); //Current minutes
+
+  if (dd < 10)
+  {
+      dd = '0' + dd;
+  } 
+  if (mm < 10)
+  {
+      mm = '0' + mm;
+  }
+
+  today_min = yyyy + '-' + mm + '-' + dd + "T08:00"; 
+  //or Year-Month-Day
+  today_max = yyyy + '-' + mm + '-' + dd + "T17:00";
+  //or Year-Month-Day&Todayhour:minute
+  document.getElementById("dt").setAttribute("min", today_min);
+  document.getElementById("dt").setAttribute("max", today_max);
+  //Set "datefield" = Minimum&Maximum time to current date
+
+</script>
+
 
 @endsection
