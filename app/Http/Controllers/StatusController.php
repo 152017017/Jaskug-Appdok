@@ -44,7 +44,7 @@ class StatusController extends Controller
 
         Status::create($validatedData);
 
-        return redirect('/dashboard/status')->with('success', 'New item has been added !');
+        return redirect('/dashboard/status')->with('success', 'Data baru sukses ditambahkan !');
     }
 
     /**
@@ -90,7 +90,7 @@ class StatusController extends Controller
 
         $status = $status->where('id', $id)->update($validatedData);
 
-        return redirect('/dashboard/status/')->with('success', 'Item has been updated !');
+        return redirect('/dashboard/status/')->with('success', 'Data sukses diperbarui !');
     }
 
     /**
@@ -103,6 +103,6 @@ class StatusController extends Controller
     {
         $status = $status->destroy(Crypt::decrypt($id));
 
-        return redirect('/dashboard/status/')->with('success', 'Item has been deleted !');
+        return redirect('/dashboard/status/')->with('danger', 'Data dihapus !');
     }
 }

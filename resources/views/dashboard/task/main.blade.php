@@ -6,9 +6,13 @@
   {{-- @endsection --}}
 
   @if (session()->has('success'))
-  <div class="alert alert-success col-lg-8" role="alert">
-    {{ session('success') }}
-  </div>
+    <div class="alert alert-success col-lg-8" role="alert">
+      {{ session('success') }}
+    </div>
+  @elseif (session()->has('danger'))
+    <div class="alert alert-danger col-lg-8" role="alert">
+      {{ session('danger') }}
+    </div>
   @endif
 
   @role('admin|user-bisnis') 
@@ -33,10 +37,10 @@
               <th scope="col">Nama Kegiatan</th>
               <th scope="col">Status Tindak Lanjut (Operasi)</th>
               <th scope="col">Status Tindak Lanjut (QA)</th>
-              @role('operator')
+              @role('admin|operator')
                 <th scope="col">Action</th>
               @endrole
-              @role('user-qa')
+              @role('admin|user-qa')
                 <th scope="col">Action</th>
               @endrole
             </tr>
@@ -76,12 +80,12 @@
               @else 
                 <td> {{"Lingkungan (" .$dokumentasi->status->deskripsi. ") dieksekusi pada (" .$dokumentasi->tanggal_eksekusi_qa->format('d M Y'). ")"  }} </td>              
               @endif
-              @role('operator')
+              @role('admin|operator')
               <td>
                 <a href="{{ route('task.edit', Crypt::encrypt($dokumentasi->id)) }}" class="btn btn-warning d-flex justify-content-center"><span data-feather="edit"></span></a>
               </td>
               @endrole
-              @role('user-qa')
+              @role('admin|user-qa')
               <td>
                 <a href="{{ route('task.edit', Crypt::encrypt($dokumentasi->id)) }}" class="btn btn-warning d-flex justify-content-center"><span data-feather="edit"></span></a>
               </td>

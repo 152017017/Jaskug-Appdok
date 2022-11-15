@@ -79,7 +79,7 @@ class TaskController extends Controller
 
         Dokumentasi::create($validatedData);
 
-        return redirect('/dashboard/task')->with('success', 'New item has been added !');
+        return redirect('/dashboard/task')->with('success', 'Data baru sukses ditambahkan !');
 
     }
 
@@ -128,7 +128,7 @@ class TaskController extends Controller
 
         $dokumentasi = $dokumentasi->where('id', $id)->update($validatedData);
 
-        return redirect('/dashboard/task/')->with('success', 'Item has been updated !');
+        return redirect('/dashboard/task/')->with('success', 'Data sukses diperbarui !');
     }
     
     /**

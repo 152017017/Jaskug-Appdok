@@ -45,7 +45,7 @@ class BusinessController extends Controller
 
         Business::create($validatedData);
 
-        return redirect('/dashboard/bisnis')->with('success', 'New item has been added !');
+        return redirect('/dashboard/bisnis')->with('success', 'Data baru sukses ditambahkan !');
     }
 
     /**
@@ -93,7 +93,7 @@ class BusinessController extends Controller
 
         $business = $business->where('id', $id)->update($validatedData);
 
-        return redirect('/dashboard/bisnis/')->with('success', 'Item has been updated !');
+        return redirect('/dashboard/bisnis/')->with('success', 'Data sukses diperbarui !');
 
     }
 
@@ -107,7 +107,7 @@ class BusinessController extends Controller
     {
         $business = $business->destroy(Crypt::decrypt($id));
 
-        return redirect('/dashboard/bisnis/')->with('success', 'Item has been deleted !');
+        return redirect('/dashboard/bisnis/')->with('danger', 'Data dihapus !');
 
     }
 }

@@ -5,11 +5,15 @@
     <h1 class="h3 mb-2 text-gray-800">User</h1>
     {{-- @endsection --}}
 
-    @if (session()->has('success'))
+  @if (session()->has('success'))
     <div class="alert alert-success col-lg-8" role="alert">
       {{ session('success') }}
     </div>
-    @endif
+  @elseif (session()->has('danger'))
+    <div class="alert alert-danger col-lg-8" role="alert">
+      {{ session('danger') }}
+    </div>
+  @endif
 
   <a href="{{ route('user.create') }}" class="btn btn-primary mb-3"><i class="fa fa-plus" aria-hidden="true"></i> Tambah User</a>
     <div class="card shadow mb-4">
@@ -38,7 +42,7 @@
                 <a href="{{ route('user.edit', $user->id) }}" class="badge bg-primary"><span data-feather="eye"></span></a>
                 <form action="{{ route('user.delete', $user->id) }}" method="post" class="d-inline">
                 @csrf
-                <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="trash"></span></button>
+                <button class="badge bg-danger border-0" onclick="return confirm('DATA AKAN DIHAPUS ?')"><span data-feather="trash"></span></button>
                 </form>
               </td>
             </tr>

@@ -46,7 +46,7 @@ class GroupServiceController extends Controller
 
         GroupService::create($validatedData);
 
-        return redirect('/dashboard/gruplayanan')->with('success', 'New item has been added !');
+        return redirect('/dashboard/gruplayanan')->with('success', 'Data baru sukses ditambahkan !');
     }
 
     /**
@@ -94,7 +94,7 @@ class GroupServiceController extends Controller
 
         $groupService = $groupService->where('id', $id)->update($validatedData);
 
-        return redirect('/dashboard/gruplayanan/')->with('success', 'Item has been updated !');
+        return redirect('/dashboard/gruplayanan/')->with('success', 'Data sukses diperbarui !');
     }
 
     /**
@@ -107,7 +107,7 @@ class GroupServiceController extends Controller
     {
         $groupService = $groupService->destroy(Crypt::decrypt($id));
 
-        return redirect('/dashboard/gruplayanan/')->with('success', 'Item has been deleted !');
+        return redirect('/dashboard/gruplayanan/')->with('danger', 'Data dihapus !');
         
         
         ////

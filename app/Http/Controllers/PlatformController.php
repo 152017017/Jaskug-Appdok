@@ -45,7 +45,7 @@ class PlatformController extends Controller
 
         Platform::create($validatedData);
 
-        return redirect('/dashboard/platform')->with('success', 'New item has been added !');
+        return redirect('/dashboard/platform')->with('success', 'Data baru sukses ditambahkan !');
     }
 
     /**
@@ -92,7 +92,7 @@ class PlatformController extends Controller
 
         $platform = $platform->where('id', $id)->update($validatedData);
 
-        return redirect('/dashboard/platform/')->with('success', 'Item has been updated !');
+        return redirect('/dashboard/platform/')->with('success', 'Data sukses diperbarui !');
 
     }
 
@@ -106,7 +106,7 @@ class PlatformController extends Controller
     {
         $platform = $platform->destroy(Crypt::decrypt($id));
 
-        return redirect('/dashboard/platform/')->with('success', 'Item has been deleted !');
+        return redirect('/dashboard/platform/')->with('danger', 'Data dihapus !');
 
     }
 }

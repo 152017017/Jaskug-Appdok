@@ -6,8 +6,18 @@
   {{-- @endsection --}}
 
   @if (session()->has('success'))
-    <div class="alert alert-success col-lg-8" role="alert">
+    <div class="alert alert-success alert-dismissible fade show col-lg-8" role="alert">
       {{ session('success') }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  @elseif (session()->has('danger'))
+    <div class="alert alert-danger alert-dismissible fade show col-lg-8" role="alert">
+      {{ session('danger') }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
   @endif
 
@@ -40,7 +50,7 @@
                   {{-- Delete Button --}}
                   <form action="{{ route('gruplayanan.delete', Crypt::encrypt($groupservice->id)) }}" method="post" class="d-inline">
                     @csrf
-                      <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span></button>
+                      <button class="badge bg-danger border-0" onclick="return confirm('DATA AKAN DIHAPUS ?')"><span data-feather="x-circle"></span></button>
                   </form>
                 </td>
               </tr>

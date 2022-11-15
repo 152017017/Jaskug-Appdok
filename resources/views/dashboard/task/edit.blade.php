@@ -69,7 +69,7 @@
 
 <h1 class="h4 mb-4">Update Permintaan</h1>
 <div class="row mx-auto">
-  @role('user-bisnis')
+  @role('admin|user-bisnis')
   <form method="post" action="{{ route('task.update', $dokumentasi->id) }}" enctype="multipart/form-data">
     @csrf
   <div class="col-md-4">
@@ -102,7 +102,7 @@
   </form>
   @endrole
   
-  @role('operator')
+  @role('admin|operator')
   <form method="post" action="{{ route('task.update', $dokumentasi->id) }}" enctype="multipart/form-data">
     @csrf
     <div class="mt-2 mb-2">
@@ -122,7 +122,7 @@
     </div>
   </form>
   @endrole
-  @role('user-qa')
+  @role('admin|user-qa')
   <form method="post" action="{{ route('task.update', $dokumentasi->id) }}" enctype="multipart/form-data">
     @csrf
     <div class="mt-2 mb-2">
