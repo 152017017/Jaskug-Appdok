@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
                 'updated_at'    => date('Y-m-d h:i:s'),
             ],
             [
-                'name'          => 'Operator-Jaskug',   //operator-jaskug
+                'name'          => 'Operasi-Jaskug',   //operator-jaskug
                 'email'         => 'angga@example.com',
                 'password'      => Hash::make('password'),
                 'created_at'    => date('Y-m-d h:i:s'),

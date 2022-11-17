@@ -144,54 +144,7 @@
   @endrole
 </div>
 
-{{-- <script type="text/javascript">
-  $('.date').datetimepicker({  
-     dateFormat: 'yy-mm-dd',
-     maxDate: '0'
-
-   });  
-</script>  --}}
-
-{{-- <script type="text/javascript">
-  $('.date').datetimepicker({
-      dateFormat: 'yy-mm-dd',
-      showMillisec:false,
-      showMicrosec:false,
-      showTimezone:false,
-      minTime:'08:00',
-      maxTime:'17:00',
-      formatTime:'i-H'
-      // enabledHours: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
-      maxDate: '0'
-    }  
-  );
-</script> --}}
-
 <script type="text/javascript">
-
-// let dateInput = document.getElementById("dt");
-// dateInput.min = "2022-11-14T08:00";
-// dateInput.max = "2022-11-14T17:00";
-
-  // var today = new Date();
-  // var dd = today.getDate();
-  // var mm = today.getMonth() + 1;
-  // var yyyy = today.getFullYear();
-  // //
-  // var hh = today.getHours();
-  // var m = today.getMinutes();
-
-  // if (dd < 10) {
-  //   dd = '0' + dd;
-  // }
-
-  // if (mm < 10) {
-  //   mm = '0' + mm;
-  // }
-      
-  // today = yyyy + "-" + mm + "-" + dd + "T" + hh + ":" + m;
-  // document.getElementById("dt").setAttribute("max", today);
-
 
   var today = new Date();
   var today2 = new Date();
@@ -211,12 +164,11 @@
   }
 
   today_min = yyyy + '-' + mm + '-' + dd + "T08:00"; 
-  //or Year-Month-Day
+
   today_max = yyyy + '-' + mm + '-' + dd + "T17:00";
-  //or Year-Month-Day&Todayhour:minute
+
   document.getElementById("dt").setAttribute("min", today_min);
   document.getElementById("dt").setAttribute("max", today_max);
-  //Set "datefield" = Minimum&Maximum time to current date
 
 </script>
 

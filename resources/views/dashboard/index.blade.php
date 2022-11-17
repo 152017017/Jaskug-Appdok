@@ -126,7 +126,7 @@
             case 11: bulan = "Desember"; break;
             }
 
-            document.getElementById('ct').innerHTML = hari + ", " + tanggal + " " + bulan + " " + tahun + " [" +jam + ":" + menit + ":" + detik + "]";
+            document.getElementById('ct').innerHTML = hari + ", " + tanggal + " " + bulan + " " + tahun + " [" +jam + ":" + menit + ":" + detik + " WIB]";
 
             display_c();
         }
