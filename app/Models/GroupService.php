@@ -19,11 +19,11 @@ class GroupService extends Model
     protected $with = ['business'];
 
     public function service(){
-        return $this->hasMany(Service::class);
+        return $this->hasMany(Service::class, 'gruplayanan_id');
     }
 
     public function business(){
         return $this->belongsTo(Business::class, 'bisnis_id');
     }
-
+    
 }

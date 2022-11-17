@@ -103,40 +103,24 @@ class GroupServiceController extends Controller
      * @param  \App\Models\GroupService  $groupService
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GroupService $groupService, $id)
+    public function destroy(GroupService $groupservice, $id)
     {
-        $groupService = $groupService->destroy(Crypt::decrypt($id));
+        // $groupservice = $groupservice->destroy(Crypt::decrypt($id));
+
+        // return redirect('/dashboard/gruplayanan/')->with('danger', 'Data dihapus !');
+        
+        //----//
+
+        $groupservice = GroupService::find(Crypt::decrypt($id));
+
+        if ($groupservice->service()->exists())
+        {
+            abort('Resource cannot be deleted due to existence of related resources.');
+        }
+
+        $groupservice->delete();
 
         return redirect('/dashboard/gruplayanan/')->with('danger', 'Data dihapus !');
-        
-        
-        ////
-        // $groupService = GroupService::find(Crypt::decrypt($id));
-
-        // try {
-        //     $groupService->delete();
-        // }
-        // catch (\Illuminate\Database\QueryException $e) {
-        //     if ($e->getCode() == 23000)
-        //     {
-        //         //SQLSTATE[23000]: Integrity constraint violation
-        //         abort('Resource cannot be deleted due to existence of related resources.');
-        //     }
-        // }
-
-        // return redirect('/dashboard/gruplayanan/')->with('success', 'Item has been deleted !');
-        
-        ////
-        // $groupService = GroupService::find($id);
-
-        // if ($groupService->service()->exists())
-        // {
-        //     abort('Resource cannot be deleted due to existence of related resources.');
-        // }
-
-        // $groupService->delete();
-
-        // return redirect('/dashboard/gruplayanan/')->with('success', 'Item has been deleted !');
 
     }
 }
