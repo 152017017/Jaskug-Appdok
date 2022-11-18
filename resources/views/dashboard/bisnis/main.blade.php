@@ -21,7 +21,7 @@
     </div>
   @endif
 
-  <a href="{{ route('bisnis.create') }}" class="btn btn-primary mb-3"><i class="fa fa-plus" aria-hidden="true"></i> Tambah data</a>
+  <div class="d-flex justify-content-end"><a href="{{ route('bisnis.create') }}" class="btn btn-primary mb-3"><i class="fa fa-plus" aria-hidden="true"></i> Tambah data</a></div>
     <div class="card shadow mb-4">
       <div class="card-body">  
         <div class="table-responsive">

@@ -14,17 +14,28 @@
       @csrf
       <div class="mb-3">
         <label for="business" class="form-label">Nama Aplikasi</label>
-          <select class="form-select" name="bisnis_id" style="width: 300px" autofocus required>
+          <select class="theSelect" name="bisnis_id" style="width : 300px" autofocus required>
             @foreach ($business as $item => $business)
-              <option value="{{ $business->id }}" {{ old('bisnis_id') == $business->id ? ' selected' : ' ' }}>
+              <option value="{{ $business->id }}">
                 {{ $business->deskripsi }}
               </option>
             @endforeach
           </select>
       </div>
+      {{-- <div class="mb-3">
+        <label for="business" class="form-label">Nama Aplikasi</label>
+          <select id="select-business" class="form-select" name="bisnis_id" style="width: 300px" autofocus required>
+            @foreach ($business as $item => $business)
+              <option value="{{ $business->id }}">
+                {{ $business->deskripsi }}
+              </option>
+            @endforeach
+          </select>
+      </div> --}}
       <div class="mb-3">
         <label for="status" class="form-label">Pilih Status</label>
-          <select class="form-select" name="status_id" style="width: 300px" autofocus required>
+        <br>
+          <select class="theSelect" name="status_id" style="width: 300px" autofocus required>
             @foreach ($status as $item => $status)
               <option value="{{ $status->id }}">
                 {{ $status->deskripsi }}
@@ -33,13 +44,24 @@
           </select>
       </div>
       <div class="mb-3">
-        <label for="gruplayanan" class="form-label">Pilih Grup Layanan</label>
+        <label for="platform" class="form-label">Pilih Jenis Platform</label>
+          <select class="theSelect" name="platform_id" style="width: 300px" autofocus required>
+            @foreach ($platform as $item => $platform)
+              <option value="{{ $platform->id }}">
+                {{ $platform->deskripsi }}
+              </option>
+            @endforeach
+          </select>
+      </div>
+      <div class="mb-3">
+        <label for="gruplayanan" class="form-label">Pilih Group Layanan</label>
           <select class="form-select" name="gruplayanan_id" id="gruplayanan_id" style="width: 300px" autofocus required>
             @foreach ($groupservice as $item => $groupservice)
               <option value="{{ $groupservice->id }}">{{ $groupservice->deskripsi }}</option>
             @endforeach
           </select>
       </div>
+      
       <div class="mb-3">
         <label for="layanan" class="form-label">Pilih Layanan</label>
           <select class="form-select" name="layanan_id" id="layanan_id" style="width: 300px" autofocus required>
@@ -48,17 +70,7 @@
             @endforeach --}}
           </select>
       </div>
-      <div class="mb-3">
-        <label for="platform" class="form-label">Pilih Jenis Platform</label>
-          <select class="form-select" name="platform_id" style="width: 300px" autofocus required>
-            @foreach ($platform as $item => $platform)
-              <option value="{{ $platform->id }}">
-                {{ $platform->deskripsi }}
-              </option>
-            @endforeach
-          </select>
-      </div>
-
+      
   </div>
   <div class="col-md-4 mx-4">
       <div class="mb-3">
@@ -95,6 +107,7 @@
         <button class="btn btn-primary" type="submit" style="width: 110px">Tambah</button>
       </span>
     </form>
+  </div>
 </div>
 
 <script type="text/javascript">
@@ -131,5 +144,10 @@
   });
 </script>
 
+<script>
+  $(".theSelect").select2({
+    placeholder: 'Select an option'
+  });
+</script>
 
 @endsection

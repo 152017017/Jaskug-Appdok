@@ -25,12 +25,10 @@
 
     <link href="/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
 
-    {{-- Datepicker --}}
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.js" integrity="sha512-s5u/JBtkPg+Ff2WEr49/cJsod95UgLHbC00N/GglqdQuLnYhALncz8ZHiW/LxDRGduijLKzeYb7Aal9h3codZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-ui-timepicker-addon@1.6.3/dist/jquery-ui-timepicker-addon.min.js"></script>
-    <link href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" rel="stylesheet" type='text/css'>
+    {{-- Select Form --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css">
 
 </head>
 
@@ -62,12 +60,6 @@
     <script src="/js/dashboard.js" type="text/javascript"></script>
     <script src="/js/moment.min.js" type="text/javascript"></script>
 
-    {{-- Popover --}}
-    <script>
-        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
-    </script>
-
     <!-- Core plugin JavaScript-->
     <script src="/js/jquery.easing.min.js" type="text/javascript"></script>
 
@@ -84,6 +76,12 @@
 
     <!-- Page level custom scripts -->
     <script src="/js/datatables-demo.js" type="text/javascript"></script>
+
+    {{-- Popover --}}
+    <script>
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+    </script>
 
     <script type="text/javascript"> 
         function display_c(){

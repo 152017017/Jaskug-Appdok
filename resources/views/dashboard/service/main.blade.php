@@ -22,7 +22,7 @@
   @endif
 
   {{-- <a href="{{ route('layanan.create') }}" class="btn btn-primary mb-3"><i class="fa fa-plus" aria-hidden="true"></i> Tambah data</a> --}}
-  <a href="dropdown-item" class="btn btn-primary mb-3" data-toggle="modal" data-target="#createModal"><i class="fa fa-plus" aria-hidden="true"></i> Tambah data</a>
+  <div class="d-flex justify-content-end"><a href="dropdown-item" class="btn btn-primary mb-3" data-toggle="modal" data-target="#createModal"><i class="fa fa-plus" aria-hidden="true"></i> Tambah data</a></div>
     <div class="card shadow mb-4">
       <div class="card-body">  
         <div class="table-responsive">
@@ -79,10 +79,10 @@
                   @csrf
                     <div class="mb-3">
                       <label for="gruplayanan" class="form-label">Pilih Group Layanan</label>
-                        <select class="form-select" name="gruplayanan_id" autofocus>
-                          @foreach ($groupservice as $gservice)
-                            <option value="{{ $gservice->id }}" {{ old('gruplayanan_id') == $gservice->id ? ' selected' : ' ' }}>
-                              {{ $gservice->deskripsi }}
+                        <select class="form-select" name="gruplayanan_id" style="width: 280px" required autofocus>
+                          @foreach ($groupservice as $item => $groupservice)
+                            <option value="{{ $groupservice->id }}">
+                              {{ $groupservice->deskripsi }}
                             </option>
                           @endforeach
                         </select>
@@ -113,5 +113,11 @@
         </div>
     </div>
   </div>
+
+  <script>
+    $(".theSelect").select2({
+      placeholder: 'Select an option'
+    });
+  </script>
 
 @endsection

@@ -4,69 +4,60 @@
 
 <h1 class="h3 mb-4 text-gray-800">Tindak Lanjuti Permintaan</h1>
 
-<h1 class="h4 mb-4">Info Permintaan</h1>
+<h1 class="h4 mb-4"><b>Info Permintaan</b></h1>
 <div class="row">
   <div class="col-md-4 mx-4">
-      <div class="mb-2">
-        <label for="status" class="form-label">Status</label>
-          <input type="text" class="form-control @error('status') is-invalid @enderror"
-          value="{{ $dokumentasi->status->deskripsi }}" readonly>
-      </div>
-      <div class="mb-2">
-        <label for="group" class="form-label">Group Layanan</label>
-          <input type="text" class="form-control @error('groupservice') is-invalid @enderror"
-          value="{{ $dokumentasi->groupservice->deskripsi }}" readonly>
-      </div>
-      <div class="mb-2">
-        <label for="layanan" class="form-label">Layanan</label>
-          <input type="text" class="form-control @error('service') is-invalid @enderror"
-          value="{{ $dokumentasi->service->deskripsi }}" readonly>
-      </div>
-      <div class="mb-2">
-        <label for="platform" class="form-label">Platform</label>
-          <input type="text" class="form-control @error('platform') is-invalid @enderror"
-          value="{{ $dokumentasi->platform->deskripsi }}" readonly>
-      </div>
-      <div class="mb-2">
-        <label for="pemilik" class="form-label">Pemilik</label>
-          <input type="text" class="form-control @error('business') is-invalid @enderror"
-          value="{{ $dokumentasi->business->deskripsi }}" readonly>
-      </div> 
+    <div class="mb-2">
+      <label for="pemilik" class="form-label">Nama Aplikasi</label>
+        <input type="text" class="form-control" value="{{ $dokumentasi->business->deskripsi }}" readonly>
+    </div>
+    <div class="mb-2">
+      <label for="status" class="form-label">Status</label>
+        <input type="text" class="form-control" value="{{ $dokumentasi->status->deskripsi }}" readonly>
+    </div>
+    <div class="mb-2">
+      <label for="platform" class="form-label">Platform</label>
+        <input type="text" class="form-control" value="{{ $dokumentasi->platform->deskripsi }}" readonly>
+    </div>
+    <div class="mb-2">
+      <label for="group" class="form-label">Group Layanan</label>
+        <input type="text" class="form-control" value="{{ $dokumentasi->groupservice->deskripsi }}" readonly>
+    </div>
+    <div class="mb-2">
+      <label for="layanan" class="form-label">Layanan</label>
+        <input type="text" class="form-control" value="{{ $dokumentasi->service->deskripsi }}" readonly>
+    </div>
+    
   </div> 
   <div class="col-md-4 mx-auto">
-      <div class="mb-3">
-        <label for="lampiran" class="form-label">Lampiran</label>
+    <div class="mb-3">
+      <label for="nomor" class="form-label">1. Nomor NDE</label>
+        <input type="text" class="form-control" value="{{ $dokumentasi->nomor }}" readonly>
+    </div>
+    <div class="mb-3">
+      <label for="tanggal" class="form-label">2. Tanggal NDE</label>
+        <input type="text" class="form-control" value="{{ $dokumentasi->tanggal->format('d M Y') }}" readonly>
+    </div>
+    <div class="mb-3">
+      <label for="perihal" class="form-label">3. Perihal NDE</label>
+        <input type="text" class="form-control @error('perihal') is-invalid @enderror"
+        value="{{ $dokumentasi->perihal }}" readonly>
+    </div>
+    <div class="mb-3">
+      <label for="deskripsi" class="form-label">4. Uraian NDE</label>
+        <input type="text" class="form-control" value="{{ $dokumentasi->deskripsi }}" readonly>
+    </div>
+    <div class="mb-3">
+      <label for="lampiran" class="form-label">5. Lampiran NDE</label>
         <div class="input-group mb-3">
-          <input type="text" class="form-control @error('lampiran') is-invalid @enderror"
-          value="{{ $dokumentasi->lampiran }}" readonly>
-          <span class="input-group-text"><a href="/storage/{{ $dokumentasi->lampiran }}" target="_blank"><i class="fa fa-info-circle" aria-hidden="true"></i></a></span>
-          {{-- <span class="input-group-text"><a href="/download/{{ $dokumentasi->lampiran }}" target="_blank"><i class="fa fa-download" aria-hidden="true"></i></a></span> --}}
+          <input type="text" class="form-control" value="{{ $dokumentasi->lampiran }}" readonly>
+            <span class="input-group-text"><a href="/storage/{{ $dokumentasi->lampiran }}" target="_blank"><i class="fa fa-info-circle" aria-hidden="true"></i></a></span>
         </div>
-      </div>
-      <div class="mb-3">
-        <label for="tanggal" class="form-label">Tanggal NDE</label>
-          <input type="text" class="form-control @error('tanggal') is-invalid @enderror"
-          value="{{ $dokumentasi->tanggal->format('d M Y') }}" readonly>
-      </div>
-      <div class="mb-3">
-        <label for="nomor" class="form-label">Nomor NDE</label>
-          <input type="text" class="form-control @error('nomor') is-invalid @enderror"
-          value="{{ $dokumentasi->nomor }}" readonly>
-      </div>
-      <div class="mb-3">
-        <label for="perihal" class="form-label">Perihal NDE</label>
-          <input type="text" class="form-control @error('perihal') is-invalid @enderror"
-          value="{{ $dokumentasi->perihal }}" readonly>
-      </div>
-      <div class="mb-3">
-        <label for="deskripsi" class="form-label">Uraian NDE</label>
-          <input type="text" class="form-control @error('deskripsi') is-invalid @enderror"
-          value="{{ $dokumentasi->deskripsi }}" readonly>
-      </div>
+    </div>
   </div>
 </div>
 
-<h1 class="h4 mb-4">Log History Tindak Lanjut</h1>
+<h1 class="h4 mb-4"><b> History Tindak Lanjut</b></h1>
 <div class="row mx-auto">
 
   @if (empty($activityLog->changes['old'] ))

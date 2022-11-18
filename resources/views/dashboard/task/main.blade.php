@@ -5,18 +5,26 @@
   <h1 class="h3 mb-2 text-gray-800">Permintaan Berjalan</h1>
   {{-- @endsection --}}
 
+  {{-- Alert --}}
   @if (session()->has('success'))
-    <div class="alert alert-success col-lg-8" role="alert">
+    <div class="alert alert-success alert-dismissible fade show col-lg-8" role="alert">
       {{ session('success') }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
   @elseif (session()->has('danger'))
-    <div class="alert alert-danger col-lg-8" role="alert">
+    <div class="alert alert-danger alert-dismissible fade show col-lg-8" role="alert">
       {{ session('danger') }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
   @endif
+  {{-- /Alert --}}
 
   @role('admin|user-bisnis') 
-  <a href="{{ route('task.create') }}" class="btn btn-primary mb-3"><i class="fa fa-plus" aria-hidden="true"></i> Tambah Permintaan</a>
+  <div class="d-flex justify-content-end"><a href="{{ route('task.create') }}" class="btn btn-primary mb-3"><i class="fa fa-plus" aria-hidden="true"></i> Tambah Permintaan</a></div>
   @endrole
 
     <div class="card shadow mb-4">
@@ -31,9 +39,7 @@
               <th scope="col">No.</th>
               <th scope="col">Layanan</th>
               <th scope="col">Group Layanan</th>
-              <th scope="col">Perihal NDE</th>
-              <th scope="col">Nomor NDE</th>
-              <th scope="col">Tanggal NDE</th>
+              <th scope="col">NDE</th>
               <th scope="col">Nama Kegiatan</th>
               <th scope="col">Status Tindak Lanjut (Operasi)</th>
               <th scope="col">Status Tindak Lanjut (QA)</th>
@@ -52,9 +58,17 @@
               <td>{{ $loop->iteration }}</td>
               <td>{{ $dokumentasi->service->deskripsi }}</td>
               <td>{{ $dokumentasi->groupservice->deskripsi }}</td>
-              <td>{{ $dokumentasi->perihal }}</td>
-              <td>{{ $dokumentasi->nomor }}</td>
-              <td>{{ $dokumentasi->tanggal->format('d M Y') }}</td>
+              <td>
+              Nomor: <b>{{ $dokumentasi->nomor }}</b>
+              <br>
+              Tanggal: 
+              <br>
+              {{ $dokumentasi->tanggal->format('d M Y') }}
+              <br>
+              Perihal: 
+              <br>
+              {{ $dokumentasi->perihal }}
+              </td>
               @if($dokumentasi->status->id === 1)
                 <td><label class="bg-primary rounded text-black opacity-75 d-inline-flex p-1">{{ $dokumentasi->status->deskripsi }}</label></td>
                   @elseif($dokumentasi->status->id === 2)
@@ -72,13 +86,13 @@
               @if (empty($dokumentasi->tanggal_eksekusi_op))
                 <td> -- </td>
               @else 
-                <td> {{"Lingkungan (" .$dokumentasi->status->deskripsi. ") dieksekusi pada (" .$dokumentasi->tanggal_eksekusi_op->format('d M Y'). ")" }} </td>              
+                <td> {{"Lingkungan (" .$dokumentasi->status->deskripsi. ") dieksekusi tanggal (" .$dokumentasi->tanggal_eksekusi_op->format('d M Y'). ")" . " pukul " . $dokumentasi->tanggal_eksekusi_op->format('H:i') . " WIB"}}</td>              
               @endif
               {{-- Quality Assurance / QA --}}
               @if (empty($dokumentasi->tanggal_eksekusi_qa))
                 <td> -- </td>
               @else 
-                <td> {{"Lingkungan (" .$dokumentasi->status->deskripsi. ") dieksekusi pada (" .$dokumentasi->tanggal_eksekusi_qa->format('d M Y'). ")"  }} </td>              
+                <td> {{"Lingkungan (" .$dokumentasi->status->deskripsi. ") dieksekusi tanggal (" .$dokumentasi->tanggal_eksekusi_qa->format('d M Y'). ")" . " pukul " . $dokumentasi->tanggal_eksekusi_qa->format('H:i') . " WIB"}}</td>              
               @endif
               @role('admin|operator')
               <td>
