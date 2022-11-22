@@ -6,7 +6,7 @@
     <h1 class="h3 mb-2 text-gray-800">Tambah Permintaan</h1>
 </div>
 
-<div class="row ">
+<div class="row">
   <div class="col-sm-4 mx-2">
     <form method="post" action="{{ route('task.store') }}" class="mb-5" enctype="multipart/form-data">
       @csrf
@@ -51,6 +51,7 @@
         <label for="layanan" class="form-label">Layanan</label><span style="color: red;">*</span>
           <br>
             <select class="#select_group" name="layanan_id" id="layanan_id" style="width: 300px" data-placeholder="Pilih layanan.." autofocus required></select>
+            
       </div>
   </div>
   <div class="col-md-4 mx-6">

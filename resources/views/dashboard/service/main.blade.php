@@ -74,12 +74,12 @@
             </div>
             
             <div class="modal-body">
-              <div class="col-md-8">
+              <div class="col-md-8 d-flex justify-content-between flex-wrap flex-md-nowrap">
                 <form method="post" action="{{ route('layanan.store') }}" class="mb-5" enctype="multipart/form-data">
                   @csrf
                     <div class="mb-3">
                       <label for="gruplayanan" class="form-label">Pilih Group Layanan</label>
-                        <select class="form-select" name="gruplayanan_id" style="width: 280px" required autofocus>
+                        <select class="select_group" name="gruplayanan_id" style="width: 100%" data-placeholder="Pilih group.." required autofocus>
                           @foreach ($groupservice as $item => $groupservice)
                             <option value="{{ $groupservice->id }}">
                               {{ $groupservice->deskripsi }}
@@ -87,7 +87,7 @@
                           @endforeach
                         </select>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3"E>
                       <label for="nama" class="form-label">Nama Layanan</label>
                         <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" required autofocus value="{{ old('nama') }}">
                           @error('nama')
@@ -114,10 +114,14 @@
     </div>
   </div>
 
-  <script>
-    $(".theSelect").select2({
-      placeholder: 'Select an option'
-    });
-  </script>
+<script>
+  $(document).ready(function() {
+    $(".select_group").select2({
+      allowClear: true,
+      dropdownParent: $('#createModal')
+
+    }); 
+  });
+</script>
 
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\GroupService;
 use App\Models\Business;
+use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
@@ -113,14 +114,19 @@ class GroupServiceController extends Controller
 
         $groupservice = GroupService::find(Crypt::decrypt($id));
 
-        if ($groupservice->service()->exists())
-        {
-            abort('Resource cannot be deleted due to existence of related resources.');
+        try {
+            $groupservice->delete();
         }
-
-        $groupservice->delete();
-
-        return redirect('/dashboard/gruplayanan/')->with('danger', 'Data dihapus !');
+        catch (\Illuminate\Database\QueryException $e) {
+            if ($e->getCode() == 23000)
+            {
+                // @dd($e);
+                //SQLSTATE[23000]: Integrity constraint violation
+                return redirect('/dashboard/gruplayanan/')->with('danger', 'Data gagal dihapus karena memiliki layanan !');
+            }
+        }
+    
+        return redirect('/dashboard/gruplayanan/')->with('sucess', 'Data sukses dihapus !');
     }
 
     public function select(Request $request)

@@ -72,15 +72,15 @@
               @if($dokumentasi->status->id === 1)
                 <td><label class="bg-primary rounded text-black opacity-75 d-inline-flex p-1">{{ $dokumentasi->status->deskripsi }}</label></td>
                   @elseif($dokumentasi->status->id === 2)
-                <td><label class="bg-secondary rounded text-black opacity-75 d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
-                  @elseif($dokumentasi->status->id === 3)
                 <td><label class="bg-info rounded text-black opacity-75 d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
+                  @elseif($dokumentasi->status->id === 3)
+                <td><label class="bg-success rounded text-black opacity-75 d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
                   @elseif($dokumentasi->status->id === 4)
                 <td><label class="bg-warning rounded text-black opacity-75 d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
                   @elseif($dokumentasi->status->id === 5)
                 <td><label class="bg-danger rounded text-black opacity-75 d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
                   @else
-                <td><label class="bg-success rounded text-black opacity-75 d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
+                <td><label class="bg-info rounded text-black opacity-75 d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
               @endif
               {{-- Operator --}}
               @if (empty($dokumentasi->tanggal_eksekusi_op))

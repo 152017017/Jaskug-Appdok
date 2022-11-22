@@ -27,7 +27,7 @@ class TaskController extends Controller
             "title"         => "Permintaan",
             "dokumentasi"   => Dokumentasi::all(),
             "status"        => Status::all(),
-            // "groupservice"  => GroupService::all(),
+            "groupservice"  => GroupService::all(),
             "service"       => Service::all()
         ]);
     }
@@ -41,7 +41,7 @@ class TaskController extends Controller
     {
         return view('dashboard.task.create', [
             "business"      => Business::all(),
-            "groupservice"  => GroupService::all(),
+            // "groupservice"  => GroupService::all(),
             "status"        => Status::all(),
             "service"       => Service::all(),
             "platform"      => Platform::all()
