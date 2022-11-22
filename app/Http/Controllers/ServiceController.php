@@ -115,4 +115,20 @@ class ServiceController extends Controller
 
         return redirect('/dashboard/layanan/')->with('danger', 'Data dihapus !');
     }
+
+    public function select(Request $request)
+    {
+        $service = [];
+        $groupserviceID = $request->groupserviceID;
+        if ($request->has('q')) {
+            $search = $request->q;
+            $service = Service::select("id", "nama")
+                ->where('gruplayanan_id', $groupserviceID)
+                ->Where('nama', 'LIKE', "%$search%")
+                ->get();
+        } else {
+            $service = Service::where('gruplayanan_id', $groupserviceID)->limit(10)->get();
+        }
+        return response()->json($service);
+    }
 }

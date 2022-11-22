@@ -121,6 +121,20 @@ class GroupServiceController extends Controller
         $groupservice->delete();
 
         return redirect('/dashboard/gruplayanan/')->with('danger', 'Data dihapus !');
+    }
 
+    public function select(Request $request)
+    {
+        $groupservice = [];
+
+        if ($request->has('q')) {
+            $search = $request->q;
+            $groupservice = GroupService::select("id", "nama")
+                ->Where('nama', 'LIKE', "%$search%")
+                ->get();
+        } else {
+            $groupservice = GroupService::limit(10)->get();
+        }
+        return response()->json($groupservice);
     }
 }

@@ -93,6 +93,8 @@ Route::controller(GroupServiceController::class)->prefix('dashboard/gruplayanan'
     Route::get('/edit/{id}', 'edit')->name('gruplayanan.edit');
     Route::post('/update/{id}', 'update')->name('gruplayanan.update');
     Route::post('/delete/{id}', 'destroy')->name('gruplayanan.delete');
+
+    Route::get('/groupservice', 'select')->name('groupservice.select');
 });
 
 Route::controller(ServiceController::class)->prefix('dashboard/layanan')->middleware('role:admin|operator')->group(function () {
@@ -102,6 +104,8 @@ Route::controller(ServiceController::class)->prefix('dashboard/layanan')->middle
     Route::get('/edit/{id}', 'edit')->name('layanan.edit');
     Route::post('/update/{id}', 'update')->name('layanan.update');
     Route::post('/delete/{id}', 'destroy')->name('layanan.delete');
+
+    Route::get('/service', 'select')->name('service.select');
 });
 
 Route::controller(StatusController::class)->prefix('dashboard/status')->middleware('role:admin|operator')->group(function () {
@@ -136,7 +140,4 @@ Route::get('getService/{id}', function ($id) {
     $service = App\Models\Service::where('gruplayanan_id', $id)->get();
     return response()->json($service);
 });
-
-// Download Files
-Route::get('/download/{file_name}', 'HistoryController@download');
 

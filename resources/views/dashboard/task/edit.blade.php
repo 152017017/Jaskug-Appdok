@@ -92,7 +92,7 @@
     @csrf
     <div class="mt-2 mb-2">
       <div class="d-inline-block">
-        <label for="tanggal_eksekusi_op" class="form-label">Tanggal eksekusi</label>
+        <label for="tanggal_eksekusi_op" class="form-label">Tanggal eksekusi</label><span style="color: red;"> (*)</span>
           <input class="date form-control" type="datetime-local" id="dt" name="tanggal_eksekusi_op" required>
             @error('tanggal_eksekusi_op')
               <div class="invalid-feedback">
@@ -112,7 +112,7 @@
     @csrf
     <div class="mt-2 mb-2">
       <div class="d-inline-block">
-        <label for="tanggal_eksekusi_qa" class="form-label">Tanggal eksekusi</label>
+        <label for="tanggal_eksekusi_qa" class="form-label">Tanggal eksekusi</label><span style="color: red;"> (*)</span>
           <input class="date form-control" type="datetime-local" id="dt-qa" name="tanggal_eksekusi_qa" required>
             @error('tanggal_eksekusi_qa')
               <div class="invalid-feedback">

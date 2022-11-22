@@ -27,7 +27,7 @@ class TaskController extends Controller
             "title"         => "Permintaan",
             "dokumentasi"   => Dokumentasi::all(),
             "status"        => Status::all(),
-            "groupservice"  => GroupService::all(),
+            // "groupservice"  => GroupService::all(),
             "service"       => Service::all()
         ]);
     }
@@ -141,10 +141,5 @@ class TaskController extends Controller
     {
         //
     }
-
-    // public function getService(GroupService $groupservice)
-    // {
-    //     return $groupservice->service()->select('id', 'nama')->get();
-    // }
 
 }
