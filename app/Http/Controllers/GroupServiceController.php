@@ -120,13 +120,13 @@ class GroupServiceController extends Controller
         catch (\Illuminate\Database\QueryException $e) {
             if ($e->getCode() == 23000)
             {
-                // @dd($e);
                 //SQLSTATE[23000]: Integrity constraint violation
+                // @dd($e);
                 return redirect('/dashboard/gruplayanan/')->with('danger', 'Data gagal dihapus karena memiliki layanan !');
             }
         }
+        return redirect('/dashboard/gruplayanan/')->with('success', 'Data sukses dihapus !');
     
-        return redirect('/dashboard/gruplayanan/')->with('sucess', 'Data sukses dihapus !');
     }
 
     public function select(Request $request)
