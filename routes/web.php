@@ -1,9 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Crypt;
+use App\Models\Service;
 // use App\Http\Controllers\MailController;
 // use App\Http\Controllers\DokumentasiController;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
@@ -11,7 +13,9 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\BusinessController;
+use App\Http\Controllers\OverviewController;
 use App\Http\Controllers\PlatformController;
+use App\Http\Controllers\DokumentasiController;
 use App\Http\Controllers\GroupServiceController;
 
 /*
@@ -39,6 +43,10 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/dashboard', function(){
     return view('dashboard.index');
 })->middleware('auth');
+
+Route::controller(OverviewController::class)->prefix('dashboard/overview')->middleware(['role:admin|operator|user-bisnis|user-qa'])->group(function () {
+    Route::get('/', 'index');
+});
 
 Route::controller(TaskController::class)->prefix('dashboard/task')->middleware(['role:admin|operator|user-bisnis|user-qa'])->group(function () {
     Route::get('/', 'index');

@@ -15,8 +15,8 @@
       Menu Utama
     </div>
       <ul class="navbar-nav flex-column" id="accordionSidebar">
-        <li class="nav-item {{ Request::is('dashboard') ? 'active' : '' }}">
-          <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" aria-current="page" href="/dashboard">
+        <li class="nav-item {{ Request::is('dashboard/overview') ? 'active' : '' }}">
+          <a class="nav-link {{ Request::is('dashboard/overview') ? 'active' : '' }}" aria-current="page" href="/dashboard/overview">
             <i class="fa fa-th-large" aria-hidden="true"></i>
             Overview
           </a>

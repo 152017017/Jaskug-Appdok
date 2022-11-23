@@ -106,12 +106,6 @@ class GroupServiceController extends Controller
      */
     public function destroy(GroupService $groupservice, $id)
     {
-        // $groupservice = $groupservice->destroy(Crypt::decrypt($id));
-
-        // return redirect('/dashboard/gruplayanan/')->with('danger', 'Data dihapus !');
-        
-        //----//
-
         $groupservice = GroupService::find(Crypt::decrypt($id));
 
         try {
@@ -125,8 +119,8 @@ class GroupServiceController extends Controller
                 return redirect('/dashboard/gruplayanan/')->with('danger', 'Data gagal dihapus karena memiliki layanan !');
             }
         }
+        
         return redirect('/dashboard/gruplayanan/')->with('success', 'Data sukses dihapus !');
-    
     }
 
     public function select(Request $request)

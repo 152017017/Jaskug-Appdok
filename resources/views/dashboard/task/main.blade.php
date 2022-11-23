@@ -59,7 +59,9 @@
               <td>{{ $dokumentasi->service->deskripsi }}</td>
               <td>{{ $dokumentasi->groupservice->deskripsi }}</td>
               <td>
-              Nomor: <b>{{ $dokumentasi->nomor }}</b>
+              Nomor:
+              <br>
+              <b>{{ $dokumentasi->nomor }}</b>
               <br>
               Tanggal: 
               <br>
