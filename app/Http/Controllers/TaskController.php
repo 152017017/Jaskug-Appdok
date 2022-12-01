@@ -64,7 +64,7 @@ class TaskController extends Controller
             "gruplayanan_id"    => 'required',
             "status_id"         => 'required',
             "platform_id"       => 'required',
-            "lampiran"          => 'required|file|mimes:pdf,jpg,jpeg|max:1024',
+            "lampiran"          => 'required|file|mimes:pdf,jpg,jpeg|min:1024',
             "tanggal"           => 'required|date',
             // "tanggal_eksekusi_op"  => 'date',
             // "tanggal_eksekusi_qa"  => 'date',

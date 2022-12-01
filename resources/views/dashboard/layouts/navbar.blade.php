@@ -19,7 +19,6 @@
       </div>
   </form> --}}
 
-  {{-- <span id='ct' class="d-flex flex-row-reverse px-3"></span> --}}
   <span id='ct' class="d-flex flex-row-reverse px-3"></span>
     
   <!-- Topbar Navbar -->
@@ -50,20 +49,15 @@
       </li>
 
       <!-- Nav Item - Alerts -->
+      @role('operator')
       <li class="nav-item dropdown no-arrow mx-1">
-          @role('operator')
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-envelope fa-fw"></i>
                 <!-- Counter - Alerts -->
-                @if ("{{ count($dokumentasi) }}" >= 1)
-                    <span class="badge badge-danger badge-counter" id="badgeNotif">
-                        {{ count($dokumentasi) }}
-                    </span>
-                @elseif ("{{ count($dokumentasi) }}" == 0)
-                    <span class="badge badge-danger badge-counter" id="badgeNotif">
-                    </span>
-                @endif
+                <span class="badge badge-danger badge-counter" id="badgeNotif">
+                    {{ count($dokumentasi) }}
+                </span>
             </a>
         
             <!-- Dropdown - Alerts -->
@@ -73,24 +67,24 @@
                     Notifications Center
                 </h6>
                 <div id="myNotifications">
-                @foreach ($dokumentasi as $item)
-                <a class="dropdown-item d-flex align-items-center" href="{{ route('task.edit', $item->id) }}">
+                @foreach ($dokumentasi as $item => $dokumentasi)
+                <a class="dropdown-item d-flex align-items-center" href="{{ route('task.edit', Crypt::encrypt($dokumentasi->id)) }}">
                     <div class="mr-3">
                         <div class="icon-circle bg-primary">
                             <i class="fas fa-file-alt text-white"></i>
                         </div>
                     </div>
-                    <div>
-                        <div class="small text-gray-500">{{ $item->created_at->format('d M Y') }}</div>
-                        <span class="font-weight-bold">A new task has been added</span>
+                    <div class="mb-2">
+                        <div class="small text-gray-500 count">{{ $dokumentasi->created_at->format('d-M-Y H:i:s') }}</div>
+                        <span class="font-weight-bold">Permintaan baru telah ditambahkan !</span>
                     </div>
                 </a>
                 @endforeach
                 </div>
-                <a class="dropdown-item text-center small text-gray-500" onclick="myTask()">Show / hide notifications</a>
+                {{-- <a class="dropdown-item text-center small text-gray-500" onclick="myTask()"><label readonly> Show / hide notifications</a></label> --}}
             </div>
-          @endrole
-      </li>
+        </li>
+        @endrole
 
       <div class="topbar-divider d-none d-sm-block"></div>
       
@@ -159,5 +153,21 @@
             x.style.display = "none";
         }
     }
+</script>
 
+<script>
+    function myNotif() {
+        $.ajax({
+            type:'POST',
+            url:'/getNotif',
+            dataType:'json',
+            data:{
+                _token = '<?php echo csrf_token() ?>'
+            },
+            success:function(data){
+                $("#msg").html(data.msg);
+            }
+            
+        });
+    }
 </script>

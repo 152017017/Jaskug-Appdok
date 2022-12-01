@@ -11,6 +11,8 @@
   <div class="text-center d-none d-md-inline">
     <button class="rounded-circle border-0" id="sidebarToggle"></button>
   </div>
+  <hr class="sidebar-divider">
+
     <div class="sidebar-heading">
       Menu Utama
     </div>
@@ -33,13 +35,9 @@
             History
           </a>
         </li>
-        {{-- <li class="nav-item {{ Request::is('dashboard/mail*') ? 'active' : '' }}">
-          <a class="nav-link  {{ Request::is('dashboard/mail*') ? 'active' : '' }} disabled" href="/dashboard/mail">
-            <i class="fa fa-commenting" aria-hidden="true"></i>
-            Surat
-          </a>
-        </li> --}}
       </ul>
+      <hr class="sidebar-divider">
+
       @role('admin|operator')
       <div class="sidebar-heading">
         Master Data

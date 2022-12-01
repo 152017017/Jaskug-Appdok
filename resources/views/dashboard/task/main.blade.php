@@ -41,8 +41,8 @@
               <th scope="col">Group Layanan</th>
               <th scope="col">NDE</th>
               <th scope="col">Nama Kegiatan</th>
-              <th scope="col">Status Tindak Lanjut (Operasi)</th>
-              <th scope="col">Status Tindak Lanjut (QA)</th>
+              <th scope="col">Status Tindak Lanjut <label style="color: blue"> (Operasi)</label></th>
+              <th scope="col">Status Tindak Lanjut <label style="color: green"> (QA)</label></th>
               @role('admin|operator')
                 <th scope="col">Action</th>
               @endrole
@@ -59,30 +59,28 @@
               <td>{{ $dokumentasi->service->deskripsi }}</td>
               <td>{{ $dokumentasi->groupservice->deskripsi }}</td>
               <td>
-              Nomor:
+              <label style="color: red"><b>{{ $dokumentasi->nomor }}</b></label>
               <br>
-              <b>{{ $dokumentasi->nomor }}</b>
-              <br>
-              Tanggal: 
+              --- 
               <br>
               {{ $dokumentasi->tanggal->format('d M Y') }}
               <br>
-              Perihal: 
+              --- 
               <br>
               {{ $dokumentasi->perihal }}
               </td>
               @if($dokumentasi->status->id === 1)
-                <td><label class="bg-primary rounded text-black opacity-75 d-inline-flex p-1">{{ $dokumentasi->status->deskripsi }}</label></td>
+                <td><label class="bg-primary opacity-75 rounded text-black  d-inline-flex p-1">{{ $dokumentasi->status->deskripsi }}</label></td>
                   @elseif($dokumentasi->status->id === 2)
-                <td><label class="bg-info rounded text-black opacity-75 d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
+                <td><label class="bg-info opacity-75 rounded text-black  d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
                   @elseif($dokumentasi->status->id === 3)
-                <td><label class="bg-success rounded text-black opacity-75 d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
+                <td><label class="bg-success opacity-75 rounded text-black  d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
                   @elseif($dokumentasi->status->id === 4)
-                <td><label class="bg-warning rounded text-black opacity-75 d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
+                <td><label class="bg-warning opacity-75 rounded text-black  d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
                   @elseif($dokumentasi->status->id === 5)
-                <td><label class="bg-danger rounded text-black opacity-75 d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
+                <td><label class="bg-danger opacity-75 rounded text-black  d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
                   @else
-                <td><label class="bg-info rounded text-black opacity-75 d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
+                <td><label class="bg-info opacity-75 rounded text-black  d-inline-flex p-2">{{ $dokumentasi->status->deskripsi }}</label></td>
               @endif
               {{-- Operator --}}
               @if (empty($dokumentasi->tanggal_eksekusi_op))
@@ -119,7 +117,7 @@
   <div class="modal-dialog" role="document">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Filter Task</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Filter Permintaan</h5>
               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
               </button>

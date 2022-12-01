@@ -12,6 +12,7 @@
       @csrf
       <div class="mb-3">
         <label for="business" class="form-label">Nama Aplikasi</label><span style="color: red;">*</span>
+        <br>
           <select class="select_group" name="bisnis_id" style="width : 300px" data-placeholder="Pilih aplikasi.." autofocus required>
               <option value="" hidden></option>
                 @foreach ($business as $item => $business)
@@ -22,15 +23,16 @@
       <div class="mb-3">
         <label for="status" class="form-label">Status</label><span style="color: red;">*</span>
         <br>
-        <select class="select_group" name="status_id" style="width: 300px" data-placeholder="Pilih status.." autofocus required>
-          <option value="" hidden></option>
-            @foreach ($status as $item => $status)
-              <option value="{{ $status->id }}">{{ $status->deskripsi }}</option>
-            @endforeach
+          <select class="select_group" name="status_id" style="width: 300px" data-placeholder="Pilih status.." autofocus required>
+            <option value="" hidden></option>
+              @foreach ($status as $item => $status)
+                <option value="{{ $status->id }}">{{ $status->deskripsi }}</option>
+              @endforeach
           </select>
       </div>
       <div class="mb-3">
         <label for="platform" class="form-label">Jenis Platform</label><span style="color: red;">*</span>
+        <br>
           <select class="select_group" name="platform_id" style="width: 300px" data-placeholder="Pilih platform.." autofocus required>
             <option value="" hidden></option>
               @foreach ($platform as $item => $platform)
@@ -40,6 +42,7 @@
       </div>
       <div class="mb-3">
         <label for="gruplayanan" class="form-label">Group Layanan</label><span style="color: red;">*</span>
+        <br>
           <select class="#select_group" name="gruplayanan_id" id="gruplayanan_id" style="width: 300px" data-placeholder="Pilih group.." autofocus required>
             {{-- <option value="" hidden></option>
               @foreach ($groupservice as $item => $groupservice)
